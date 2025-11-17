@@ -1,11 +1,11 @@
 {
-  "name": "goit-advancedjs-hw-03",
+  "name": "project-17112025",
   "private": true,
   "version": "1.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite --open",
-    "build": "vite build --base=/goit-advancedjs-hw-03/",
+    "build": "vite build --base=/project-17112025/",
     "preview": "vite preview"
   },
   "devDependencies": {
@@ -26,6 +26,6 @@
   "main": "vite.config.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Mohara88s/goit-advancedjs-hw-03.git"
+    "url": "https://github.com/JSA-project-group-1/project-17112025.git"
   }
 }
