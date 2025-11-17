@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Homework 3</title>
+    <link rel="stylesheet" href="./css/styles.css" />
+  </head>
+  <body>
+    <main>
+      <div class="container">
+        <form class="form" autocomplete="off">
+          <label class="search-label" for="search">
+            <input
+              class="search-input"
+              type="text"
+              name="search"
+              placeholder="Search images..."
+              autofocus
+            />
+          </label>
+          <button class="search-btn" type="submit">Search</button>
+        </form>
+        <ul class="gallery"></ul>
+        <div class="loader-box visually-hidden">
+          <span class="loader"></span>
+        </div>
+      </div>
+    </main>
+
+    <script type="module" src="./main.js"></script>
+  </body>
+</html>
