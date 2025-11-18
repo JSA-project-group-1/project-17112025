@@ -1,1 +1,1 @@
-{"version":3,"file":"index.js","sources":["../src/js/main-home.js"],"sourcesContent":["import iziToast from \"izitoast\";\nimport \"izitoast/dist/css/iziToast.min.css\";\n\nconsole.log(iziToast)"],"names":["iziToast"],"mappings":"oFAGA,QAAQ,IAAIA,CAAQ"}
+{"version":3,"file":"index.js","sources":["../src/js/main-home.js"],"sourcesContent":["import iziToast from \"izitoast\";\nimport \"izitoast/dist/css/iziToast.min.css\";\n\nimport '/css/pages/home.css';\n\nconsole.log(iziToast)"],"names":["iziToast"],"mappings":"oFAKA,QAAQ,IAAIA,CAAQ"}
