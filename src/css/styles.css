@@ -12,7 +12,5 @@
 @import url('./animations.css');
 
 /* Sections style */
-@import url('./index.css');
 @import url('./header.css');
-@import url('./section-hero.css');
 @import url('./footer.css');
