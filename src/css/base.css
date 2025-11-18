@@ -1,12 +1,16 @@
 :root {
-  font-family: 'Montserrat', sans-serif;
-  font-size: 16px;
-  line-height: 1.5;
-  font-weight: 400;
-  letter-spacing: 0.04em;
+  /* fonts */
+  --font-family: 'DM Sans', sans-serif;
 
-  color: #242424;
-  background-color: rgba(255, 255, 255, 0.87);
+  /* colors */
+  --main-color: #242424;
+  --second-color: #f4f4f4;
+  --acent-stars-color: #eea10c;
+  --stars-color: rgba(244, 244, 244, 0.2);
+  --white-color: #fff;
+  --quote-color: rgba(244, 244, 244, 0.6);
+  --socials-color : rgba(36, 36, 36, 0.1)
+  --pagination-color: #d4d4d4;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -19,24 +23,16 @@
 }
 
 body {
-  display: flex;
-  flex-direction: column;
-  min-width: 100vw;
-  min-height: 100vh;
-  margin: 0;
+  color: var(--main-color);
+  background-color: var(--second-color);
+  font-family: var(--font-family);
+  font-weight: 400;
+  font-style: normal;
+  font-size: 16px;
+  line-height: 1.5;
   box-sizing: border-box;
 }
 
-main {
-  flex-grow: 1;
-}
-main:has(.back-link) {
-  text-align: center;
-}
-
-h1 {
-  text-align: center;
-}
 
 .visually-hidden {
   position: absolute;
