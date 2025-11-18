@@ -11,13 +11,14 @@ Modern responsive 2-page site for people who are keen on physical activity.
 | ---------------- | --------------------- | ---------------------------------------------------------- | ---------------------------------------------- |
 | **Team Lead**    | Vitalii Vasylets      | [@Mohara88s](https://github.com/Mohara88s)                 | project architecture, code review, deployment, |
 | **Scrum Master** | Anna Kotenko          | [@AnnaKotenkoInIT](https://github.com/AnnaKotenkoInIT)     | sprint planning, block-quote-info              |
-| **Developer**    | Oleksii Shcherbak     | [@oleksii-shcherbak](https://github.com/oleksii-shcherbak) |                                                |
 | **Developer**    | Andrii Tsylyuryk      | [@AndriiTsylyuryk](https://github.com/AndriiTsylyuryk)     |                                                |
-| **Developer**    | Kostiantyn Talamaniuk | [@antifloodbot](https://github.com/antifloodbot)           |                                                |
 | **Developer**    | Dmytro Beketov        | [@dmytro4308](https://github.com/dmytro4308)               |                                                |
-| **Developer**    | Vladyslav Kovalchuk   | [@KovalchukODS](https://github.com/KovalchukODS)           |                                                |
+| **Developer**    | Inna Khomovska        | [@IHomov](https://github.com/IHomov)                       |                                                |
+| **Developer**    | Kostiantyn Talamaniuk | [@antifloodbot](https://github.com/antifloodbot)           |                                                |
 | **Developer**    | Nataliia Dubikova     | [@Natalka-01](https://github.com/Natalka-01)               |                                                |
-| **Developer**    | Tetiana Makara        | [@Tetiana-co](https://github.com/Tetiana-co)               |                                                |
+| **Developer**    | Oleksii Shcherbak     | [@oleksii-shcherbak](https://github.com/oleksii-shcherbak) |                                                |
+| **Developer**    | Yevhen Vanchenko      | [@Vanchenko](https://github.com/Vanchenko)                 |                                                |
+| **Developer**    | Yulia Kostenko        | [@yulianakosenko](https://github.com/yulianakosenko)       |                                                |
 
 ## Features
 
