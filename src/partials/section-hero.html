@@ -1,5 +1,35 @@
 <section>
   <div class="container">
-    <h1>section-hero</h1>
+    <div class="hero">
+      <div class="hero-title-wrapper">
+        <h1 class="hero-title"><svg class="hero-svg"><use href="../assets/icons/sun.svg"></use></svg>
+          Get <span class="hero-span">Body</span> in <br> shape, Stay healthy</h1>
+        <p class="hero-subtitle">Transform your physique and embrace a healthier <br>
+          lifestyle with our comprehensive fitness and nutrition <br> support.</p>
+      </div>
+      <div class="wrapper-top-tags">
+        <img class="hero-image-top" 
+        srcset="../assets/hero-women-small-x1.jpg 1x, ../assets/hero-women-small-x2.jpg 2x"
+        src="../assets/hero-women-small-x1.jpg">
+        <ul class="hero-tag-list-top">
+          <li><p class="hero-tags">#Sport</p></li>
+          <li><p class="hero-tags">#Healthy</p></li>
+          <li><p class="hero-tags">#Workout</p></li>
+          <li><p class="hero-tags">#Diet</p></li>
+        </ul>
+      </div>
+    </div>
+    <picture>
+      <source class="hero-image" media="(min-width: 1440px)" srcset="../assets/hero-women-desk-x1.jpg 1x, ../assets/hero-women-desk-x2.jpg 2x" />
+      <source media="(min-width: 768px)" srcset="../assets/hero-women-tab-x1.jpg 1x, ../assets/hero-women-tab-x2.jpg 2x" />
+      <source media="(max-width: 767px)" srcset="../assets/hero-women-mob-x1.jpg 1x, ../assets/hero-women-mob-x2.jpg 2x" />
+      <img class="hero-image" src="../assets/hero-women-mob-x1.jpg" alt="Picture banking application">
+    </picture>
+    <ul class="hero-tag-list">
+      <li><p class="hero-tags">#Sport</p></li>
+      <li><p class="hero-tags">#Healthy</p></li>
+      <li><p class="hero-tags">#Workout</p></li>
+      <li><p class="hero-tags">#Diet</p></li>
+    </ul>
   </div>
 </section>
