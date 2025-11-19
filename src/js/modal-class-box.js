@@ -11,17 +11,21 @@ import * as basicLightbox from 'basiclightbox';
 import 'basiclightbox/dist/basicLightbox.min.css';
 
 export class ModalBox {
-  #instance;
   #closeKey = 'Escape';
 
   options = {
     onShow: instance => {
       instance.element().querySelector(this.closeSelector).onclick =
         instance.close;
-      window.addEventListener('keydown', this.handleCloseModalKeyDownBound);
+      document.addEventListener('keydown', this.handleCloseModalKeyDownBound);
+      document.body.style.overflow = 'hidden';
     },
     onClose: () => {
-      window.removeEventListener('keydown', this.handleCloseModalKeyDownBound);
+      document.removeEventListener(
+        'keydown',
+        this.handleCloseModalKeyDownBound
+      );
+      document.body.style.overflow = 'auto';
     },
   };
 
@@ -34,19 +38,19 @@ export class ModalBox {
   }
 
   build() {
-    this.#instance = basicLightbox.create(
+    this.instance = basicLightbox.create(
       this.markup(this.responceData),
       this.options
     );
   }
 
   open() {
-    this.#instance.show();
+    this.instance.show();
   }
 
   handleCloseModalKeyDown(event) {
     if (event.code === this.#closeKey) {
-      this.#instance.close();
+      this.instance.close();
     }
   }
 
