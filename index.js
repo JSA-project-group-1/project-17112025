@@ -1,4 +1,4 @@
-import"./assets/styles-KxHolIdJ.js";import{a as p,i as b}from"./assets/vendor-BtSQbXxa.js";p.defaults.baseURL="https://your-energy.b.goit.study/api/";async function k(e="Muscles",t="1",s="12"){return(await p.get("/filters",{params:{filter:e,page:t,limit:s}})).data}async function h(e,t,s,i,n=1,r=10){return(await p.get("/exercises",{params:{bodypart:e,muscles:t,equipment:s,keyword:i,page:n,limit:r}})).data}function M(e,t){const s=e.map(({filter:i,imgURL:n,name:r})=>`
+import"./assets/styles-D3C74sH2.js";import{a as p,i as b}from"./assets/vendor-BtSQbXxa.js";p.defaults.baseURL="https://your-energy.b.goit.study/api/";async function k(e="Muscles",t="1",s="12"){return(await p.get("/filters",{params:{filter:e,page:t,limit:s}})).data}async function h(e,t,s,i,n=1,r=10){return(await p.get("/exercises",{params:{bodypart:e,muscles:t,equipment:s,keyword:i,page:n,limit:r}})).data}function M(e,t){const s=e.map(({filter:i,imgURL:n,name:r})=>`
           <li class="categories-item" data-name="${r}">
             <img
             class="category-image"
