@@ -1,2 +1,2 @@
-import"./assets/styles-DSezTktu.js";import"./assets/vendor-BvZOPg7i.js";console.log("fav");
+import"./assets/styles-KxHolIdJ.js";import"./assets/vendor-BtSQbXxa.js";console.log("fav");
 //# sourceMappingURL=favorites.js.map
