@@ -1,5 +1,6 @@
 .section-exercises {
   padding: 64px 0 132px;
+  background: #F4F4F4;
 }
 .block-filters {
   display: flex;
@@ -98,6 +99,9 @@ border-radius: 12px;
 }
 .exercises-item {
   width: 442px;
+  border-radius: 15px;
+  background: #FFF;
+  padding: 16px;
 }
 .pagination-controls-list {
   display: flex;
@@ -113,3 +117,100 @@ border-radius: 12px;
   border: 1px solid var(--main-color);
   border-radius: 50%;
 }
+
+/* =======================
+block-exercises
+   ======================= */
+
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+    font-size: 14px;
+}
+
+/* Стиль для "WORKOUT" */
+.type {
+    /* Робимо вигляд "таблетки" з рамкою */
+    border-radius: 15px;
+    border: 1px solid #242424;
+    padding: 5px 8px;
+    color: #242424;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    margin-right: 17px;
+}
+
+/* Button "Start" */
+.start-btn {
+    background: none; 
+    border: none;    
+    padding: 0;      
+    
+
+    color: #242424;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px;
+    cursor: pointer;    
+    transition: color 0.2s;
+}
+
+
+
+.start-btn:hover {
+    color: grey;
+}
+
+.title{
+    color: #242424;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 32px;
+    margin-bottom: 8px;
+}
+
+.exercise-details-list {
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 18px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+
+.exercise-details-list li {
+    display: flex;
+    line-height: 1.5;
+}
+
+/* (Burned calories, Body part, Target values) */
+.calories-value, 
+.body-part-value, 
+.target-value {
+    color: #242424;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 18px
+}
+
+
+.calories-name,
+.body-part-name, 
+.target-name {
+    color: rgba(36, 36, 36, 0.40);
+    margin-right: 4px; 
+    line-height: 18px
+}
+
+
+
