@@ -7,6 +7,11 @@
   align-items: baseline;
   margin-bottom: 32px;
 }
+.clear-btn,
+.search-btn {
+  fill: var(--main-color);
+}
+
 .filters-list {
   display: flex;
   gap: 20px;
