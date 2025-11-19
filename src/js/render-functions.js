@@ -1,17 +1,35 @@
-export function renderMuscles(muscles, list) {
-  const markup = muscles
+export function renderCategories(categories, list) {
+  const markup = categories
     .map(({ filter, imgURL, name }) => {
       return `
-          <li class="muscles-item">
+          <li class="categories-item" data-name="${name}">
             <img
-            class="gallery-image"
+            class="category-image"
             src="${imgURL}"
             alt="${name}"
           />
-          <div class="muscles-item-info">
+          <div class="categories-item-info">
             <h3>${name}</h3>
             <p>${filter}</p>
             </div>
+          </li>
+      `;
+    })
+    .join("");
+  list.innerHTML = markup;
+}
+
+export function renderExercises(exercises, list) {
+  const markup = exercises
+    .map(({ _id, name, target, bodyPart, burnedCalories, rating }) => {
+      return `
+          <li class="exercises-item">
+            <p>_id: ${_id}</p>
+            <p>name: ${name}</p>
+            <p>target: ${target}</p>
+            <p>bodyPart: ${bodyPart}</p>
+            <p>burnedCalories: ${burnedCalories}</p>
+            <p>rating: ${rating}</p>
           </li>
       `;
     })
@@ -37,7 +55,7 @@ export function renderFilter(options, activeOption, list) {
   const markup = options
     .map((option) => {
       return `
-          <li class=${activeOption === option ? "filters-list-item-active" : "filters-list-item"}><p>${option}</p></li>
+          <li class="filters-list-item ${activeOption === option ? "filters-list-item-active" : ""}" data-option="${option}"><p>${option}</p></li>
       `;
     })
     .join("");
