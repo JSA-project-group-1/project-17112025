@@ -1,10 +1,11 @@
-import iziToast from "izitoast";
-import "izitoast/dist/css/iziToast.min.css";
+import iziToast from 'izitoast';
+import 'izitoast/dist/css/iziToast.min.css';
 
 import { fetchCategories, fetchExercises } from "./pixabay-api"
 import { renderCategories, renderExercises, renderPagination, renderFilter } from "./render-functions";
 
 import '/css/pages/home.css';
+import './modal-exercise.js';
 
 const filterOptions = ["Muscles", "Body parts", "Equipment"]
 const mobileBreakpoint = 375;
