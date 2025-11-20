@@ -41,7 +41,7 @@ export function renderExercises(exercises, list) {
             <span class="calories-value">${burnedCalories} / 3 min</span>
           </li>
           <li class="body-part">
-            <span class="body-part-name">Body part:</span> 
+            <span class="body-part-name">Body part:</span>
             <span class="body-part-value">${bodyPart}</span>
           </li>
           <li class="target">
@@ -57,17 +57,16 @@ export function renderExercises(exercises, list) {
   list.innerHTML = markup;
 }
 
-export function renderPagination(pages, activePage, list) {
+export function renderPagination(pages, activePage, list,) {
   const pagesData = Array.from({ length: pages }, (_, i) => i + 1);
   const markup = pagesData
     .map(page => {
       return `
           <li class="pagination-control-item">
-            <button class="${
-              activePage === page
-                ? 'pagination-control-active'
-                : 'pagination-control'
-            }">${page}</button>
+            <button class="${activePage === page
+          ? 'pagination-control-active'
+          : 'pagination-control'
+        }" data-page="${page}">${page}</button>
           </li>
       `;
     })
@@ -79,9 +78,8 @@ export function renderFilter(options, activeOption, list) {
   const markup = options
     .map(option => {
       return `
-          <li class="filters-list-item ${
-            activeOption === option ? 'filters-list-item-active' : ''
-          }" data-option="${option}"><p>${option}</p></li>
+          <li class="filters-list-item ${activeOption === option ? 'filters-list-item-active' : ''
+        }" data-option="${option}"><p>${option}</p></li>
       `;
     })
     .join('');
