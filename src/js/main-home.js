@@ -90,7 +90,8 @@ clearBtn.addEventListener('click', async () => {
   searchQuery = '';
   searchInput.value = '';
   clearBtn.classList.add('visually-hidden');
-
+  renderExercises(results, exercisesList);
+  renderPagination(Number(totalPages), Number(page), paginationList);
   loadAndRenderCategoriesList();
 });
 
@@ -132,19 +133,18 @@ filtersList.addEventListener('click', onFiltersListClick);
 
 function onFiltersListClick(event) {
   const clickedItem = event.target.closest('.filters-list-item');
-  if (!clickedItem) return;
-
-  currentFilter = clickedItem.dataset.option;
-
-  searchForm.classList.add('visually-hidden');
-  searchQuery = '';
-  currentCategory = '';
-  searchInput.value = '';
-  slash.classList.add('visually-hidden');
-  currentCategoryP.textContent = currentCategory;
-
-  renderFilter(filterOptions, currentFilter, filtersList);
-  loadAndRenderCategoriesList();
+    if (clickedItem) {
+    const filterOption = clickedItem.dataset.option;
+    currentFilter = filterOption;
+    loadAndRenderCategoriesList();
+    renderFilter(filterOptions, currentFilter, filtersList);
+    searchForm.classList.add('visually-hidden');
+    searchQuery = '';
+    currentCategory = '';
+    searchInput.value = '';
+    slash.classList.add('visually-hidden');
+    currentCategoryP.textContent = currentCategory;
+  }
 }
 
 
@@ -152,56 +152,10 @@ categoriesList.addEventListener('click', onCategoryClick);
 
 async function onCategoryClick(event) {
   const clickedItem = event.target.closest('.categories-item');
-  if (!clickedItem) return;
-
-  currentCategory = clickedItem.dataset.name;
-
-  showLoader(categoriesSection);
-
-  try {
-    const exercises = await fetchExercises(
-      currentFilter,
-      currentCategory,
-      searchQuery,
-      currentPage,
-      exercisesPerPage
-    );
-
-    const { results, page, totalPages } = exercises;
-
-    categoriesList.innerHTML = '';
-    paginationList.innerHTML = '';
-
-    renderExercises(results, exercisesList);
-    renderPagination(Number(totalPages), Number(page), paginationList);
-
-    searchForm.classList.remove('visually-hidden');
-    slash.classList.remove('visually-hidden');
-    currentCategoryP.textContent = currentCategory;
-
-  } catch (error) {
-    iziToast.error({
-      icon: '',
-      position: 'topRight',
-      message: error.message,
-    });
-  } finally {
-    hideLoader(categoriesSection);
-  }
-}
-
-paginationList.addEventListener('click', onPaginationClick);
-
-async function onPaginationClick(event) {
-  const clickedButton = event.target.closest('button[data-page]');
-  if (!clickedButton) return;
-
-  const currentPage = parseInt(clickedButton.dataset.page, 10);
-
-  showLoader(categoriesSection);
-
-  try {
-    if (currentCategory) {
+  if (clickedItem) {
+    showLoader(categoriesSection);
+    currentCategory = clickedItem.dataset.name;
+    try {
       const exercises = await fetchExercises(
         currentFilter,
         currentCategory,
@@ -209,33 +163,67 @@ async function onPaginationClick(event) {
         currentPage,
         exercisesPerPage
       );
-
       const { results, page, totalPages } = exercises;
-
+      categoriesList.innerHTML = '';
+      paginationList.innerHTML = '';
       renderExercises(results, exercisesList);
       renderPagination(Number(totalPages), Number(page), paginationList);
-
-    } else {
-      const categories = await fetchCategories(
-        currentFilter,
-        currentPage,
-        categoriesPerPage
-      );
-
-      const { results, page, totalPages } = categories;
-
-      renderCategories(results, categoriesList);
-      renderPagination(Number(totalPages), Number(page), paginationList);
+      searchForm.classList.remove('visually-hidden');
+      slash.classList.remove('visually-hidden');
+      currentCategoryP.textContent = currentCategory;
+    } catch (error) {
+      iziToast.error({
+        icon: '',
+        position: 'topRight',
+        message: error.message,
+      });
+    }finally{
+        hideLoader(categoriesSection);
     }
+  }
+}
 
-  } catch (error) {
-    iziToast.error({
-      icon: '',
-      position: 'topRight',
-      message: error.message,
-    });
-  } finally {
-    hideLoader(categoriesSection);
+paginationList.addEventListener('click', onPaginationClick);
+
+async function onPaginationClick(event) {
+  const clickedButton = event.target.closest('button[data-page]');
+  if (clickedButton) {
+
+    showLoader(categoriesSection);
+    const currentPage = parseInt(clickedButton.dataset.page, 10);
+    try {
+      if (currentCategory) {
+        const exercises = await fetchExercises(
+          currentFilter,
+          currentCategory,
+          searchQuery,
+          currentPage,
+          exercisesPerPage
+        );
+        const { results, page, totalPages } = exercises;
+        renderExercises(results, exercisesList);
+        renderPagination(Number(totalPages), Number(page), paginationList);
+      } else {
+        console.log(1);
+
+        const categories = await fetchCategories(
+          currentFilter,
+          currentPage,
+          categoriesPerPage
+        );
+        const { results, page, totalPages } = categories;
+        renderCategories(results, categoriesList);
+        renderPagination(Number(totalPages), Number(page), paginationList);
+      }
+    } catch (error) {
+      iziToast.error({
+        icon: '',
+        position: 'topRight',
+        message: error.message,
+      });
+    } finally {
+      hideLoader(categoriesSection);
+    }
   }
 }
 
