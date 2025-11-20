@@ -1,4 +1,5 @@
 const scrollBtn = document.getElementById('scroll-top');
+console.log(scrollBtn);
 
 const topFunction = () => {
   document.body.scrollTop = 0;
