@@ -10,7 +10,7 @@
 }
 .clear-btn,
 .search-btn {
-  fill: var(--main-color);
+  fill: none;
 }
 
 .filters-list {
