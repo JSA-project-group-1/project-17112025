@@ -59,7 +59,7 @@
 }
 
 @media screen and (min-width: 768px) {
-  .container {
+  .hero-container {
     max-width: 768px;
   }
   .hero-title {
@@ -79,7 +79,7 @@
 }
 
 @media screen and (min-width: 1440px) {
-  .container {
+  .hero-container {
     max-width: 1440px;
     padding: 0 15px;
   }
