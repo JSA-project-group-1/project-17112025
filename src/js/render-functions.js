@@ -29,7 +29,7 @@ export function renderExercises(exercises, list) {
         <span class="type">WORKOUT</span>
         <span class="rating">${rating} </span>
         </div>
-        <button class="start-btn" type="button"> Start </button>
+        <button class="start-btn" type="button" data-modal-exercise="open" data-exercise-id="${_id}"> Start </button>
     </div>
     <div class="title">
         <span class="icon">icon</span> ${name}

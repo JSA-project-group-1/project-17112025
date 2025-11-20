@@ -85,13 +85,13 @@
 
 .modal-exercise-tag-value {
   font-weight: 500;
-  line-height: 1.29; /* 128.571% */
+  line-height: 1.29;
   font-feature-settings: 'clig' off, 'liga' off;
 }
 
 .modal-exercise-description {
   color: rgba(244, 244, 244, 0.6);
-  line-height: 1.29; /* 128.571% */
+  line-height: 1.29;
   margin-bottom: 40px;
 }
 
@@ -107,8 +107,6 @@
   border-radius: 30px;
   line-height: 1.29;
 }
-
-/* TODO Change gap to 8px (when font-family will be correct) */
 
 .add-to-favorites-btn {
   background: #f4f4f4;
@@ -143,15 +141,11 @@
   background-color: transparent;
 }
 
-/** ======== MOBILE ======== */
-
 @media screen and (min-width: 375px) {
   .modal-exercise {
     max-width: 335px;
   }
 }
-
-/** ======== TABLET ======== */
 
 @media screen and (min-width: 768px) {
   .modal-exercise {
@@ -229,8 +223,6 @@
     height: 20px;
   }
 }
-
-/** ======== DESKTOP ======== */
 
 @media screen and (min-width: 1280px) {
   .modal-exercise {
