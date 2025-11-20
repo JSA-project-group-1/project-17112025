@@ -19,6 +19,7 @@ const filterOptions = ['Muscles', 'Body parts', 'Equipment'];
 const mobileBreakpoint = 375;
 const slash = document.querySelector('span.slash');
 const currentCategoryP = document.querySelector('p.current-category');
+const warningP = document.querySelector('p.warning');
 
 const filtersList = document.querySelector('ul.filters-list');
 const categoriesList = document.querySelector('ul.block-categories-list');
@@ -96,6 +97,8 @@ async function loadAndRenderCategoriesList() {
     loader.classList.add('visually-hidden');
   } catch (error) {
     loader.classList.add('visually-hidden');
+    warningP.classList.remove('visually-hidden');
+
     iziToast.error({
       icon: '',
       position: 'topRight',
