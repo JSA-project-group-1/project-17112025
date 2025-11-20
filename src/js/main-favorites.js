@@ -1,7 +1,9 @@
 import iziToast from "izitoast";
 import "izitoast/dist/css/iziToast.min.css";
 
-import "/css/pages/favorites.css";
+
+import '/css/pages/favorites.css';
+
 
 const FAVORITES_KEY = "favorite_workouts";
 const ITEMS_PER_PAGE = 12;

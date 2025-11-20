@@ -3,6 +3,7 @@ import "izitoast/dist/css/iziToast.min.css";
 
 import { fetchCategories, fetchExercises } from "./pixabay-api"
 import { renderCategories, renderExercises, renderPagination, renderFilter } from "./render-functions";
+import './footer-subscription.js';
 
 import '/css/pages/home.css';
 
