@@ -1,5 +1,6 @@
 .section-exercises {
   padding: 64px 0 132px;
+  background: #f4f4f4;
 }
 .block-filters {
   display: flex;
@@ -7,6 +8,11 @@
   align-items: baseline;
   margin-bottom: 32px;
 }
+.clear-btn,
+.search-btn {
+  fill: var(--main-color);
+}
+
 .filters-list {
   display: flex;
   gap: 20px;
@@ -18,6 +24,21 @@
   background-color: blueviolet;
   display: block;
 }
+.quote-categories-box {
+  display: flex;
+  gap: 32px;
+}
+.quote-categories-box > :first-child {
+  width: 444px;
+}
+
+/* =======================
+block-quote-info
+   ======================= */
+
+.block-quote-info {
+}
+
 /* =======================
 block-categories
    ======================= */
@@ -29,15 +50,14 @@ block-categories
   display: flex;
   flex-wrap: wrap;
   gap: 15px;
-   row-gap: 32px; 
+  row-gap: 32px;
 }
 .categories-item {
   position: relative;
   flex-basis: calc((100% - 2 * 15px) / 3);
-  overflow: hidden; 
+  overflow: hidden;
   border-radius: 12px;
   box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
-  
 }
 .categories-item-info {
   color: var(--second-color);
@@ -47,38 +67,32 @@ block-categories
   left: 50%;
   transform: translate(-50%, -50%);
 }
-.categories-item-info h3{
+.categories-item-info h3 {
   font-size: 24px;
-  
 }
-.categories-item-info p{
+.categories-item-info p {
   color: var(--color-light-grey-translucent);
   font-size: 12px;
 }
 
-.category-image{
-border-radius: 12px;
-width: 100%; 
-height: 100%; 
-object-fit: cover; 
-border-radius: 12px;
-  
-
+.category-image {
+  border-radius: 12px;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 12px;
 }
 .categories-item::before {
-  content: ''; 
-  position: absolute; 
+  content: '';
+  position: absolute;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background-image:linear-gradient( 
-     rgba(0, 0, 0, 0.3),
-     rgba(0, 0, 0, 0.5)
-  );
- 
-  border-radius: 12px; 
-  z-index: 1; 
+  background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.5));
+
+  border-radius: 12px;
+  z-index: 1;
 }
 
 .categories-item-info {
@@ -88,7 +102,7 @@ border-radius: 12px;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  z-index: 2; 
+  z-index: 2;
 }
 
 .exercises-list {
@@ -98,6 +112,9 @@ border-radius: 12px;
 }
 .exercises-item {
   width: 442px;
+  border-radius: 15px;
+  background: #fff;
+  padding: 16px;
 }
 .pagination-controls-list {
   display: flex;
@@ -112,4 +129,92 @@ border-radius: 12px;
   color: var(--main-color);
   border: 1px solid var(--main-color);
   border-radius: 50%;
+}
+
+/* =======================
+block-exercises
+   ======================= */
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+  font-size: 14px;
+}
+
+/* Стиль для "WORKOUT" */
+.type {
+  /* Робимо вигляд "таблетки" з рамкою */
+  border-radius: 15px;
+  border: 1px solid #242424;
+  padding: 5px 8px;
+  color: #242424;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  margin-right: 17px;
+}
+
+/* Button "Start" */
+.start-btn {
+  background: none;
+  border: none;
+  padding: 0;
+
+  color: #242424;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.start-btn:hover {
+  color: grey;
+}
+
+.title {
+  color: #242424;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 32px;
+  margin-bottom: 8px;
+}
+
+.exercise-details-list {
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 18px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.exercise-details-list li {
+  display: flex;
+  line-height: 1.5;
+}
+
+/* (Burned calories, Body part, Target values) */
+.calories-value,
+.body-part-value,
+.target-value {
+  color: #242424;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 18px;
+}
+
+.calories-name,
+.body-part-name,
+.target-name {
+  color: rgba(36, 36, 36, 0.4);
+  margin-right: 4px;
+  line-height: 18px;
 }
