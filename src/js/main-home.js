@@ -13,13 +13,14 @@ const categoriesList = document.querySelector("ul.block-categories-list");
 const exercisesList = document.querySelector("ul.exercises-list");
 const paginationList = document.querySelector("ul.pagination-controls-list");
 const loader = document.querySelector("span.loader");
-const searchForm = document.querySelector("form.form");
+const searchForm = document.querySelector("form.search-form");
 const searchInput = searchForm.querySelector(".search-input");
 const clearBtn = document.querySelector("button.clear-btn");
 
 const isMobile = document.documentElement.clientWidth <= mobileBreakpoint;
 
 let currentFilter = filterOptions[0]
+let currentCategory = ''
 let searchQuery = ""
 let currentPage = 1;
 let categoriesPerPage = isMobile ? 9 : 12;
@@ -35,15 +36,23 @@ searchForm.addEventListener("input", (evt) => {
   }
 });
 
-searchForm.addEventListener("submit", (evt) => {
+searchForm.addEventListener("submit", async (evt) => {
   evt.preventDefault();
   console.log(searchQuery)
+  const exercises = await fetchExercises(currentFilter, currentCategory, searchQuery, currentPage, exercisesPerPage)
+  const { results, page, totalPages } = exercises;
+  paginationList.innerHTML = '';
+  renderExercises(results, exercisesList)
+  renderPagination(Number(totalPages), Number(page), paginationList)
+
 });
 
 clearBtn.addEventListener('click', () => {
   searchQuery = ""
   clearBtn.classList.add('visually-hidden');
   searchInput.value = "";
+  renderExercises(results, exercisesList)
+  renderPagination(Number(totalPages), Number(page), paginationList)
 });
 
 
@@ -71,6 +80,7 @@ async function loadAndRenderCategoriesList() {
 }
 
 filtersList.addEventListener('click', onFiltersListClick);
+
 function onFiltersListClick(event) {
   const clickedItem = event.target.closest('.filters-list-item');
   if (clickedItem) {
@@ -78,6 +88,7 @@ function onFiltersListClick(event) {
     currentFilter = filterOption
     renderFilter(filterOptions, currentFilter, filtersList)
     loadAndRenderCategoriesList()
+    searchForm.classList.add('visually-hidden');
   }
 }
 
@@ -86,17 +97,17 @@ categoriesList.addEventListener('click', onCategoryClick);
 async function onCategoryClick(event) {
   const clickedItem = event.target.closest('.categories-item');
   if (clickedItem) {
-    const categoryName = clickedItem.dataset.name;
-    console.log(currentFilter, categoryName);
+    currentCategory = clickedItem.dataset.name;
+    console.log(currentFilter, currentCategory);
 
-    const exercises = await fetchExercises(currentFilter, categoryName, '', currentPage, exercisesPerPage)
+    const exercises = await fetchExercises(currentFilter, currentCategory, '', currentPage, exercisesPerPage)
     console.log(exercises);
     const { results, page, totalPages } = exercises;
     categoriesList.innerHTML = '';
     paginationList.innerHTML = '';
     renderExercises(results, exercisesList)
     renderPagination(Number(totalPages), Number(page), paginationList)
-
+    searchForm.classList.remove('visually-hidden');
   }
 }
 
