@@ -80,6 +80,7 @@ clearBtn.addEventListener('click', async () => {
   renderPagination(Number(totalPages), Number(page), paginationList);
 });
 
+
 async function loadAndRenderCategoriesList() {
   categoriesList.innerHTML = '';
   exercisesList.innerHTML = '';
