@@ -59,6 +59,3 @@ export async function renderQuoteOfTheDay() {
     console.error('Error rendering quote:', error);
   }
 }
-
-// Call the render the quete
-document.addEventListener('DOMContentLoaded', renderQuoteOfTheDay);
