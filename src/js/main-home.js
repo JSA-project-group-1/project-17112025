@@ -190,7 +190,6 @@ async function onPaginationClick(event) {
       currentPage,
       exercisesPerPage
     );
-    console.log(exercises);
     const { results, page, totalPages } = exercises;
     categoriesList.innerHTML = '';
     paginationList.innerHTML = '';
