@@ -8,6 +8,7 @@ import {
   renderPagination,
   renderFilter,
 } from './render-functions';
+import { renderQuoteOfTheDay } from './quote-api-localStorage.js';
 import './footer-subscription.js';
 
 import '/css/pages/home.css';
@@ -57,7 +58,6 @@ searchForm.addEventListener('submit', async evt => {
     paginationList.innerHTML = '';
     renderExercises(results, exercisesList);
     renderPagination(Number(totalPages), Number(page), paginationList);
-
   } catch (error) {
     loader.classList.add('visually-hidden');
     iziToast.error({
@@ -165,7 +165,7 @@ async function onPaginationClick(event) {
         renderExercises(results, exercisesList);
         renderPagination(Number(totalPages), Number(page), paginationList);
       } else {
-        console.log(1)
+        console.log(1);
 
         const categories = await fetchCategories(
           currentFilter,
@@ -186,6 +186,9 @@ async function onPaginationClick(event) {
     }
   }
 }
+
+// Call the render the quote
+document.addEventListener('DOMContentLoaded', renderQuoteOfTheDay);
 
 renderFilter(filterOptions, currentFilter, filtersList);
 loadAndRenderCategoriesList();
