@@ -17,6 +17,9 @@ import './modal-exercise.js';
 
 const filterOptions = ['Muscles', 'Body parts', 'Equipment'];
 const mobileBreakpoint = 375;
+const slash = document.querySelector('span.slash');
+const currentCategoryP = document.querySelector('p.current-category');
+
 const filtersList = document.querySelector('ul.filters-list');
 const categoriesList = document.querySelector('ul.block-categories-list');
 const exercisesList = document.querySelector('ul.exercises-list');
@@ -112,7 +115,10 @@ function onFiltersListClick(event) {
     renderFilter(filterOptions, currentFilter, filtersList);
     searchForm.classList.add('visually-hidden');
     searchQuery = '';
+    currentCategory = '';
     searchInput.value = '';
+    slash.classList.add('visually-hidden');
+    currentCategoryP.textContent = currentCategory;
   }
 }
 
@@ -136,6 +142,8 @@ async function onCategoryClick(event) {
       renderExercises(results, exercisesList);
       renderPagination(Number(totalPages), Number(page), paginationList);
       searchForm.classList.remove('visually-hidden');
+      slash.classList.remove('visually-hidden');
+      currentCategoryP.textContent = currentCategory;
     } catch (error) {
       loader.classList.add('visually-hidden');
       iziToast.error({

@@ -8,6 +8,9 @@
   align-items: baseline;
   margin-bottom: 32px;
 }
+.current-category {
+  text-transform: capitalize;
+}
 .clear-btn,
 .search-btn {
   fill: none;
