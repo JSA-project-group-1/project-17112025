@@ -1,29 +1,49 @@
-import"./assets/styles-D3C74sH2.js";import{a as f,i as q}from"./assets/vendor-BtSQbXxa.js";f.defaults.baseURL="https://your-energy.b.goit.study/api/";async function E(e="Muscles",t="1",s="12"){return(await f.get("/filters",{params:{filter:e,page:t,limit:s}})).data}async function k(e,t,s,i=1,n=10){return(await f.get("/exercises",{params:{[e==="Body parts"?"bodypart":e.toLowerCase()]:t.toLowerCase().replace(" ","%20"),keyword:s,page:i,limit:n}})).data}function N(e,t){const s=e.map(({filter:i,imgURL:n,name:r})=>`
-          <li class="categories-item" data-name="${r}">
+import"./assets/styles-D3C74sH2.js";import{a as L,i as C}from"./assets/vendor-BtSQbXxa.js";L.defaults.baseURL="https://your-energy.b.goit.study/api/";async function E(e="Muscles",s="1",t="12"){return(await L.get("/filters",{params:{filter:e,page:s,limit:t}})).data}async function k(e,s,t,i=1,a=10){return(await L.get("/exercises",{params:{[e==="Body parts"?"bodypart":e.toLowerCase()]:s.toLowerCase().replace(" ","%20"),keyword:t,page:i,limit:a}})).data}function S(e,s){const t=e.map(({filter:i,imgURL:a,name:n})=>`
+          <li class="categories-item" data-name="${n}">
             <img
             class="category-image"
-            src="${n}"
-            alt="${r}"
+            src="${a}"
+            alt="${n}"
           />
           <div class="categories-item-info">
-            <h3>${r}</h3>
+            <h3>${n}</h3>
             <p>${i}</p>
             </div>
           </li>
-      `).join("");t.innerHTML=s}function h(e,t){const s=e.map(({_id:i,name:n,target:r,bodyPart:y,burnedCalories:C,rating:H})=>`
-          <li class="exercises-item">
-            <p>_id: ${i}</p>
-            <p>name: ${n}</p>
-            <p>target: ${r}</p>
-            <p>bodyPart: ${y}</p>
-            <p>burnedCalories: ${C}</p>
-            <p>rating: ${H}</p>
+      `).join("");s.innerHTML=t}function f(e,s){const t=e.map(({_id:i,name:a,target:n,bodyPart:y,burnedCalories:P,rating:q})=>`
+    <li class="exercises-item">
+    <div class="header">
+        <div class = "workout-rating">
+        <span class="type">WORKOUT</span>
+        <span class="rating">${q} </span>
+        </div>
+        <button class="start-btn" type="button"> Start </button>
+    </div>
+    <div class="title">
+        <span class="icon">icon</span> ${a}
+    </div>
+    <div class="details">
+        <ul class="exercise-details-list">
+          <li class="calories">
+            <span class="calories-name">Burned calories</span>
+            <span class="calories-value">${P} / 3 min</span>
           </li>
-      `).join("");t.innerHTML=s}function m(e,t,s){const n=Array.from({length:e},(r,y)=>y+1).map(r=>`
+          <li class="body-part">
+            <span class="body-part-name">Body part:</span> 
+            <span class="body-part-value">${y}</span>
+          </li>
+          <li class="target">
+          <span class="target-name">Target:</span>
+          <span class="target-value">${n}</span>
+          </li>
+        </ul>
+    </div>
+    </li>
+      `).join("");s.innerHTML=t}function m(e,s,t){const a=Array.from({length:e},(n,y)=>y+1).map(n=>`
           <li class="pagination-control-item">
-            <button class="${t===r?"pagination-control-active":"pagination-control"}">${r}</button>
+            <button class="${s===n?"pagination-control-active":"pagination-control"}">${n}</button>
           </li>
-      `).join("");s.innerHTML=n}function M(e,t,s){const i=e.map(n=>`
-          <li class="filters-list-item ${t===n?"filters-list-item-active":""}" data-option="${n}"><p>${n}</p></li>
-      `).join("");s.innerHTML=i}const v=["Muscles","Body parts","Equipment"],S=375,b=document.querySelector("ul.filters-list"),d=document.querySelector("ul.block-categories-list"),g=document.querySelector("ul.exercises-list"),a=document.querySelector("ul.pagination-controls-list"),L=document.querySelector("span.loader"),l=document.querySelector("form.search-form"),w=l.querySelector(".search-input"),p=document.querySelector("button.clear-btn"),P=document.documentElement.clientWidth<=S;let o=v[0],u="",c="",$=1,j=P?9:12,T=P?8:10;l.addEventListener("input",e=>{c=e.target.value,c.length?p.classList.remove("visually-hidden"):p.classList.add("visually-hidden")});l.addEventListener("submit",async e=>{e.preventDefault(),console.log(c);const t=await k(o,u,c,$,T),{results:s,page:i,totalPages:n}=t;a.innerHTML="",h(s,g),m(Number(n),Number(i),a)});p.addEventListener("click",()=>{c="",p.classList.add("visually-hidden"),w.value="",h(results,g),m(Number(totalPages),Number(page),a)});async function x(){d.innerHTML="",g.innerHTML="",a.innerHTML="",L.classList.remove("visually-hidden");try{const e=await E(o,$,j),{results:t,page:s,totalPages:i}=e;N(t,d),m(Number(i),Number(s),a),L.classList.add("visually-hidden")}catch(e){L.classList.add("visually-hidden"),q.error({icon:"",position:"topRight",message:e.message})}}b.addEventListener("click",B);function B(e){const t=e.target.closest(".filters-list-item");t&&(o=t.dataset.option,M(v,o,b),x(),l.classList.add("visually-hidden"))}d.addEventListener("click",D);async function D(e){const t=e.target.closest(".categories-item");if(t){u=t.dataset.name,console.log(o,u);const s=await k(o,u,"",$,T);console.log(s);const{results:i,page:n,totalPages:r}=s;d.innerHTML="",a.innerHTML="",h(i,g),m(Number(r),Number(n),a),l.classList.remove("visually-hidden")}}M(v,o,b);x();
+      `).join("");t.innerHTML=a}function M(e,s,t){const i=e.map(a=>`
+          <li class="filters-list-item ${s===a?"filters-list-item-active":""}" data-option="${a}"><p>${a}</p></li>
+      `).join("");t.innerHTML=i}const b=["Muscles","Body parts","Equipment"],w=375,h=document.querySelector("ul.filters-list"),d=document.querySelector("ul.block-categories-list"),g=document.querySelector("ul.exercises-list"),r=document.querySelector("ul.pagination-controls-list"),v=document.querySelector("span.loader"),c=document.querySelector("form.search-form"),N=c.querySelector(".search-input"),p=document.querySelector("button.clear-btn"),T=document.documentElement.clientWidth<=w;let o=b[0],u="",l="",$=1,B=T?9:12,x=T?8:10;c.addEventListener("input",e=>{l=e.target.value,l.length?p.classList.remove("visually-hidden"):p.classList.add("visually-hidden")});c.addEventListener("submit",async e=>{e.preventDefault(),console.log(l);const s=await k(o,u,l,$,x),{results:t,page:i,totalPages:a}=s;r.innerHTML="",f(t,g),m(Number(a),Number(i),r)});p.addEventListener("click",()=>{l="",p.classList.add("visually-hidden"),N.value="",f(results,g),m(Number(totalPages),Number(page),r)});async function H(){d.innerHTML="",g.innerHTML="",r.innerHTML="",v.classList.remove("visually-hidden");try{const e=await E(o,$,B),{results:s,page:t,totalPages:i}=e;S(s,d),m(Number(i),Number(t),r),v.classList.add("visually-hidden")}catch(e){v.classList.add("visually-hidden"),C.error({icon:"",position:"topRight",message:e.message})}}h.addEventListener("click",O);function O(e){const s=e.target.closest(".filters-list-item");s&&(o=s.dataset.option,M(b,o,h),H(),c.classList.add("visually-hidden"))}d.addEventListener("click",j);async function j(e){const s=e.target.closest(".categories-item");if(s){u=s.dataset.name,console.log(o,u);const t=await k(o,u,"",$,x);console.log(t);const{results:i,page:a,totalPages:n}=t;d.innerHTML="",r.innerHTML="",f(i,g),m(Number(n),Number(a),r),c.classList.remove("visually-hidden")}}M(b,o,h);H();
 //# sourceMappingURL=index.js.map
