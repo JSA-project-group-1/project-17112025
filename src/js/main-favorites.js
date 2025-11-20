@@ -3,6 +3,7 @@ import "izitoast/dist/css/iziToast.min.css";
 
 
 import '/css/pages/favorites.css';
+import './header.js';
 
 
 const FAVORITES_KEY = "favorite_workouts";

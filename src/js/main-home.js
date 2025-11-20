@@ -6,6 +6,8 @@ import { renderCategories, renderExercises, renderPagination, renderFilter } fro
 import './footer-subscription.js';
 
 import '/css/pages/home.css';
+import './header.js';
+
 
 const filterOptions = ["Muscles", "Body parts", "Equipment"]
 const mobileBreakpoint = 375;
@@ -115,3 +117,4 @@ async function onCategoryClick(event) {
 
 renderFilter(filterOptions, currentFilter, filtersList)
 loadAndRenderCategoriesList()
+
