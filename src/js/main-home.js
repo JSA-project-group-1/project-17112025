@@ -45,26 +45,31 @@ searchForm.addEventListener('input', evt => {
 
 searchForm.addEventListener('submit', async evt => {
   evt.preventDefault();
-  console.log(searchQuery);
-  const exercises = await fetchExercises(
-    currentFilter,
-    currentCategory,
-    searchQuery,
-    currentPage,
-    exercisesPerPage
-  );
-  const { results, page, totalPages } = exercises;
-  paginationList.innerHTML = '';
-  renderExercises(results, exercisesList);
-  renderPagination(Number(totalPages), Number(page), paginationList);
+
+  try {
+    const exercises = await fetchExercises(currentFilter, currentCategory, searchQuery, currentPage, exercisesPerPage)
+    const { results, page, totalPages } = exercises;
+    paginationList.innerHTML = '';
+    renderExercises(results, exercisesList)
+    renderPagination(Number(totalPages), Number(page), paginationList)
+  }
+  catch (error) {
+    loader.classList.add('visually-hidden');
+    iziToast.error({
+      icon: '',
+      position: 'topRight',
+      message: error.message
+    })
+  }
+
 });
 
 clearBtn.addEventListener('click', () => {
-  searchQuery = '';
+  searchQuery = "";
+  searchInput.value = "";
   clearBtn.classList.add('visually-hidden');
-  searchInput.value = '';
-  renderExercises(results, exercisesList);
-  renderPagination(Number(totalPages), Number(page), paginationList);
+  renderExercises(results, exercisesList)
+  renderPagination(Number(totalPages), Number(page), paginationList)
 });
 
 async function loadAndRenderCategoriesList() {
@@ -98,10 +103,13 @@ function onFiltersListClick(event) {
   const clickedItem = event.target.closest('.filters-list-item');
   if (clickedItem) {
     const filterOption = clickedItem.dataset.option;
-    currentFilter = filterOption;
-    renderFilter(filterOptions, currentFilter, filtersList);
-    loadAndRenderCategoriesList();
+    currentFilter = filterOption
+    loadAndRenderCategoriesList()
+    renderFilter(filterOptions, currentFilter, filtersList)
     searchForm.classList.add('visually-hidden');
+    searchQuery = "";
+    searchInput.value = "";
+
   }
 }
 
@@ -111,22 +119,55 @@ async function onCategoryClick(event) {
   const clickedItem = event.target.closest('.categories-item');
   if (clickedItem) {
     currentCategory = clickedItem.dataset.name;
-    console.log(currentFilter, currentCategory);
+    try {
+      const exercises = await fetchExercises(currentFilter, currentCategory, searchQuery, currentPage, exercisesPerPage)
+      const { results, page, totalPages } = exercises;
+      categoriesList.innerHTML = '';
+      paginationList.innerHTML = '';
+      renderExercises(results, exercisesList)
+      renderPagination(Number(totalPages), Number(page), paginationList)
+      searchForm.classList.remove('visually-hidden');
+    }
+    catch (error) {
+      loader.classList.add('visually-hidden');
+      iziToast.error({
+        icon: '',
+        position: 'topRight',
+        message: error.message
+      })
+    }
 
-    const exercises = await fetchExercises(
-      currentFilter,
-      currentCategory,
-      '',
-      currentPage,
-      exercisesPerPage
-    );
-    console.log(exercises);
-    const { results, page, totalPages } = exercises;
-    categoriesList.innerHTML = '';
-    paginationList.innerHTML = '';
-    renderExercises(results, exercisesList);
-    renderPagination(Number(totalPages), Number(page), paginationList);
-    searchForm.classList.remove('visually-hidden');
+  }
+}
+paginationList.addEventListener('click', onPaginationClick);
+
+async function onPaginationClick(event) {
+  const clickedButton = event.target.closest('button[data-page]');
+
+  if (clickedButton) {
+    try {
+      const currentPage = parseInt(clickedButton.dataset.page, 10);
+      if (currentCategory) {
+        const exercises = await fetchExercises(currentFilter, currentCategory, searchQuery, currentPage, exercisesPerPage)
+        const { results, page, totalPages } = exercises;
+        renderExercises(results, exercisesList)
+        renderPagination(Number(totalPages), Number(page), paginationList)
+      } else {
+        const categories = await fetchCategories(currentFilter, currentPage, categoriesPerPage);
+        const { results, page, totalPages } = categories;
+        renderCategories(results, categoriesList)
+        renderPagination(Number(totalPages), Number(page), paginationList)
+      }
+    }
+    catch (error) {
+      loader.classList.add('visually-hidden');
+      iziToast.error({
+        icon: '',
+        position: 'topRight',
+        message: error.message
+      })
+    }
+
   }
 }
 
