@@ -64,10 +64,6 @@
   }
   .hero-title {
     font-size: 74px;
-<<<<<<< HEAD
-=======
-    line-height: 1;
->>>>>>> c7469b4e0d92469d4f7d9c60b07e93310945f5e8
   }
   .hero-subtitle {
     font-size: 18px;
@@ -75,11 +71,6 @@
   }
   .hero-tag-list {
     justify-content: end;
-<<<<<<< HEAD
-=======
-  }
-  .hero-svg {
->>>>>>> c7469b4e0d92469d4f7d9c60b07e93310945f5e8
     width: 59px;
     height: 59px;
     margin-top: 5px;

@@ -58,13 +58,6 @@ searchForm.addEventListener('submit', async evt => {
     renderExercises(results, exercisesList);
     renderPagination(Number(totalPages), Number(page), paginationList);
 
-    clearBtn.addEventListener('click', () => {
-      searchQuery = '';
-      searchInput.value = '';
-      clearBtn.classList.add('visually-hidden');
-      renderExercises(results, exercisesList);
-      renderPagination(Number(totalPages), Number(page), paginationList);
-    });
   } catch (error) {
     loader.classList.add('visually-hidden');
     iziToast.error({
@@ -75,20 +68,14 @@ searchForm.addEventListener('submit', async evt => {
   }
 });
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-clearBtn.addEventListener('click', () => {
-  searchQuery = "";
-  searchInput.value = "";
+clearBtn.addEventListener('click', async () => {
+  searchQuery = '';
+  searchInput.value = '';
   clearBtn.classList.add('visually-hidden');
-  renderExercises(results, exercisesList)
-  renderPagination(Number(totalPages), Number(page), paginationList)
+  renderExercises(results, exercisesList);
+  renderPagination(Number(totalPages), Number(page), paginationList);
 });
 
-=======
->>>>>>> c7469b4e0d92469d4f7d9c60b07e93310945f5e8
-=======
->>>>>>> c7469b4e0d92469d4f7d9c60b07e93310945f5e8
 async function loadAndRenderCategoriesList() {
   categoriesList.innerHTML = '';
   exercisesList.innerHTML = '';
@@ -163,10 +150,9 @@ paginationList.addEventListener('click', onPaginationClick);
 
 async function onPaginationClick(event) {
   const clickedButton = event.target.closest('button[data-page]');
-
   if (clickedButton) {
+    const currentPage = parseInt(clickedButton.dataset.page, 10);
     try {
-      const currentPage = parseInt(clickedButton.dataset.page, 10);
       if (currentCategory) {
         const exercises = await fetchExercises(
           currentFilter,
@@ -179,6 +165,8 @@ async function onPaginationClick(event) {
         renderExercises(results, exercisesList);
         renderPagination(Number(totalPages), Number(page), paginationList);
       } else {
+        console.log(1)
+
         const categories = await fetchCategories(
           currentFilter,
           currentPage,
@@ -196,20 +184,6 @@ async function onPaginationClick(event) {
         message: error.message,
       });
     }
-
-    const exercises = await fetchExercises(
-      currentFilter,
-      currentCategory,
-      '',
-      currentPage,
-      exercisesPerPage
-    );
-    const { results, page, totalPages } = exercises;
-    categoriesList.innerHTML = '';
-    paginationList.innerHTML = '';
-    renderExercises(results, exercisesList);
-    renderPagination(Number(totalPages), Number(page), paginationList);
-    searchForm.classList.remove('visually-hidden');
   }
 }
 
