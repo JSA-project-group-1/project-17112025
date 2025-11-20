@@ -76,6 +76,7 @@ searchForm.addEventListener('submit', async evt => {
 });
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 clearBtn.addEventListener('click', () => {
   searchQuery = "";
   searchInput.value = "";
@@ -84,6 +85,8 @@ clearBtn.addEventListener('click', () => {
   renderPagination(Number(totalPages), Number(page), paginationList)
 });
 
+=======
+>>>>>>> c7469b4e0d92469d4f7d9c60b07e93310945f5e8
 =======
 >>>>>>> c7469b4e0d92469d4f7d9c60b07e93310945f5e8
 async function loadAndRenderCategoriesList() {
