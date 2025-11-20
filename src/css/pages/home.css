@@ -2,3 +2,14 @@
 @import url('./block-quote.css');
 @import url('./section-exercises.css');
 @import url('./modal-exercise.css');
+
+.quote-categories-box {
+  display: flex;
+  flex-direction: column-reverse;
+}
+
+@media only screen and (min-width: 1440px) {
+  .quote-categories-box {
+    flex-direction: row;
+  }
+}

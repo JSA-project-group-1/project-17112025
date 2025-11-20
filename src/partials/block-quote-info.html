@@ -1,46 +1,62 @@
 <div class="block-quote-info">
   <div class="quote-and-img">
     <div class="quote-card">
-      <svg class="quote-icon-man" width="34" height="32">
+      <svg class="quote-icon-man" width="32" height="32">
         <use href="../assets/icons/icons-not-min.svg#icon-running-man"></use>
       </svg>
 
-      <h3 class="quote-title">Quote of the day</h3>
+      <div class="quote-content">
+        <h3 class="quote-title">Quote of the day</h3>
+        <p class="quote-text quote-api-text"></p>
+        <p class="quote-author quote-api-author"></p>
+      </div>
 
       <svg class="quote-icon-comma" width="24" height="24">
         <use
           href="../assets/icons/icons-not-min.svg#icon-inverted-commas"
         ></use>
       </svg>
-
-      <p class="quote-api-text"></p>
-      <p class="quote-api-author"></p>
     </div>
 
     <img
       class="quote-img"
-      src="../images/quote-girls-desc.jpg"
+      src="../images/quote-girls-mob.jpg"
+      srcset="
+        .../images/quote-girls-mob.jp      320w,
+        ../images/quote-girls-mob@2x.jpg   640w,
+        ../images/quote-girls-tab.jpg      768w,
+        ../images/quote-girls-tab@2x.jpg  1536w,
+        ../images/quote-girls-desc.jpg    1280w,
+        ../images/quote-girls-desc@2x.jpg 2560w
+      "
       alt="Two girls are chatting and drinking water during the walk"
-      width="444"
+      width="335"
       height="242"
+      sizes="
+  (max-width: 767px) 335px,
+  (max-width: 1439px) 288px,
+  444px
+"
     />
   </div>
 
   <div class="daily-norm">
-    <svg class="icon-dumbbells" width="34" height="32">
+    <svg class="icon-dumbbells" width="32" height="32">
       <use href="../assets/icons/icons-not-min.svg#icon-dumbbells"></use>
     </svg>
 
-    <h3 class="daily-norm-title">110 min</h3>
-    <p class="daily-norm-subtitle">Daily norm of sports</p>
-    <p daily-norm-text>
-      The World Health Organization recommends at least 150 minutes of
-      moderate-intensity aerobic physical activity throughout the week for
-      adults aged 18-64. However, what happens if we adjust that number to 110
-      minutes every day? While it might seem like a high number to hit,
-      dedicating 110 minutes daily to sporting activities may offer unparalleled
-      benefits to physical health, mental well-being, and overall quality of
-      life.
-    </p>
+    <div class="daily-norm-content">
+      <h3 class="daily-norm-title">110 min</h3>
+      <p class="daily-norm-subtitle">Daily norm of sports</p>
+      <p class="daily-norm-text">
+        The World Health Organization recommends at least 150 minutes of
+        moderate-intensity aerobic physical activity throughout the week for
+        adults aged 18-64. However, what happens if we adjust that number to 110
+        minutes every day? While it might seem like a high number to hit,
+        dedicating 110 minutes daily to sporting activities may offer
+        unparalleled benefits to physical health, mental well-being, and overall
+        quality of life.
+      </p>
+    </div>
   </div>
 </div>
