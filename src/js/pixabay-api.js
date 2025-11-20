@@ -14,18 +14,15 @@ export async function fetchCategories(filter = 'Muscles', page = '1', limit = '1
   return response.data;
 }
 
-export async function fetchExercises(bodypart,
-  muscles,
-  equipment,
+export async function fetchExercises(currentFilter,
+  currentCategory,
   keyword,
   page = 1,
   limit = 10,) {
   const response = await axios.get(
     `/exercises`, {
     params: {
-      bodypart,
-      muscles,
-      equipment,
+      [currentFilter === "Body parts" ? "bodypart" : currentFilter.toLowerCase()]: currentCategory.toLowerCase().replace(' ', '%20'),
       keyword,
       page,
       limit,
