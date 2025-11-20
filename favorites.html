@@ -6,28 +6,152 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Favorites</title>
     <script type="module" crossorigin src="/project-17112025/favorites.js"></script>
-    <link rel="modulepreload" crossorigin href="/project-17112025/assets/styles-CQRu4YpB.js">
+    <link rel="modulepreload" crossorigin href="/project-17112025/assets/header-DJd-5JJA.js">
     <link rel="modulepreload" crossorigin href="/project-17112025/assets/vendor-BtSQbXxa.js">
-    <link rel="stylesheet" crossorigin href="/project-17112025/assets/styles-CvlR-xU6.css">
+    <link rel="stylesheet" crossorigin href="/project-17112025/assets/header-5hHWwlgk.css">
     <link rel="stylesheet" crossorigin href="/project-17112025/assets/vendor-BfMlxmOj.css">
     <link rel="stylesheet" crossorigin href="/project-17112025/assets/favorites-BNb67yU-.css">
   </head>
   <body>
     <header class="header">
-  <div class="container">
-    <svg class="logo-icon" width="132" height="24">
-      <use href="/project-17112025/assets/icons-DVma6g9a.svg#icon-logo"></use>
-    </svg>
+  <div class="container header-row">
+
+    <!-- Logo — веде на головну -->
+    <a href="/" class="logo-link" aria-label="Go to home page">
+      <svg class="logo-icon" width="132" height="24">
+        <use href="/project-17112025/assets/icons-DVma6g9a.svg#icon-logo"></use>
+      </svg>
+    </a>
+
+    <!-- Burger (mobile only) -->
+    <button class="burger" type="button" aria-label="Open menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <!-- Desktop & tablet navigation -->
     <nav class="nav">
       <ul class="nav-list">
-        <li>
-          <a class="nav-link" href="./">Home Page</a>
+        <li class="nav-item">
+          <a class="nav-link" href="./index.html">Home</a>
         </li>
-        <li>
+        <li class="nav-item">
           <a class="nav-link" href="./favorites.html">Favorites</a>
         </li>
       </ul>
+
+      <!-- Socials -->
+      <ul class="social-list">
+        <li>
+          <a
+            href="https://www.facebook.com/goITclub/"
+            class="social-link"
+            aria-label="Facebook"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <svg width="20" height="20">
+              <use href="/project-17112025/assets/icons-DVma6g9a.svg#icon-facebook"></use>
+            </svg>
+          </a>
+        </li>
+        <li>
+          <a
+            href="https://www.instagram.com/goitclub/"
+            class="social-link"
+            aria-label="Instagram"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <svg width="20" height="20">
+              <use href="/project-17112025/assets/icons-DVma6g9a.svg#icon-instagram"></use>
+            </svg>
+          </a>
+        </li>
+        <li>
+          <a
+            href="https://www.youtube.com/c/GoIT"
+            class="social-link"
+            aria-label="YouTube"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <svg width="20" height="20">
+              <use href="/project-17112025/assets/icons-DVma6g9a.svg#icon-youtube"></use>
+            </svg>
+          </a>
+        </li>
+      </ul>
     </nav>
+  </div>
+
+  <!-- MOBILE SLIDE MENU -->
+  <div class="mobile-menu">
+    <div class="mobile-menu__inner">
+
+      <!-- Header inside mobile menu -->
+      <div class="mobile-menu__header">
+        <a href="/" aria-label="Go to home page">
+          <svg class="logo-icon logo-icon--mobile" width="132" height="24">
+            <use href="/project-17112025/assets/icons-DVma6g9a.svg#icon-logo"></use>
+          </svg>
+        </a>
+
+        <button class="mobile-menu__close" type="button" aria-label="Close menu">
+          <svg width="32" height="32">
+            <use href="#icon-x"></use>
+          </svg>
+        </button>
+      </div>
+
+      <!-- Links -->
+      <ul class="mobile-menu__links">
+        <li><a href="/">Home</a></li>
+        <li><a href="/favorites.html">Favorites</a></li>
+      </ul>
+
+      <!-- Socials -->
+      <ul class="mobile-menu__socials">
+        <li>
+          <a
+            href="https://www.facebook.com/goITclub/"
+            aria-label="Facebook"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <svg>
+              <use href="/project-17112025/assets/icons-DVma6g9a.svg#icon-facebook"></use>
+            </svg>
+          </a>
+        </li>
+        <li>
+          <a
+            href="https://www.instagram.com/goitclub/"
+            aria-label="Instagram"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <svg>
+              <use href="/project-17112025/assets/icons-DVma6g9a.svg#icon-instagram"></use>
+            </svg>
+          </a>
+        </li>
+        <li>
+          <a
+            href="https://www.youtube.com/c/GoIT"
+            aria-label="YouTube"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <svg>
+              <use href="/project-17112025/assets/icons-DVma6g9a.svg#icon-youtube"></use>
+            </svg>
+          </a>
+        </li>
+      </ul>
+
+    </div>
   </div>
 </header>
 

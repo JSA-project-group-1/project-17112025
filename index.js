@@ -1,4 +1,4 @@
-import"./assets/styles-CQRu4YpB.js";import{a as b,i as S}from"./assets/vendor-BtSQbXxa.js";b.defaults.baseURL="https://your-energy.b.goit.study/api/";async function C(e="Muscles",t="1",s="12"){return(await b.get("/filters",{params:{filter:e,page:t,limit:s}})).data}async function T(e,t,s,i=1,a=10){return(await b.get("/exercises",{params:{[e==="Body parts"?"bodypart":e.toLowerCase()]:t.toLowerCase().replace(" ","%20"),keyword:s,page:i,limit:a}})).data}function H(e,t){const s=e.map(({filter:i,imgURL:a,name:n})=>`
+import"./assets/header-DJd-5JJA.js";import{a as b,i as S}from"./assets/vendor-BtSQbXxa.js";b.defaults.baseURL="https://your-energy.b.goit.study/api/";async function C(e="Muscles",t="1",s="12"){return(await b.get("/filters",{params:{filter:e,page:t,limit:s}})).data}async function T(e,t,s,i=1,a=10){return(await b.get("/exercises",{params:{[e==="Body parts"?"bodypart":e.toLowerCase()]:t.toLowerCase().replace(" ","%20"),keyword:s,page:i,limit:a}})).data}function H(e,t){const s=e.map(({filter:i,imgURL:a,name:n})=>`
           <li class="categories-item" data-name="${n}">
             <img
             class="category-image"
