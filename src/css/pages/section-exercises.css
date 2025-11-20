@@ -138,7 +138,7 @@ block-categories
 block-exercises
    ======================= */
 
-.header {
+.header-card {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -173,11 +173,16 @@ block-exercises
   line-height: 24px;
   cursor: pointer;
   transition: color 0.2s;
+  vertical-align: middle; 
+  display: inline-flex;
+  align-items: center;
 }
+
 
 .start-btn:hover {
   color: grey;
 }
+
 
 .title {
   color: #242424;
@@ -186,6 +191,34 @@ block-exercises
   font-weight: 400;
   line-height: 32px;
   margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  width: 400px;
+  text-transform: capitalize
+}
+
+.header-left {
+    display: flex;
+    align-items: center; 
+}
+
+.header-right {
+    display: flex;
+    align-items: center; 
+    gap: 8px; 
+}
+
+.title .icon {
+    flex-shrink: 0;
+    margin-right: 16px;
+    padding-top: 1px;
+}
+
+.title .name-text {
+    flex-grow: 1; 
+    white-space: nowrap; 
+    overflow: hidden; 
+    text-overflow: ellipsis; 
 }
 
 .exercise-details-list {
@@ -212,6 +245,9 @@ block-exercises
   font-style: normal;
   font-weight: 400;
   line-height: 18px;
+  text-transform: capitalize;
+  overflow: hidden; 
+  text-overflow: ellipsis;
 }
 
 .calories-name,
@@ -221,3 +257,26 @@ block-exercises
   margin-right: 4px;
   line-height: 18px;
 }
+
+.icon-star {
+  fill: #EEA10C;
+  display: block;
+  transform: translateY(-1px);
+}
+
+.rating {
+    display: flex; 
+    align-items: center; 
+    margin-right: 2px;
+}
+
+
+.rating, .icon-star {
+    margin-left: 4px; 
+}
+
+.icon-arrow-right {
+    stroke: #242424; 
+    fill: none; 
+}
+

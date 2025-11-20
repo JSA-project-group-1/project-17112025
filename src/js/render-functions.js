@@ -24,15 +24,26 @@ export function renderExercises(exercises, list) {
     .map(({ _id, name, target, bodyPart, burnedCalories, rating }) => {
       return `
     <li class="exercises-item">
-    <div class="header">
-        <div class = "workout-rating">
+    <div class="header-card">
+       <div class="header-left"> 
         <span class="type">WORKOUT</span>
-        <span class="rating">${rating} </span>
-        </div>
+        <span class="rating">${rating}</span>
+        <svg class="icon-star" width="18" height="18">
+            <use href="../assets/icons/icons-not-min.svg#icon-star"></use>
+        </svg>
+       </div>
+       <div class="header-right">
         <button class="start-btn" type="button" data-modal-exercise="open" data-exercise-id="${_id}"> Start </button>
+        <svg class="icon-arrow-right" width="18" height="18">
+          <use href="../assets/icons/icons-not-min.svg#icon-arrow-1"></use>
+        </svg>
+        </div>
     </div>
     <div class="title">
-        <span class="icon">icon</span> ${name}
+     <svg class="icon" width="24" height="24">
+            <use href="../assets/icons/icons-not-min.svg#icon-run-man-2"></use>
+      </svg>
+      <span class="name-text">${name}</span>
     </div>
     <div class="details">
         <ul class="exercise-details-list">
