@@ -1,4 +1,4 @@
-/* ========== DESIGN TOKENS (як у тебе) ========== */
+/* ========== DESIGN TOKENS ========== */
 
 :root {
   /* ===== fonts ===== */
@@ -24,7 +24,6 @@
   --color-mobile-overlay: rgba(0, 0, 0, 0.6);
   --color-mobile-text: #f4f4f4;
   --color-mobile-social-border: rgba(244, 244, 244, 0.1);
-
   /* ===== spacing / sizing ===== */
   --header-height: 52px;
   --header-padding-desktop: 70px;
@@ -33,18 +32,11 @@
 
   --menu-width-desktop: 265px;
   --menu-width-tablet: 233px;
+  --menu-width-mobile: 240px;
 
-  /* ===== GLOBAL COLORS (з твого другого :root) ===== */
   --main-color: #242424;
   --second-color: #f4f4f4;
-  --acent-stars-color: #eea10c;
-  --stars-color: rgba(244, 244, 244, 0.2);
-  --white-color: #fff;
-  --quote-color: rgba(244, 244, 244, 0.6);
-  --socials-color: rgba(36, 36, 36, 0.1);
-  --pagination-color: #d4d4d4;
-  --color-light-grey-translucent: #F4F4F466;
-
+  
   /* ===== global rendering ===== */
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -117,7 +109,7 @@
   background-color: #242424;
 }
 
-/* MOBILE MENU (залишаю, як у тебе) */
+/* MOBILE MENU  */
 
 .header .mobile-menu {
   position: fixed;
@@ -259,25 +251,35 @@
     border-radius: 60px;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
     list-style: none;
+    gap: 16px;
   }
 
   .header .nav-link {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    padding: 8px 22px;
-    border-radius: 30px;
-    font-size: 16px;
-    line-height: 24px;
-    text-decoration: none;
-    color: #f4f4f4;
-  }
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 6px 12px; 
+  height: 36px;
+  border-radius: 30px;
+
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+
+  text-decoration: none;
+  color: var(--color-pill-text);
+
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
 
   .header .nav-link--active {
     background: #f4f4f4;
     color: #242424;
+
+   
   }
 
   .header .right-side {
@@ -318,9 +320,9 @@
   }
 }
 
-/* ========== TABLET (контейнер 768, відстані 103 / 80) ========== */
+/* ========== TABLET  ========== */
 
-@media (min-width: 768px) && (max-width: 1023px) {
+@media (min-width: 768px) and (max-width: 1023px) {
   .header .header-row {
     max-width: 768px;
   }
