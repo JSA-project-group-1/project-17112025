@@ -1,12 +1,3 @@
-/**
- * @fileoverview ModalBox class using basicLightBox Library
- * @module ModalBox
- *
- * @param {string} markup -The modal markup
- * @param {string} closeSelector - Selector that will close modal window
- * @param {Object} [reponceData] (Optional) - Data received from the backend
- */
-
 import * as basicLightbox from 'basiclightbox';
 import 'basiclightbox/dist/basicLightbox.min.css';
 

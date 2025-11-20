@@ -1,21 +1,29 @@
-import { fetchExerciseModalById } from './modal-exercise-api.js';
-import { createModalExerciseMarkup } from './modal-exercise-markup.js';
+import { fetchExerciseModalById } from './api-functions.js';
+import {
+  createModalExerciseMarkup,
+  createRemoveFromFavoritesMarkup,
+  createAddToFavoritesMarkup,
+} from './modal-exercise-markup.js';
 import { ModalBox } from './modal-class-box.js';
 
 const openModalSelector = '[data-modal-exercise="open"]';
 const closeModalSelector = '[data-modal-exercise="close"]';
-const openModalExerciseBtnRef = document.querySelector(openModalSelector);
 const LS_FAVORITES_ID = 'favorite-id-list';
 const favoriteIdList = JSON.parse(localStorage.getItem(LS_FAVORITES_ID)) || [];
-openModalExerciseBtnRef.addEventListener('click', handleOpenModalClick);
 
-async function handleOpenModalClick() {
+document.addEventListener('click', event => {
+  if (event.target.matches(openModalSelector)) {
+    const exerciseId = event.target.dataset.exerciseId;
+    handleOpenModalClick(exerciseId);
+  }
+});
+
+async function handleOpenModalClick(exerciseId) {
   let modalBox = {};
 
-  // TODO change favoriteId for dynamic ID
-  const favoriteId = '64f389465ae26083f39b17a2';
+  const favoriteId = exerciseId || '64f389465ae26083f39b17a2';
   try {
-    const exericiseData = await fetchExerciseModalById();
+    const exericiseData = await fetchExerciseModalById(favoriteId);
     modalBox = new ModalBox(
       createModalExerciseMarkup,
       closeModalSelector,
@@ -23,26 +31,35 @@ async function handleOpenModalClick() {
     );
 
     modalBox.open();
+
+    setupModalEventListeners(modalBox, favoriteId);
   } catch (error) {
-    Notify.failure(
-      'Sorry, there are no data matching your category. Please try again.'
-    );
+    console.error('Error loading exercise data:', error);
   }
 }
 
-const giveRatingBtnRef = document.querySelector('.js-give-rating-btn');
-const addToFavoriteBtnRef = document.querySelector('.js-add-to-favorites-btn');
+function setupModalEventListeners(modalBox, favoriteId) {
+  const modalElement = modalBox.instance.element();
+  const giveRatingBtnRef = modalElement.querySelector('.js-give-rating-btn');
+  const addToFavoriteBtnRef = modalElement.querySelector(
+    '.js-add-to-favorites-btn'
+  );
 
-giveRatingBtnRef.addEventListener('click', event =>
-  handleGiveRatingBtnClick(event, modalBox)
-);
+  if (giveRatingBtnRef) {
+    giveRatingBtnRef.addEventListener('click', event =>
+      handleGiveRatingBtnClick(event, modalBox)
+    );
+  }
 
-addToFavoriteBtnRef.addEventListener('click', event =>
-  handleAddToFavoriteBtnClick(event, favoriteId, addToFavoriteBtnRef)
-);
+  if (addToFavoriteBtnRef) {
+    addToFavoriteBtnRef.addEventListener('click', event =>
+      handleAddToFavoriteBtnClick(event, favoriteId, addToFavoriteBtnRef)
+    );
 
-if (favoriteIdList.includes(favoriteId)) {
-  addToFavoriteBtnRef.innerHTML = createRemoveFromFavoritesMarkup();
+    if (favoriteIdList.includes(favoriteId)) {
+      addToFavoriteBtnRef.innerHTML = createRemoveFromFavoritesMarkup();
+    }
+  }
 }
 
 function handleGiveRatingBtnClick(_, modalBox) {
