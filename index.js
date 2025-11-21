@@ -1,19 +1,19 @@
-import{f as k,a as M,r as F}from"./assets/modal-exercise-BjHNi18i.js";import{a as j,i as p}from"./assets/vendor-D2ogNlHo.js";function N(t,e){const s=t.map(({filter:i,imgURL:a,name:n})=>`
+import{f as q,a as R,r as _}from"./assets/modal-exercise-BjHNi18i.js";import{a as K,i as f}from"./assets/vendor-D2ogNlHo.js";function F(t,e){const s=t.map(({filter:a,imgURL:i,name:n})=>`
           <li class="categories-item" data-name="${n}">
             <img
             class="category-image"
-            src="${a}"
+            src="${i}"
             alt="${n}"
           />
           <div class="categories-item-info">
             <h3>${n}</h3>
-            <p>${i}</p>
+            <p>${a}</p>
             </div>
           </li>
-      `).join("");e.innerHTML=s}function E(t,e){const s=t.map(({_id:i,name:a,target:n,bodyPart:r,burnedCalories:y,rating:u})=>`
+      `).join("");e.innerHTML=s}function S(t,e){const s=t.map(({_id:a,name:i,target:n,bodyPart:r,burnedCalories:l,rating:u})=>`
     <li class="exercises-item">
     <div class="header-card">
-       <div class="header-left"> 
+       <div class="header-left">
         <span class="type">WORKOUT</span>
         <span class="rating">${u}</span>
         <svg class="icon-star" width="18" height="18">
@@ -21,7 +21,7 @@ import{f as k,a as M,r as F}from"./assets/modal-exercise-BjHNi18i.js";import{a a
         </svg>
        </div>
        <div class="header-right">
-        <button class="start-btn" type="button" data-modal-exercise="open" data-exercise-id="${i}"> Start </button>
+        <button class="start-btn" type="button" data-modal-exercise="open" data-exercise-id="${a}"> Start </button>
         <svg class="icon-arrow-right" width="18" height="18">
           <use href="../assets/icons/icons-not-min.svg#icon-arrow-1"></use>
         </svg>
@@ -31,13 +31,13 @@ import{f as k,a as M,r as F}from"./assets/modal-exercise-BjHNi18i.js";import{a a
      <svg class="icon" width="24" height="24">
             <use href="../assets/icons/icons-not-min.svg#icon-run-man-2"></use>
       </svg>
-      <span class="name-text">${a}</span>
+      <span class="name-text">${i}</span>
     </div>
     <div class="details">
         <ul class="exercise-details-list">
           <li class="calories">
             <span class="calories-name">Burned calories</span>
-            <span class="calories-value">${y} / 3 min</span>
+            <span class="calories-value">${l} / 3 min</span>
           </li>
           <li class="body-part">
             <span class="body-part-name">Body part:</span>
@@ -50,13 +50,57 @@ import{f as k,a as M,r as F}from"./assets/modal-exercise-BjHNi18i.js";import{a a
         </ul>
     </div>
     </li>
-      `).join("");e.innerHTML=s}function g(t,e,s){const a=Array.from({length:t},(n,r)=>r+1).map(n=>`
+      `).join("");e.innerHTML=s}function y(t,e,s){const a=Number(e),i=Number(t),n=Array.from({length:i},(x,Z)=>Z+1),r=a===1,l=a===i,u=`
+      <li class="pagination-control-item">
+          <button class=" ${r?"pagination-arrow-btn":"pagination-arrow-btn-active"}"
+                  data-page="beg"
+                  ${r?"disabled":""}>
+                  <svg class="left-vector" width="6" height="12">
+                    <use href="/assets/icons/icons.svg#icon-vector"></use>
+                  </svg>
+                  <svg class="left-vector" width="6" height="24">
+                    <use href="/assets/icons/icons.svg#icon-vector"></use>
+                  </svg>
+          </button>
+      </li>
+      <li class="pagination-control-item">
+          <button class=" ${r?"pagination-arrow-btn":"pagination-arrow-btn-active"}"
+                  data-page="prev"
+                  ${r?"disabled":""}>
+                  <svg class="left-vector" width="6" height="12">
+                    <use href="/assets/icons/icons.svg#icon-vector"></use>
+                  </svg>
+           </button>
+      </li>
+  `,Q=n.map(x=>`
           <li class="pagination-control-item">
-            <button class="${e===n?"pagination-control-active":"pagination-control"}" data-page="${n}">${n}</button>
+            <button class="${a===x?"pagination-control-active":"pagination-control"}" data-page="${x}">${x}</button>
           </li>
-      `).join("");s.innerHTML=a}function B(t,e,s){const i=t.map(a=>`
-          <li class="filters-list-item ${e===a?"filters-list-item-active":""}" data-option="${a}"><p>${a}</p></li>
-      `).join("");s.innerHTML=i}const h=document.getElementById("footerSubscribeForm");if(h){let i=function(r){return/^\w+(\.\w+)?@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/.test(r)},a=function(r){p.success({title:"Success",message:r,position:"topRight",timeout:5e3})},n=function(r){p.error({title:"Error",message:r,position:"topRight",timeout:5e3})};const t=h.querySelector('input[name="email"]'),e=h.querySelector('button[type="submit"]');h.addEventListener("submit",s);async function s(r){r.preventDefault();const y=t.value.trim();if(!i(y)){n("Invalid email address");return}try{e.disabled=!0;const u=await j.post("https://your-energy.b.goit.study/api/subscription",{email:y},{headers:{"Content-Type":"application/json"}});u.status===201&&(a(u.data.message),h.reset())}catch(u){u.response?n(u.response.data.message||"Subscription failed"):n("Network error. Please try again.")}finally{e.disabled=!1}}}function S(t){if(!t)return;let e=t.querySelector(".local-loader-wrapper");e||(e=document.createElement("div"),e.classList.add("local-loader-wrapper"),e.innerHTML=`
+      `).join(""),V=`
+      <li class="pagination-control-item">
+          <button class="pagination-arrow-btn ${l?"pagination-arrow-btn":"pagination-arrow-btn-active"}"
+                  data-page="next"
+                  ${l?"disabled":""}>
+                  <svg class="right-vector" width="6" height="12">
+                    <use href="/assets/icons/icons.svg#icon-vector"></use>
+                  </svg>
+           </button>
+      </li>
+      <li class="pagination-control-item">
+          <button class="pagination-arrow-btn ${l?"pagination-arrow-btn":"pagination-arrow-btn-active"}"
+                  data-page="end"
+                  ${l?"disabled":""}>
+                  <svg class="right-vector" width="6" height="12">
+                    <use href="/assets/icons/icons.svg#icon-vector"></use>
+                  </svg>
+                  <svg class="right-vector" width="6" height="12">
+                    <use href="/assets/icons/icons.svg#icon-vector"></use>
+                  </svg>
+          </button>
+      </li>
+  `,W=u+Q+V;s.innerHTML=W}function O(t,e,s){const a=t.map(i=>`
+          <li class="filters-list-item ${e===i?"filters-list-item-active":""}" data-option="${i}"><p>${i}</p></li>
+      `).join("");s.innerHTML=a}const b=document.getElementById("footerSubscribeForm");if(b){let a=function(r){return/^\w+(\.\w+)?@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/.test(r)},i=function(r){f.success({title:"Success",message:r,position:"topRight",timeout:5e3})},n=function(r){f.error({title:"Error",message:r,position:"topRight",timeout:5e3})};const t=b.querySelector('input[name="email"]'),e=b.querySelector('button[type="submit"]');b.addEventListener("submit",s);async function s(r){r.preventDefault();const l=t.value.trim();if(!a(l)){n("Invalid email address");return}try{e.disabled=!0;const u=await K.post("https://your-energy.b.goit.study/api/subscription",{email:l},{headers:{"Content-Type":"application/json"}});u.status===201&&(i(u.data.message),b.reset())}catch(u){u.response?n(u.response.data.message||"Subscription failed"):n("Network error. Please try again.")}finally{e.disabled=!1}}}function M(t){if(!t)return;let e=t.querySelector(".local-loader-wrapper");e||(e=document.createElement("div"),e.classList.add("local-loader-wrapper"),e.innerHTML=`
       <div class="hypnotic"></div>
-    `,t.style.position="relative",t.appendChild(e)),e.classList.remove("hidden")}function T(t){if(!t)return;const e=t.querySelector(".local-loader-wrapper");e&&e.classList.add("hidden")}const x=["Muscles","Body parts","Equipment"],A=375,H=document.querySelector("span.slash"),R=document.querySelector("p.current-category"),z=document.querySelector("p.warning"),P=document.querySelector("ul.filters-list"),v=document.querySelector("ul.block-categories-list"),f=document.querySelector("ul.exercises-list"),o=document.querySelector("ul.pagination-controls-list"),L=document.querySelector("form.search-form"),I=L.querySelector(".search-input"),b=document.querySelector("button.clear-btn"),l=document.getElementById("categories-section"),D=document.documentElement.clientWidth<=A;let d=x[0],c="",m="",$=1,O=D?9:12,q=D?8:10;L.addEventListener("input",t=>{m=t.target.value,m.length?b.classList.remove("visually-hidden"):b.classList.add("visually-hidden")});L.addEventListener("submit",async t=>{t.preventDefault(),S(l);try{const e=await k(d,c,m,$,q),{results:s,page:i,totalPages:a}=e;o.innerHTML="",E(s,f),g(Number(a),Number(i),o)}catch(e){p.error({icon:"",position:"topRight",message:e.message})}finally{T(l)}});b.addEventListener("click",async()=>{m="",I.value="",b.classList.add("visually-hidden"),E(results,f),g(Number(totalPages),Number(page),o),C()});async function C(){v.innerHTML="",f.innerHTML="",o.innerHTML="",S(l);try{await new Promise(a=>setTimeout(a,2e3));const t=await M(d,$,O),{results:e,page:s,totalPages:i}=t;N(e,v),g(Number(i),Number(s),o)}catch(t){z.classList.remove("visually-hidden"),p.error({icon:"",position:"topRight",message:t.message})}finally{T(l)}}P.addEventListener("click",Q);function Q(t){const e=t.target.closest(".filters-list-item");e&&(d=e.dataset.option,C(),B(x,d,P),L.classList.add("visually-hidden"),m="",c="",I.value="",H.classList.add("visually-hidden"),R.textContent=c)}v.addEventListener("click",V);async function V(t){const e=t.target.closest(".categories-item");if(e){S(l),c=e.dataset.name;try{const s=await k(d,c,m,$,q),{results:i,page:a,totalPages:n}=s;v.innerHTML="",o.innerHTML="",E(i,f),g(Number(n),Number(a),o),L.classList.remove("visually-hidden"),H.classList.remove("visually-hidden"),R.textContent=c}catch(s){p.error({icon:"",position:"topRight",message:s.message})}finally{T(l)}}}o.addEventListener("click",W);async function W(t){const e=t.target.closest("button[data-page]");if(e){S(l);const s=parseInt(e.dataset.page,10);try{if(c){const i=await k(d,c,m,s,q),{results:a,page:n,totalPages:r}=i;E(a,f),g(Number(r),Number(n),o)}else{console.log(1);const i=await M(d,s,O),{results:a,page:n,totalPages:r}=i;N(a,v),g(Number(r),Number(n),o)}}catch(i){p.error({icon:"",position:"topRight",message:i.message})}finally{T(l)}}}document.addEventListener("DOMContentLoaded",F);B(x,d,P);C();const w=document.getElementById("scroll-top");console.log(w);const Z=()=>{document.body.scrollTop=0,document.documentElement.scrollTop=0},_=()=>{window.scrollY>window.innerHeight?w.classList.add("scroll-show"):w.classList.remove("scroll-show")};window.addEventListener("scroll",_);w.addEventListener("click",Z);
+    `,t.style.position="relative",t.appendChild(e)),e.classList.remove("hidden")}function T(t){if(!t)return;const e=t.querySelector(".local-loader-wrapper");e&&e.classList.add("hidden")}const B=["Muscles","Body parts","Equipment"],U=375,D=document.documentElement.clientWidth<=U,j=document.querySelector("span.slash"),A=document.querySelector("p.current-category"),Y=document.querySelector("p.warning"),C=document.querySelector("ul.filters-list"),L=document.querySelector("ul.block-categories-list"),k=document.querySelector("ul.exercises-list"),d=document.querySelector("ul.pagination-controls-list"),$=document.querySelector("form.search-form"),z=$.querySelector(".search-input"),E=document.querySelector("button.clear-btn"),m=document.getElementById("categories-section");let v=B[0],g="",h="",c=1,w=1,N=D?9:12,o=1,p=1,H=D?8:10;$.addEventListener("input",t=>{h=t.target.value,h.length?E.classList.remove("visually-hidden"):E.classList.add("visually-hidden")});$.addEventListener("submit",async t=>{t.preventDefault(),M(m);try{const e=await q(v,g,h,o,H),{results:s,page:a,totalPages:i}=e;p=i,o=a,d.innerHTML="",S(s,k),y(p,o,d)}catch(e){f.error({icon:"",position:"topRight",message:e.message})}finally{T(m)}});E.addEventListener("click",async()=>{h="",z.value="",E.classList.add("visually-hidden"),S(results,k),y(p,o,d),I()});async function I(){L.innerHTML="",k.innerHTML="",d.innerHTML="",M(m);try{const t=await R(v,c,N),{results:e,page:s,totalPages:a}=t;w=a,c=s,F(e,L),y(w,c,d)}catch(t){Y.classList.remove("visually-hidden"),f.error({icon:"",position:"topRight",message:t.message})}finally{T(m)}}C.addEventListener("click",G);function G(t){const e=t.target.closest(".filters-list-item");e&&(v=e.dataset.option,I(),O(B,v,C),$.classList.add("visually-hidden"),h="",g="",z.value="",j.classList.add("visually-hidden"),A.textContent=g)}async function J(t){const e=t.target.closest(".categories-item");if(e){M(m),g=e.dataset.name;try{const s=await q(v,g,h,o,H),{results:a,page:i,totalPages:n}=s;p=n,o=i,L.innerHTML="",d.innerHTML="",S(a,k),y(p,o,d),$.classList.remove("visually-hidden"),j.classList.remove("visually-hidden"),A.textContent=g}catch(s){f.error({icon:"",position:"topRight",message:s.message})}finally{T(m)}}}async function X(t){const e=t.target.closest("button[data-page]");if(e){M(m);try{if(g){switch(e.dataset.page){case"beg":o=1;break;case"prev":o--;break;case"next":o++;break;case"end":o=p;break;default:o=parseInt(e.dataset.page,10)}const s=await q(v,g,h,o,H),{results:a,page:i,totalPages:n}=s;p=n,o=i,S(a,k),y(p,o,d)}else{switch(e.dataset.page){case"beg":c=1;break;case"prev":c--;break;case"next":c++;break;case"end":c=w;break;default:c=parseInt(e.dataset.page,10)}const s=await R(v,c,N),{results:a,page:i,totalPages:n}=s;w=n,c=i,F(a,L),y(w,c,d)}}catch(s){f.error({icon:"",position:"topRight",message:s.message})}finally{T(m)}}}O(B,v,C);I();L.addEventListener("click",J);d.addEventListener("click",X);document.addEventListener("DOMContentLoaded",_);const P=document.getElementById("scroll-top");console.log(P);const ee=()=>{document.body.scrollTop=0,document.documentElement.scrollTop=0},te=()=>{window.scrollY>window.innerHeight?P.classList.add("scroll-show"):P.classList.remove("scroll-show")};window.addEventListener("scroll",te);P.addEventListener("click",ee);
 //# sourceMappingURL=index.js.map
