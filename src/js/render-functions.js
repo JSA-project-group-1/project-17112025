@@ -83,7 +83,7 @@ export function renderPagination(totalPages, currentPage, list,) {
                   data-page="beg"
                   ${isFirstPage ? 'disabled' : ''}>
                   <svg class="left-vector" width="6" height="12">
-                    <use href="${isUrlcon}#icon-vector"></use>
+                    <use href="${iconsUrl}#icon-vector"></use>
                   </svg>
                   <svg class="left-vector" width="6" height="24">
                     <use href="${iconsUrl}#icon-vector"></use>
