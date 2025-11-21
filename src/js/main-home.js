@@ -33,7 +33,9 @@ const searchForm = document.querySelector('form.search-form');
 const searchInput = searchForm.querySelector('.search-input');
 const clearBtn = document.querySelector('button.clear-btn');
 const categoriesSection = document.getElementById('categories-section');
+const NavLinkHome = document.querySelector('a.nav-link');
 
+NavLinkHome.classList.add('nav-link--active');
 
 let currentFilter = filterOptions[0];
 let currentCategory = '';
@@ -280,3 +282,4 @@ categoriesList.addEventListener('click', onCategoryClick);
 paginationList.addEventListener('click', onPaginationClick);
 
 document.addEventListener('DOMContentLoaded', renderQuoteOfTheDay);
+
