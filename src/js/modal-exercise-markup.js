@@ -25,7 +25,7 @@ export function createModalExerciseMarkup({
         data-modal-exercise="close"
       >
         <svg class="modal-exercise-close-icon">
-          <use href="./img/sport-sprite.svg#icon-cross"></use>
+          <use href="./assets/icons/icons.svg#icon-x-white"></use>
         </svg>
       </button>
       <h3 class="modal-exercise-title">${makeUpperCaseFirstLetter(name)}</h3>
@@ -71,7 +71,7 @@ export function createModalExerciseMarkup({
         Add to favorites
         <span>
           <svg class="modal-exercise-heart-icon js-modal-exercise-heart-icon">
-            <use href="./img/sport-sprite.svg#icon-heart"></use></svg
+            <use href="./assets/icons/icons.svg#icon-heart"></use></svg
         ></span>
       </button>
     </li>
@@ -90,7 +90,7 @@ export function createAddToFavoritesMarkup() {
   Add to favorites
         <span>
           <svg class="modal-exercise-heart-icon js-modal-exercise-heart-icon">
-            <use href="./img/sport-sprite.svg#icon-heart"></use></svg
+            <use href="./assets/icons/icons.svg#icon-heart"></use></svg
         ></span>`;
 }
 
@@ -98,8 +98,8 @@ export function createRemoveFromFavoritesMarkup() {
   return `
   Remove from favorites
         <span>
-          <svg class="modal-exercise-heart-icon js-modal-exercise-heart-icon modal-favorite-active-icon">
-            <use href="./img/sport-sprite.svg#icon-heart"></use></svg
+          <svg class="modal-exercise-trash-icon js-modal-exercise-trash-icon">
+            <use href="./assets/icons/icons.svg#icon-trash"></use></svg
         ></span>
   `;
 }
