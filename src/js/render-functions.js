@@ -81,10 +81,10 @@ export function renderPagination(totalPages, currentPage, list,) {
                   data-page="beg"
                   ${isFirstPage ? 'disabled' : ''}>
                   <svg class="left-vector" width="6" height="12">
-                    <use href="/assets/icons/icons.svg#icon-vector"></use>
+                    <use href="/project-17112025/assets/icons/icons.svg#icon-vector"></use>
                   </svg>
                   <svg class="left-vector" width="6" height="24">
-                    <use href="/assets/icons/icons.svg#icon-vector"></use>
+                    <use href="/project-17112025/assets/icons/icons.svg#icon-vector"></use>
                   </svg>
           </button>
       </li>
@@ -93,7 +93,7 @@ export function renderPagination(totalPages, currentPage, list,) {
                   data-page="prev"
                   ${isFirstPage ? 'disabled' : ''}>
                   <svg class="left-vector" width="6" height="12">
-                    <use href="/assets/icons/icons.svg#icon-vector"></use>
+                    <use href="/project-17112025/assets/icons/icons.svg#icon-vector"></use>
                   </svg>
            </button>
       </li>
@@ -119,7 +119,7 @@ export function renderPagination(totalPages, currentPage, list,) {
                   data-page="next"
                   ${isLastPage ? 'disabled' : ''}>
                   <svg class="right-vector" width="6" height="12">
-                    <use href="/assets/icons/icons.svg#icon-vector"></use>
+                    <use href="/project-17112025/assets/icons/icons.svg#icon-vector"></use>
                   </svg>
            </button>
       </li>
@@ -128,10 +128,10 @@ export function renderPagination(totalPages, currentPage, list,) {
                   data-page="end"
                   ${isLastPage ? 'disabled' : ''}>
                   <svg class="right-vector" width="6" height="12">
-                    <use href="/assets/icons/icons.svg#icon-vector"></use>
+                    <use href="/project-17112025/assets/icons/icons.svg#icon-vector"></use>
                   </svg>
                   <svg class="right-vector" width="6" height="12">
-                    <use href="/assets/icons/icons.svg#icon-vector"></use>
+                    <use href="/project-17112025/assets/icons/icons.svg#icon-vector"></use>
                   </svg>
           </button>
       </li>
