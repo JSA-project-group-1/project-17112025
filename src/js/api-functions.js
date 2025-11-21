@@ -43,5 +43,12 @@ export async function fetchExerciseModalById(id = '64f389465ae26083f39b17a2') {
   return response.data;
 }
 
+export async function sendRating(id, ratingData) {
+   
+    const response = await axios.patch(`/exercises/${id}/rating`, ratingData);
+    return response.data;
+}
+
+
 // https://your-energy.b.goit.study/api/filters?filter=Muscles&page=1&limit=12
 // https://your-energy.b.goit.study/api/exercises?bodypart=back&muscles=lats&equipment=barbell&keyword=pull&page=1&limit=10
