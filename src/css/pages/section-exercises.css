@@ -391,21 +391,77 @@ IMAGE AND TEXT STYLES (Universal)
   justify-content: center;
   margin-top: 20px;
 }
-.pagination-control {
-  color: #d4d4d4;
-  border: 1px solid transparent;
+.pagination-controls-list > li:nth-child(2) {
+  margin-right: 14px;
+}
+.pagination-controls-list > li:nth-last-child(2) {
+  margin-left: 14px;
+}
+
+.pagination-arrow-btn,
+.pagination-arrow-btn-active {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 31px;
+  height: 31px;
+  margin: 0 2px;
   border-radius: 50%;
   background: none;
+  user-select: none;
+}
+
+.pagination-arrow-btn {
+  fill: var(--pagination-color);
+  border: 1px solid var(--pagination-color);
+}
+.pagination-arrow-btn-active {
+  fill: var(--main-color);
+  border: 1px solid var(--main-color);
+}
+
+.right-vector {
+  transform: rotate(180deg);
+}
+
+.pagination-control,
+.pagination-control-active {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 31px;
+  border-radius: 50%;
+  background: none;
+  user-select: none;
+}
+.pagination-control {
+  padding: 0 4px;
+  color: var(--pagination-color);
+  border: 1px solid transparent;
 }
 .pagination-control-active {
+  width: 31px;
+  margin: 0 2px;
   color: var(--main-color);
   border: 1px solid var(--main-color);
-  border-radius: 50%;
 }
 
 @media only screen and (min-width: 768px) {
   .pagination-controls-list {
     margin-top: 32px;
+  }
+
+  .pagination-arrow-btn,
+  .pagination-arrow-btn-active {
+    width: 32px;
+    height: 32px;
+  }
+  .pagination-control,
+  .pagination-control-active {
+    height: 32px;
+  }
+  .pagination-control-active {
+    width: 32px;
   }
 }
 
@@ -448,16 +504,14 @@ block-exercises
   line-height: 24px;
   cursor: pointer;
   transition: color 0.2s;
-  vertical-align: middle; 
+  vertical-align: middle;
   display: inline-flex;
   align-items: center;
 }
 
-
 .start-btn:hover {
   color: grey;
 }
-
 
 .title {
   color: #242424;
@@ -469,31 +523,31 @@ block-exercises
   display: flex;
   align-items: center;
   width: 400px;
-  text-transform: capitalize
+  text-transform: capitalize;
 }
 
 .header-left {
-    display: flex;
-    align-items: center; 
+  display: flex;
+  align-items: center;
 }
 
 .header-right {
-    display: flex;
-    align-items: center; 
-    gap: 8px; 
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
 .title .icon {
-    flex-shrink: 0;
-    margin-right: 16px;
-    padding-top: 1px;
+  flex-shrink: 0;
+  margin-right: 16px;
+  padding-top: 1px;
 }
 
 .title .name-text {
-    flex-grow: 1; 
-    white-space: nowrap; 
-    overflow: hidden; 
-    text-overflow: ellipsis; 
+  flex-grow: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .exercise-details-list {
@@ -521,7 +575,7 @@ block-exercises
   font-weight: 400;
   line-height: 18px;
   text-transform: capitalize;
-  overflow: hidden; 
+  overflow: hidden;
   text-overflow: ellipsis;
 }
 
@@ -534,24 +588,23 @@ block-exercises
 }
 
 .icon-star {
-  fill: #EEA10C;
+  fill: #eea10c;
   display: block;
   transform: translateY(-1px);
 }
 
 .rating {
-    display: flex; 
-    align-items: center; 
-    margin-right: 2px;
+  display: flex;
+  align-items: center;
+  margin-right: 2px;
 }
 
-
-.rating, .icon-star {
-    margin-left: 4px; 
+.rating,
+.icon-star {
+  margin-left: 4px;
 }
 
 .icon-arrow-right {
-    stroke: #242424; 
-    fill: none; 
+  stroke: #242424;
+  fill: none;
 }
-
