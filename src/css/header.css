@@ -2,7 +2,8 @@
 
 :root {
   /* ===== fonts ===== */
-  --font-main: 'DM Sans', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-main: 'DM Sans', system-ui, -apple-system, BlinkMacSystemFont,
+    sans-serif;
   --font-family: 'DM Sans', sans-serif; /* з глобальних */
 
   /* ===== header colors ===== */
@@ -36,7 +37,7 @@
 
   --main-color: #242424;
   --second-color: #f4f4f4;
-  
+
   /* ===== global rendering ===== */
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -53,6 +54,7 @@
 .header {
   background-color: var(--color-bg-header);
   font-family: var(--font-main);
+  margin-bottom: 80px;
 }
 
 .header .header-row {
@@ -61,7 +63,6 @@
   justify-content: space-between;
   height: 32px;
   padding-top: 20px;
-  padding-inline: 20px;
 }
 
 /* logo */
@@ -102,11 +103,12 @@
   cursor: pointer;
 }
 
-.header .burger span {
-  width: 22px;
-  height: 2px;
-  border-radius: 1px;
-  background-color: #242424;
+/* новий стиль для SVG всередині бургер-кнопки */
+.header .burger svg {
+  width: 32px;
+  height: 32px;
+  display: block;
+  fill: var(--color-text-header); 
 }
 
 /* MOBILE MENU  */
@@ -155,19 +157,12 @@
   cursor: pointer;
 }
 
-.header .mobile-menu__close::before,
-.header .mobile-menu__close::after {
-  content: '';
-  position: absolute;
-  width: 16px;
-  border-top: 2px solid #f4f4f4;
-}
-
-.header .mobile-menu__close::before {
-  transform: rotate(45deg);
-}
-.header .mobile-menu__close::after {
-  transform: rotate(-45deg);
+/* новий стиль для SVG-іконки X */
+.header .mobile-menu__close svg {
+  width: 32px;
+  height: 32px;
+  display: block;
+  fill: #f4f4f4; /* як були лінії хрестика */
 }
 
 .header .mobile-menu__links {
@@ -219,10 +214,11 @@
 /* ========== TABLET + DESKTOP (спільна база) ========== */
 
 @media (min-width: 768px) {
+  .header {
+    margin-bottom: 100px;
+  }
   .header .header-row {
     height: 52px;
-    padding: 0;
-    margin: 0 auto;
     position: relative;
   }
 
@@ -257,29 +253,27 @@
   }
 
   .header .nav-link {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-  padding: 6px 12px; 
-  height: 36px;
-  border-radius: 30px;
+    padding: 6px 12px;
+    height: 36px;
+    border-radius: 30px;
 
-  font-size: 16px;
-  font-weight: 400;
-  line-height: 24px;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
 
-  text-decoration: none;
-  color: var(--color-pill-text);
+    text-decoration: none;
+    color: var(--color-pill-text);
 
-  transition: background-color 0.2s ease, color 0.2s ease;
-}
+    transition: background-color 0.2s ease, color 0.2s ease;
+  }
 
   .header .nav-link--active {
     background: #f4f4f4;
     color: #242424;
-
-   
   }
 
   .header .right-side {
@@ -309,11 +303,11 @@
     font-size: 14px;
   }
   .social-link svg {
-  width: 28px;
-  height: 28px;
-  opacity: 0.8;
-  fill: currentColor;
-}
+    width: 28px;
+    height: 28px;
+    opacity: 0.8;
+    fill: currentColor;
+  }
   .header .social-link:hover {
     background-color: var(--color-social-hover-bg);
     color: var(--color-social-hover-icon);
@@ -322,13 +316,14 @@
 
 /* ========== TABLET  ========== */
 
-@media (min-width: 768px) and (max-width: 1023px) {
+@media (min-width: 768px) and (max-width: 1440px) {
   .header .header-row {
     max-width: 768px;
+    padding-top: 24px;
   }
 
   .header .nav-list {
-    width: 233px;          /* ширина капсули з Figma */
+    width: 233px; /* ширина капсули з Figma */
   }
 
   /* Відстань: logo → capsule = 103px */
@@ -344,13 +339,15 @@
 
 /* ========== DESKTOP (контейнер 1276, відстані 423 / 400) ========== */
 
-@media (min-width: 1024px) {
-  .header .header-row {
-    max-width: 1276px;
+@media (min-width: 1440px) {
+  .header {
+    margin-bottom: 90px;
   }
-
+  .header .header-row {
+    padding-top: 28px;
+  }
   .header .nav-list {
-    width: 265px;          /* ширша десктопна капсула */
+    width: 265px; /* ширша десктопна капсула */
   }
 
   /* Відстань: logo → capsule = 423px */

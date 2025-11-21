@@ -125,7 +125,7 @@ PLACEHOLDER STYLES WHEN FOCUSING
 }
 .filters-list-item::after {
   content: '';
-  width: 40px;
+  width: 100%;
   height: 4px;
   background-color: rgba(36, 36, 36, 0.6);
 
@@ -386,29 +386,6 @@ IMAGE AND TEXT STYLES (Universal)
   padding: 16px;
 }
 
-.pagination-controls-list {
-  display: flex;
-  justify-content: center;
-  margin-top: 20px;
-}
-.pagination-control {
-  color: #d4d4d4;
-  border: 1px solid transparent;
-  border-radius: 50%;
-  background: none;
-}
-.pagination-control-active {
-  color: var(--main-color);
-  border: 1px solid var(--main-color);
-  border-radius: 50%;
-}
-
-@media only screen and (min-width: 768px) {
-  .pagination-controls-list {
-    margin-top: 32px;
-  }
-}
-
 /* =======================
 block-exercises
    ======================= */
@@ -448,16 +425,14 @@ block-exercises
   line-height: 24px;
   cursor: pointer;
   transition: color 0.2s;
-  vertical-align: middle; 
+  vertical-align: middle;
   display: inline-flex;
   align-items: center;
 }
 
-
 .start-btn:hover {
   color: grey;
 }
-
 
 .title {
   color: #242424;
@@ -469,31 +444,31 @@ block-exercises
   display: flex;
   align-items: center;
   width: 400px;
-  text-transform: capitalize
+  text-transform: capitalize;
 }
 
 .header-left {
-    display: flex;
-    align-items: center; 
+  display: flex;
+  align-items: center;
 }
 
 .header-right {
-    display: flex;
-    align-items: center; 
-    gap: 8px; 
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
 .title .icon {
-    flex-shrink: 0;
-    margin-right: 16px;
-    padding-top: 1px;
+  flex-shrink: 0;
+  margin-right: 16px;
+  padding-top: 1px;
 }
 
 .title .name-text {
-    flex-grow: 1; 
-    white-space: nowrap; 
-    overflow: hidden; 
-    text-overflow: ellipsis; 
+  flex-grow: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .exercise-details-list {
@@ -521,7 +496,7 @@ block-exercises
   font-weight: 400;
   line-height: 18px;
   text-transform: capitalize;
-  overflow: hidden; 
+  overflow: hidden;
   text-overflow: ellipsis;
 }
 
@@ -534,24 +509,33 @@ block-exercises
 }
 
 .icon-star {
-  fill: #EEA10C;
+  fill: #eea10c;
   display: block;
   transform: translateY(-1px);
 }
 
 .rating {
-    display: flex; 
-    align-items: center; 
-    margin-right: 2px;
+  display: flex;
+  align-items: center;
+  margin-right: 2px;
 }
 
-
-.rating, .icon-star {
-    margin-left: 4px; 
+.rating,
+.icon-star {
+  margin-left: 4px;
 }
 
 .icon-arrow-right {
-    stroke: #242424; 
-    fill: none; 
+  stroke: #242424;
+  fill: none;
 }
 
+.exercise-rating-btn {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  height: 24px;
+  width: 24px;
+  margin-right: 10px;
+}

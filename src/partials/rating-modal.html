@@ -1,0 +1,107 @@
+<div class="backdrop is-hidden" data-modal-rating>
+  <div class="modal modal-rating">
+    <button class="close-btn" type="button" data-modal-rating-close>
+      <svg width="24" height="24">
+        <use href="./assets/icons/icons-not-min.svg#icon-x-white"></use>
+      </svg>
+    </button>
+
+    <h3 class="rating-title">Rating</h3>
+
+    <div class="rating-stars-box">
+      <span class="rating-value">0.0</span>
+
+      <div class="rating-stars" data-rating-stars>
+        <input
+          type="radio"
+          name="rating"
+          id="star-5"
+          value="5"
+          class="rating-radio visually-hidden"
+        />
+        <label for="star-5" class="rating-star-label">
+          <svg class="star-icon" width="24" height="24">
+            <use href="./assets/icons/icons-not-min.svg#icon-star"></use>
+          </svg>
+        </label>
+
+        <input
+          type="radio"
+          name="rating"
+          id="star-4"
+          value="4"
+          class="rating-radio visually-hidden"
+        />
+        <label for="star-4" class="rating-star-label">
+          <svg class="star-icon" width="24" height="24">
+            <use href="./assets/icons/icons-not-min.svg#icon-star"></use>
+          </svg>
+        </label>
+
+        <input
+          type="radio"
+          name="rating"
+          id="star-3"
+          value="3"
+          class="rating-radio visually-hidden"
+        />
+        <label for="star-3" class="rating-star-label">
+          <svg class="star-icon" width="24" height="24">
+            <use href="./assets/icons/icons-not-min.svg#icon-star"></use>
+          </svg>
+        </label>
+
+        <input
+          type="radio"
+          name="rating"
+          id="star-2"
+          value="2"
+          class="rating-radio visually-hidden"
+        />
+        <label for="star-2" class="rating-star-label">
+          <svg class="star-icon" width="24" height="24">
+            <use href="./assets/icons/icons-not-min.svg#icon-star"></use>
+          </svg>
+        </label>
+
+        <input
+          type="radio"
+          name="rating"
+          id="star-1"
+          value="1"
+          class="rating-radio visually-hidden"
+        />
+        <label for="star-1" class="rating-star-label">
+          <svg class="star-icon" width="24" height="24">
+            <use href="./assets/icons/icons-not-min.svg#icon-star"></use>
+          </svg>
+        </label>
+      </div>
+    </div>
+
+    <form class="rating-form" autocomplete="off" data-rating-form>
+      <div class="input-wrapper">
+        <input
+          class="form-input"
+          type="email"
+          name="email"
+          placeholder="Email"
+          required
+          pattern="^\w+(.\w+)?@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$"
+          title="Формат: example@mail.com"
+        />
+      </div>
+
+      <div class="input-wrapper">
+        <textarea
+          class="form-textarea"
+          name="review"
+          placeholder="Your comment"
+          required
+        ></textarea>
+      </div>
+
+      <button class="submit-btn" type="submit">Send</button>
+    </form>
+  </div>
+</div>

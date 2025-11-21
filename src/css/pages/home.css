@@ -2,6 +2,7 @@
 @import url('./block-quote.css');
 @import url('./section-exercises.css');
 @import url('./modal-exercise.css');
+@import url('./pagination.css');
 
 .quote-categories-box {
   display: flex;

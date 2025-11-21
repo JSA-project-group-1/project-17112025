@@ -6,6 +6,8 @@ import {
 } from './modal-exercise-markup.js';
 import { ModalBox } from './modal-class-box.js';
 
+import { openRatingModal } from './rating-modal.js';
+
 const openModalSelector = '[data-modal-exercise="open"]';
 const closeModalSelector = '[data-modal-exercise="close"]';
 const FAVORITES_KEY = 'favorite_workouts';
@@ -70,8 +72,8 @@ function setupModalEventListeners(modalBox, exerciseData) {
   );
 
   if (giveRatingBtnRef) {
-    giveRatingBtnRef.addEventListener('click', event =>
-      handleGiveRatingBtnClick(event, modalBox)
+    giveRatingBtnRef.addEventListener('click', () =>
+      handleGiveRatingBtnClick(exerciseData._id, modalBox)
     );
   }
 
@@ -88,8 +90,8 @@ function setupModalEventListeners(modalBox, exerciseData) {
   }
 }
 
-function handleGiveRatingBtnClick(_, modalBox) {
-  modalBox.instance.close();
+function handleGiveRatingBtnClick(exerciseId, modalBox) {
+  openRatingModal(exerciseId, modalBox);
 }
 
 function handleAddToFavoriteBtnClick(_, exerciseData, addToFavoriteBtnRef) {
@@ -97,30 +99,42 @@ function handleAddToFavoriteBtnClick(_, exerciseData, addToFavoriteBtnRef) {
   const exists = favorites.some(item => item._id === exerciseData._id);
 
   if (exists) {
-    processRemovalsFromFavorites(exerciseData._id, addToFavoriteBtnRef, favorites);
+    processRemovalsFromFavorites(
+      exerciseData._id,
+      addToFavoriteBtnRef,
+      favorites
+    );
     return;
   }
 
   processAddingToFavorites(exerciseData, addToFavoriteBtnRef, favorites);
 }
 
-function processAddingToFavorites(exerciseData, addToFavoriteBtnRef, favorites) {
+function processAddingToFavorites(
+  exerciseData,
+  addToFavoriteBtnRef,
+  favorites
+) {
   addToFavoriteBtnRef.innerHTML = createRemoveFromFavoritesMarkup();
 
   const minifiedExercise = {
-  _id: exerciseData._id,
-  time: exerciseData.time,
-  target: exerciseData.target,
-  name: exerciseData.name,
-  burnedCalories: exerciseData.burnedCalories,
-  bodyPart: exerciseData.bodyPart,
-};
+    _id: exerciseData._id,
+    time: exerciseData.time,
+    target: exerciseData.target,
+    name: exerciseData.name,
+    burnedCalories: exerciseData.burnedCalories,
+    bodyPart: exerciseData.bodyPart,
+  };
 
-favorites.push(minifiedExercise);
+  favorites.push(minifiedExercise);
   saveFavoritesToStorage(favorites);
 }
 
-function processRemovalsFromFavorites(exerciseId, addToFavoriteBtnRef, favorites) {
+function processRemovalsFromFavorites(
+  exerciseId,
+  addToFavoriteBtnRef,
+  favorites
+) {
   const newFavorites = favorites.filter(item => item._id !== exerciseId);
 
   if (newFavorites.length === 0) {

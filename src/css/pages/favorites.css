@@ -1,4 +1,5 @@
 @import url('./section-favorites.css');
+@import url('./block-quote-fav.css');
 .quote-favorites-box {
   display: flex;
 }
