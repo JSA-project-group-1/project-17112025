@@ -1,28 +1,48 @@
-import"./assets/header-ldqI37b5.js";import{i as f}from"./assets/vendor-D2ogNlHo.js";const v="favorite_workouts",l=12;let r=[],n=1;function g(){const t=localStorage.getItem(v);if(!t)return[];try{const e=JSON.parse(t);return Array.isArray(e)?e:[]}catch(e){return console.error("Failed to parse favorites from LS:",e),f.error({message:"Favorites data is corrupted. Clearing storage.",position:"topRight",maxWidth:600}),localStorage.removeItem(v),[]}}function m(t){localStorage.setItem(v,JSON.stringify(t))}async function h(){const e=await fetch("https://your-energy.b.goit.study/api/exercises?page=1&limit=100");if(!e.ok)throw new Error(`HTTP error: ${e.status}`);const o=await e.json();if(Array.isArray(o))return o;if(Array.isArray(o.results))return o.results;if(Array.isArray(o.data))return o.data;throw new Error("Unexpected API response format")}function y(){let t=document.querySelector("[data-favorites-list]");if(t||(t=document.getElementById("favorites-list")),!t){const e=document.querySelector(".favorites-test-controls")||document.querySelector("section .container");if(!e)return null;t=document.createElement("div"),t.id="favorites-list",t.classList.add("favorites-list"),e.insertAdjacentElement("afterend",t)}return t}function b(t){const{_id:e,name:o,burnedCalories:i,time:a,bodyPart:c,target:d}=t;return`
-    <article class="favorite-card" data-id="${e}">
-      <div class="favorite-card-header">
-        <span class="favorite-card-label">WORKOUT</span>
+import{r as m}from"./assets/modal-exercise-BjHNi18i.js";import{i as v}from"./assets/vendor-D2ogNlHo.js";const p="favorite_workouts",d=12;let a=[],s=1;function g(){const t=localStorage.getItem(p);if(!t)return[];try{const e=JSON.parse(t);return Array.isArray(e)?e:[]}catch(e){return console.error("Failed to parse favorites from LS:",e),v.error({message:"Favorites data is corrupted. Clearing storage.",position:"topRight",maxWidth:600}),localStorage.removeItem(p),[]}}function b(t){localStorage.setItem(p,JSON.stringify(t))}function h(){let t=document.querySelector("[data-favorites-list]");if(t||(t=document.getElementById("favorites-list")),t)t.classList.add("favorites-list","exercises-list");else{const e=document.querySelector("section .container");if(!e)return null;t=document.createElement("div"),t.id="favorites-list",t.classList.add("favorites-list","exercises-list"),e.appendChild(t)}return t}function y(t){const{_id:e,name:o,burnedCalories:n,time:c,bodyPart:r,target:l}=t;return`
+    <li class="exercises-item favorite-card favorites-item" data-id="${e}">
+      <div class="header">
+        <div class="workout-rating">
+          <span class="type">WORKOUT</span>
+          <button
+            type="button"
+            class="favorite-remove-btn"
+          >
+            Remove
+          </button>
+        </div>
+
         <button
+          class="start-btn"
           type="button"
-          class="favorite-remove-btn"
+          data-modal-exercise="open"
+          data-exercise-id="${e}"
         >
-          Remove card
+          Start
         </button>
       </div>
 
-      <h3 class="favorite-card-title">${o}</h3>
+      <div class="title">
+        <span class="icon"></span>${o}
+      </div>
 
-      <p class="favorite-card-text">
-        Burned calories: <span>${i} / ${a} min</span>
-      </p>
-      <p class="favorite-card-text">
-        Body part: <span>${c}</span>
-      </p>
-      <p class="favorite-card-text">
-        Target: <span>${d}</span>
-      </p>
-    </article>
-  `}function k(t,e){return t<=1?"":`
+      <div class="details">
+        <ul class="exercise-details-list">
+          <li class="calories">
+            <span class="calories-name">Burned calories</span>
+            <span class="calories-value">${n} / ${c} min</span>
+          </li>
+          <li class="body-part">
+            <span class="body-part-name">Body part:</span>
+            <span class="body-part-value">${r}</span>
+          </li>
+          <li class="target">
+            <span class="target-name">Target:</span>
+            <span class="target-value">${l}</span>
+          </li>
+        </ul>
+      </div>
+    </li>
+  `}function x(t,e){return t<=1?"":`
     <div class="favorites-pagination">
       <button
         type="button"
@@ -40,5 +60,5 @@ import"./assets/header-ldqI37b5.js";import{i as f}from"./assets/vendor-D2ogNlHo.
         ${e===t?"disabled":""}
       >&gt;</button>
     </div>
-  `}function u(){const t=y();if(!t)return;if(!r.length){t.innerHTML="<p>No favorite workouts yet.</p>";const p=document.querySelector(".favorites-pagination");p&&p.remove();return}const e=Math.max(1,Math.ceil(r.length/l));n>e&&(n=e);const o=(n-1)*l,i=o+l,c=r.slice(o,i).map(b).join(""),d=k(e,n);t.innerHTML=c;const s=document.querySelector(".favorites-pagination");s&&s.remove(),t.insertAdjacentHTML("afterend",d)}async function x(){try{const t=await h();r=g();const e=new Set(r.map(a=>a._id)),o=t.find(a=>!e.has(a._id));if(!o){f.info({title:"No more workouts",message:"All workouts from API are already in favorites.",position:"topRight",maxWidth:600}),console.log("All workouts from API are already in favorites.");return}r.push(o),m(r),n=Math.max(1,Math.ceil(r.length/l)),u(),f.success({title:o.name,message:"Workout added to favorites.",position:"topRight",maxWidth:600}),console.log("Added workout:",o),console.log("Favorites after add:",r)}catch(t){console.error("Failed to add favorite:",t),f.error({title:"Error",message:"Failed to add workout to favorites.",position:"topRight",maxWidth:600})}}function A(t){const e=t.target.closest(".favorite-remove-btn");if(e){const i=e.closest(".favorite-card");if(!i)return;const a=i.dataset.id;if(!a)return;const c=r.find(s=>s._id===a),d=r.filter(s=>s._id!==a);if(d.length===r.length)return;if(r=d,m(r),!r.length)n=1,u();else{const s=Math.max(1,Math.ceil(r.length/l));n>s&&(n=s),u()}f.success({title:c?c.name:"Workout",message:"Workout removed from favorites.",position:"topRight",maxWidth:600}),console.log("Removed id:",a),console.log("Favorites after remove:",r);return}const o=t.target.closest(".favorites-page-btn");if(o){const i=o.dataset.page,a=Math.max(1,Math.ceil(r.length/l));i==="prev"&&n>1?n-=1:i==="next"&&n<a&&(n+=1),u()}}function w(){const t=document.getElementById("favorites-add-btn");t&&t.addEventListener("click",x),document.addEventListener("click",A),r=g(),n=1,u(),console.log("Favorites page initialized. Current favorites:",r)}w();
+  `}function f(){const t=h();if(!t)return;if(!a.length){t.innerHTML="<p>No favorite workouts yet.</p>";const i=document.querySelector(".favorites-pagination");i&&i.remove();return}const e=Math.max(1,Math.ceil(a.length/d));s>e&&(s=e);const o=(s-1)*d,n=o+d,r=a.slice(o,n).map(y).join(""),l=x(e,s);t.innerHTML=r;const u=document.querySelector(".favorites-pagination");u&&u.remove(),t.insertAdjacentHTML("afterend",l)}function S(){const t=g(),e=JSON.stringify(a),o=JSON.stringify(t);if(e!==o){if(a=t,!a.length)s=1;else{const n=Math.max(1,Math.ceil(a.length/d));s>n&&(s=n)}f()}}function M(t){if(t.target.closest('[data-modal-exercise="close"]')){S();return}const o=t.target.closest(".favorite-remove-btn");if(o){const c=o.closest(".favorite-card");if(!c)return;const r=c.dataset.id;if(!r)return;const l=a.find(i=>i._id===r),u=a.filter(i=>i._id!==r);if(u.length===a.length)return;if(a=u,b(a),!a.length)s=1;else{const i=Math.max(1,Math.ceil(a.length/d));s>i&&(s=i)}f(),v.success({title:l?l.name:"Workout",message:"Workout removed from favorites.",position:"topRight",maxWidth:600});return}const n=t.target.closest(".favorites-page-btn");if(n){const c=n.dataset.page,r=Math.max(1,Math.ceil(a.length/d));c==="prev"&&s>1?s-=1:c==="next"&&s<r&&(s+=1),f()}}function F(){document.addEventListener("click",M),a=g(),s=1,m(),f()}F();
 //# sourceMappingURL=favorites.js.map
