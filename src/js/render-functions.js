@@ -25,7 +25,7 @@ export function renderExercises(exercises, list) {
       return `
     <li class="exercises-item">
     <div class="header-card">
-       <div class="header-left"> 
+       <div class="header-left">
         <span class="type">WORKOUT</span>
         <span class="rating">${rating}</span>
         <svg class="icon-star" width="18" height="18">
@@ -68,9 +68,38 @@ export function renderExercises(exercises, list) {
   list.innerHTML = markup;
 }
 
-export function renderPagination(pages, activePage, list,) {
+export function renderPagination(totalPages, currentPage, list,) {
+  const activePage = Number(currentPage);
+  const pages = Number(totalPages);
   const pagesData = Array.from({ length: pages }, (_, i) => i + 1);
-  const markup = pagesData
+  const isFirstPage = activePage === 1;
+  const isLastPage = activePage === pages;
+
+  const prevButtonsMarkup = `
+      <li class="pagination-control-item">
+          <button class=" ${isFirstPage ? 'pagination-arrow-btn' : 'pagination-arrow-btn-active'}"
+                  data-page="beg"
+                  ${isFirstPage ? 'disabled' : ''}>
+                  <svg class="left-vector" width="6" height="12">
+                    <use href="/assets/icons/icons.svg#icon-vector"></use>
+                  </svg>
+                  <svg class="left-vector" width="6" height="24">
+                    <use href="/assets/icons/icons.svg#icon-vector"></use>
+                  </svg>
+          </button>
+      </li>
+      <li class="pagination-control-item">
+          <button class=" ${isFirstPage ? 'pagination-arrow-btn' : 'pagination-arrow-btn-active'}"
+                  data-page="prev"
+                  ${isFirstPage ? 'disabled' : ''}>
+                  <svg class="left-vector" width="6" height="12">
+                    <use href="/assets/icons/icons.svg#icon-vector"></use>
+                  </svg>
+           </button>
+      </li>
+  `;
+
+  const pagesMarkup = pagesData
     .map(page => {
       return `
           <li class="pagination-control-item">
@@ -82,7 +111,34 @@ export function renderPagination(pages, activePage, list,) {
       `;
     })
     .join('');
-  list.innerHTML = markup;
+
+
+  const nextButtonsMarkup = `
+      <li class="pagination-control-item">
+          <button class="pagination-arrow-btn ${isLastPage ? 'pagination-arrow-btn' : 'pagination-arrow-btn-active'}"
+                  data-page="next"
+                  ${isLastPage ? 'disabled' : ''}>
+                  <svg class="right-vector" width="6" height="12">
+                    <use href="/assets/icons/icons.svg#icon-vector"></use>
+                  </svg>
+           </button>
+      </li>
+      <li class="pagination-control-item">
+          <button class="pagination-arrow-btn ${isLastPage ? 'pagination-arrow-btn' : 'pagination-arrow-btn-active'}"
+                  data-page="end"
+                  ${isLastPage ? 'disabled' : ''}>
+                  <svg class="right-vector" width="6" height="12">
+                    <use href="/assets/icons/icons.svg#icon-vector"></use>
+                  </svg>
+                  <svg class="right-vector" width="6" height="12">
+                    <use href="/assets/icons/icons.svg#icon-vector"></use>
+                  </svg>
+          </button>
+      </li>
+  `;
+
+  const finalMarkup = prevButtonsMarkup + pagesMarkup + nextButtonsMarkup;
+  list.innerHTML = finalMarkup;
 }
 
 export function renderFilter(options, activeOption, list) {
