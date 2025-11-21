@@ -171,10 +171,12 @@ async function onCategoryClick(event) {
       categoriesList.innerHTML = '';
       paginationList.innerHTML = '';
       renderExercises(results, exercisesList);
-      renderPagination(exercisesPages, exercisesPage, paginationList);
-      searchForm.classList.remove('visually-hidden');
-      slash.classList.remove('visually-hidden');
+      if (results.length > 0) {
+        renderPagination(exercisesPages, exercisesPage, paginationList);
+        searchForm.classList.remove('visually-hidden');
+      }
       currentCategoryP.textContent = currentCategory;
+      slash.classList.remove('visually-hidden');
     } catch (error) {
       iziToast.error({
         icon: '',
