@@ -101,18 +101,76 @@ export function renderPagination(totalPages, currentPage, list,) {
       </li>
   `;
 
-  const pagesMarkup = pagesData
-    .map(page => {
-      return `
-          <li class="pagination-control-item">
-            <button class="${activePage === page
-          ? 'pagination-control-active'
-          : 'pagination-control'
-        }" data-page="${page}">${page}</button>
-          </li>
-      `;
-    })
-    .join('');
+  const pagesMarkup =
+    `
+  ${isFirstPage ? `
+    <li class="pagination-control-item">
+      <button class="pagination-control-active" data-page="1">1</button>
+    </li>
+    ${pages > 1 ? `
+      <li class="pagination-control-item">
+        <button class="pagination-control" data-page="2">2</button>
+      </li>
+      `: ''}
+    ${pages > 2 ? `
+      <li class="pagination-control-item">
+        <button class="pagination-control" data-page="3">3</button>
+      </li>
+      `: ''}
+    ${pages > 3 ? `
+      <li class="pagination-control-item">
+        <p class="pagination-control">...</p>
+      </li>
+    `: ''}
+  `: ''}
+
+  ${!isFirstPage && isLastPage ? `
+    ${pages > 3 ? `
+      <li class="pagination-control-item">
+        <p class="pagination-control">...</p>
+      </li>
+    `: ''}
+    ${pages > 2 ? `
+      <li class="pagination-control-item">
+        <button class="pagination-control" data-page="${activePage - 2}">${activePage - 2}</button>
+      </li>
+    `: ''}
+    ${pages > 1 ? `
+      <li class="pagination-control-item">
+        <button class="pagination-control" data-page="${activePage - 1}">${activePage - 1}</button>
+      </li>
+    `: ''}
+    <li class="pagination-control-item">
+      <button class="pagination-control-active" data-page="${activePage}">${activePage}</button>
+    </li>
+  `: ''}
+
+  ${!isFirstPage && !isLastPage ? `
+    ${activePage > 2 ? `
+      <li class="pagination-control-item">
+        <p class="pagination-control">...</p>
+      </li>
+    `: ''}
+
+    <li class="pagination-control-item">
+        <button class="pagination-control" data-page="${activePage - 1}">${activePage - 1}</button>
+    </li>
+
+    <li class="pagination-control-item">
+      <button class="pagination-control-active" data-page="${activePage}">${activePage}</button>
+    </li>
+
+    <li class="pagination-control-item">
+        <button class="pagination-control" data-page="${activePage + 1}">${activePage + 1}</button>
+    </li>
+
+    ${(pages - activePage) > 2 ? `
+      <li class="pagination-control-item">
+        <p class="pagination-control">...</p>
+      </li>
+    `: ''}
+  `: ''}
+  `
 
 
   const nextButtonsMarkup = `
