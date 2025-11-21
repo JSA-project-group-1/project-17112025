@@ -1,10 +1,12 @@
 import iziToast from "izitoast";
 import "izitoast/dist/css/iziToast.min.css";
 
-
-import '/css/pages/favorites.css';
-import './header.js';
-
+import "/css/pages/favorites.css";
+import "/css/pages/modal-exercise.css";
+import "/css/pages/section-exercises.css";
+import "./header.js";
+import "./modal-exercise.js";
+import { renderQuoteOfTheDay } from "./quote-api-localStorage.js";
 
 const FAVORITES_KEY = "favorite_workouts";
 const ITEMS_PER_PAGE = 12;
@@ -37,27 +39,6 @@ function saveFavoritesToStorage(favorites) {
   localStorage.setItem(FAVORITES_KEY, JSON.stringify(favorites));
 }
 
-// ====== API ======
-
-// Тягнемо ВЕСЬ список вправ з першої сторінки
-async function fetchAllWorkouts() {
-  const url =
-    "https://your-energy.b.goit.study/api/exercises?page=1&limit=100";
-
-  const response = await fetch(url);
-  if (!response.ok) {
-    throw new Error(`HTTP error: ${response.status}`);
-  }
-
-  const data = await response.json();
-
-  if (Array.isArray(data)) return data;
-  if (Array.isArray(data.results)) return data.results;
-  if (Array.isArray(data.data)) return data.data;
-
-  throw new Error("Unexpected API response format");
-}
-
 // ====== РЕНДЕР ======
 
 function getFavoritesContainer() {
@@ -68,55 +49,67 @@ function getFavoritesContainer() {
   }
 
   if (!container) {
-    const controls =
-      document.querySelector(".favorites-test-controls") ||
-      document.querySelector("section .container");
-
-    if (!controls) return null;
+    const parent = document.querySelector("section .container");
+    if (!parent) return null;
 
     container = document.createElement("div");
     container.id = "favorites-list";
-    container.classList.add("favorites-list");
-    controls.insertAdjacentElement("afterend", container);
+    container.classList.add("favorites-list", "exercises-list");
+    parent.appendChild(container);
+  } else {
+    container.classList.add("favorites-list", "exercises-list");
   }
 
   return container;
 }
 
 function createWorkoutCardMarkup(workout) {
-  const {
-    _id,
-    name,
-    burnedCalories,
-    time,
-    bodyPart,
-    target,
-  } = workout;
+  const { _id, name, burnedCalories, time, bodyPart, target } = workout;
 
   return `
-    <article class="favorite-card" data-id="${_id}">
-      <div class="favorite-card-header">
-        <span class="favorite-card-label">WORKOUT</span>
+    <li class="exercises-item favorite-card favorites-item" data-id="${_id}">
+      <div class="header">
+        <div class="workout-rating">
+          <span class="type">WORKOUT</span>
+          <button
+            type="button"
+            class="favorite-remove-btn"
+          >
+            Remove
+          </button>
+        </div>
+
         <button
+          class="start-btn"
           type="button"
-          class="favorite-remove-btn"
+          data-modal-exercise="open"
+          data-exercise-id="${_id}"
         >
-          Remove card
+          Start
         </button>
       </div>
 
-      <h3 class="favorite-card-title">${name}</h3>
+      <div class="title">
+        <span class="icon"></span>${name}
+      </div>
 
-      <p class="favorite-card-text">
-        Burned calories: <span>${burnedCalories} / ${time} min</span>
-      </p>
-      <p class="favorite-card-text">
-        Body part: <span>${bodyPart}</span>
-      </p>
-      <p class="favorite-card-text">
-        Target: <span>${target}</span>
-      </p>
-    </article>
+      <div class="details">
+        <ul class="exercise-details-list">
+          <li class="calories">
+            <span class="calories-name">Burned calories</span>
+            <span class="calories-value">${burnedCalories} / ${time} min</span>
+          </li>
+          <li class="body-part">
+            <span class="body-part-name">Body part:</span>
+            <span class="body-part-value">${bodyPart}</span>
+          </li>
+          <li class="target">
+            <span class="target-name">Target:</span>
+            <span class="target-value">${target}</span>
+          </li>
+        </ul>
+      </div>
+    </li>
   `;
 }
 
@@ -173,10 +166,7 @@ function renderFavoritesList() {
   const endIndex = startIndex + ITEMS_PER_PAGE;
   const itemsForPage = favoritesState.slice(startIndex, endIndex);
 
-  const cardsMarkup = itemsForPage
-    .map(createWorkoutCardMarkup)
-    .join("");
-
+  const cardsMarkup = itemsForPage.map(createWorkoutCardMarkup).join("");
   const paginationMarkup = createPaginationMarkup(totalPages, currentPage);
 
   container.innerHTML = cardsMarkup;
@@ -187,62 +177,40 @@ function renderFavoritesList() {
   container.insertAdjacentHTML("afterend", paginationMarkup);
 }
 
-// ====== ЛОГІКА ДОДАВАННЯ ======
+// ====== СИНХРОНІЗАЦІЯ ПІСЛЯ ЗАКРИТТЯ МОДАЛКИ ======
 
-async function onAddBtnClick() {
-  try {
-    const workouts = await fetchAllWorkouts();
+function syncFavoritesFromStorageIfChanged() {
+  const newState = readFavoritesFromStorage();
 
-    favoritesState = readFavoritesFromStorage();
-    const favoriteIds = new Set(favoritesState.map(w => w._id));
+  const prev = JSON.stringify(favoritesState);
+  const next = JSON.stringify(newState);
 
-    const nextWorkout = workouts.find(w => !favoriteIds.has(w._id));
+  if (prev === next) return;
 
-    if (!nextWorkout) {
-      iziToast.info({
-        title: "No more workouts",
-        message: "All workouts from API are already in favorites.",
-        position: "topRight",
-        maxWidth: 600,
-      });
-      console.log("All workouts from API are already in favorites.");
-      return;
-    }
+  favoritesState = newState;
 
-    favoritesState.push(nextWorkout);
-    saveFavoritesToStorage(favoritesState);
-
+  if (!favoritesState.length) {
+    currentPage = 1;
+  } else {
     const totalPages = Math.max(
       1,
       Math.ceil(favoritesState.length / ITEMS_PER_PAGE)
     );
-    currentPage = totalPages;
-
-    renderFavoritesList();
-
-    iziToast.success({
-      title: nextWorkout.name,
-      message: "Workout added to favorites.",
-      position: "topRight",
-      maxWidth: 600,
-    });
-
-    console.log("Added workout:", nextWorkout);
-    console.log("Favorites after add:", favoritesState);
-  } catch (err) {
-    console.error("Failed to add favorite:", err);
-    iziToast.error({
-      title: "Error",
-      message: "Failed to add workout to favorites.",
-      position: "topRight",
-      maxWidth: 600,
-    });
+    if (currentPage > totalPages) currentPage = totalPages;
   }
+
+  renderFavoritesList();
 }
 
-// ====== ЛОГІКА ВИДАЛЕННЯ + ПАГІНАЦІЯ ======
+// ====== ВИДАЛЕННЯ + ПАГІНАЦІЯ + ЗАКРИТТЯ МОДАЛКИ ======
 
 function onFavoritesListClick(event) {
+  const closeModalBtn = event.target.closest('[data-modal-exercise="close"]');
+  if (closeModalBtn) {
+    syncFavoritesFromStorageIfChanged();
+    return;
+  }
+
   const removeBtn = event.target.closest(".favorite-remove-btn");
   if (removeBtn) {
     const card = removeBtn.closest(".favorite-card");
@@ -265,15 +233,15 @@ function onFavoritesListClick(event) {
 
     if (!favoritesState.length) {
       currentPage = 1;
-      renderFavoritesList();
     } else {
       const totalPages = Math.max(
         1,
         Math.ceil(favoritesState.length / ITEMS_PER_PAGE)
       );
       if (currentPage > totalPages) currentPage = totalPages;
-      renderFavoritesList();
     }
+
+    renderFavoritesList();
 
     iziToast.success({
       title: removed ? removed.name : "Workout",
@@ -282,8 +250,6 @@ function onFavoritesListClick(event) {
       maxWidth: 600,
     });
 
-    console.log("Removed id:", workoutId);
-    console.log("Favorites after remove:", favoritesState);
     return;
   }
 
@@ -305,23 +271,17 @@ function onFavoritesListClick(event) {
   }
 }
 
-// ====== ІНІЦІАЛІЗАЦІЯ СТОРІНКИ ======
+// ====== INIT ======
 
 function initFavoritesPage() {
-  const addBtn = document.getElementById("favorites-add-btn");
-
-  if (addBtn) {
-    addBtn.addEventListener("click", onAddBtnClick);
-  }
-
-  // слухаємо кліки по всьому документу:
   document.addEventListener("click", onFavoritesListClick);
 
   favoritesState = readFavoritesFromStorage();
   currentPage = 1;
-  renderFavoritesList();
 
-  console.log("Favorites page initialized. Current favorites:", favoritesState);
+  renderQuoteOfTheDay();
+
+  renderFavoritesList();
 }
 
 initFavoritesPage();
