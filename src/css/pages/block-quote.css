@@ -1,22 +1,202 @@
-.quote-block {
+.block-quote-info {
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
 }
+
 .quote-card {
+  display: flex;
+  max-width: 335px;
+  margin-bottom: 20px;
+  padding: 20px;
+  background-color: var(--main-color);
+  border-radius: 20px;
 }
+
 .quote-icon-man {
+  padding: 6px 7px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  fill: var(--second-color);
+  border-radius: 32px;
+  background: var(--stars-color);
 }
+
+.quote-content {
+  margin-left: 20px;
+}
+
 .quote-title {
+  margin-bottom: 8px;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 1;
+  color: var(--second-color);
 }
+
 .quote-icon-comma {
+  fill: var(--second-color);
 }
-.quote-api-text {
+
+.quote-text {
+  margin-bottom: 16px;
+  color: var(--quote-color);
+  font-size: 14px;
+  line-height: 1.28;
 }
+
+.quote-author {
+  color: var(--second-color);
+  font-size: 14px;
+  line-height: 1.28;
+}
+
 .quote-img {
+  margin-bottom: 20px;
+  border-radius: 20px;
+  flex-shrink: 0;
 }
+
 .daily-norm {
+  width: 335px;
+  height: 201px;
+  padding: 20px;
+  display: flex;
+  gap: 18px;
+  border-radius: 20px;
+  background-color: var(--white-color);
 }
+
 .icon-dumbbells {
+  padding: 6px;
+  flex-shrink: 0;
+  background-color: var(--main-color);
+  fill: var(--second-color);
+  border-radius: 50%;
 }
+
 .daily-norm-title {
+  margin-bottom: 2px;
+  color: var(--main-color);
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 1;
 }
+
 .daily-norm-subtitle {
+  margin-bottom: 16px;
+  color: rgba(36, 36, 36, 0.6);
+  font-size: 14px;
+  line-height: 1.28;
+}
+
+.daily-norm-text {
+  font-size: 14px;
+  line-height: 1.28;
+  color: var(--main-color);
+}
+
+/* Styles for Tablet devices */
+@media only screen and (min-width: 768px) {
+  .block-quote-info {
+    max-width: 100%;
+  }
+
+  .quote-card {
+    max-width: 400px;
+    height: 249px;
+    margin-bottom: 0;
+    padding: 40px;
+  }
+
+  .quote-and-img {
+    width: 704px;
+    margin-bottom: 32px;
+    display: flex;
+    gap: 16px;
+  }
+
+  .quote-content {
+    margin-left: 18px;
+  }
+
+  .quote-title {
+    margin-bottom: 6px;
+    font-size: 24px;
+    line-height: 1.33;
+  }
+
+  .quote-text {
+    margin-bottom: 18px;
+  }
+
+  .quote-author {
+    font-size: 16px;
+    line-height: 1.5;
+  }
+
+  .quote-img {
+    width: 288px;
+    margin-bottom: 0;
+  }
+
+  .daily-norm {
+    width: 400px;
+    height: 249px;
+    padding: 40px;
+  }
+
+  .daily-norm-title {
+    font-size: 24px;
+    line-height: 1.33;
+  }
+
+  .daily-norm-subtitle {
+    margin-bottom: 20px;
+  }
+}
+
+/* Styles for Desktop devices */
+@media only screen and (min-width: 1440px) {
+  .quote-card {
+    max-width: 444px;
+    height: 242px;
+    margin-bottom: 32px;
+  }
+
+  .quote-and-img {
+    width: 704px;
+    margin-bottom: 0;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .quote-content {
+    margin-left: 18px;
+  }
+
+  .quote-text {
+    margin-bottom: 8px;
+  }
+
+  .quote-img {
+    width: 444px;
+    margin-bottom: 32px;
+  }
+
+  .daily-norm {
+    width: 444px;
+    height: 315px;
+  }
+}
+
+.daily-norm-text {
+  @media (max-width: 1439.98px) {
+    display: -webkit-box;
+    -webkit-line-clamp: 5;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
 }

@@ -1,10 +1,12 @@
-/* ========== DESIGN TOKENS (залишила як у тебе) ========== */
+/* ========== DESIGN TOKENS ========== */
 
 :root {
-  --font-main: 'DM Sans', system-ui, -apple-system, BlinkMacSystemFont,
-    sans-serif;
+  /* ===== fonts ===== */
+  --font-main: 'DM Sans', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-family: 'DM Sans', sans-serif; /* з глобальних */
 
-  --color-bg-header: #ffffff;
+  /* ===== header colors ===== */
+  --color-bg-header: #f4f4f4;
   --color-border-header: #e6e6e6;
   --color-text-header: #242424;
 
@@ -22,159 +24,79 @@
   --color-mobile-overlay: rgba(0, 0, 0, 0.6);
   --color-mobile-text: #f4f4f4;
   --color-mobile-social-border: rgba(244, 244, 244, 0.1);
-
+  /* ===== spacing / sizing ===== */
   --header-height: 52px;
-  --header-padding-desktop: 70px; /* Figma desktop */
-  --header-padding-tablet: 32px; /* Figma tablet (704px, left 32) */
+  --header-padding-desktop: 70px;
+  --header-padding-tablet: 32px;
   --header-padding-mobile: 16px;
 
-  --menu-width-desktop: 265px; /* Figma desktop pill */
-  --menu-width-tablet: 233px; /* Figma tablet pill */
+  --menu-width-desktop: 265px;
+  --menu-width-tablet: 233px;
+  --menu-width-mobile: 240px;
+
+  --main-color: #242424;
+  --second-color: #f4f4f4;
+  
+  /* ===== global rendering ===== */
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+
+  /* ===== transitions ===== */
+  --trans-norm: 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* ========== BASE HEADER (desktop by default) ========== */
+/* ========== MOBILE (основа) ========== */
 
 .header {
   background-color: var(--color-bg-header);
-  border-bottom: 1px solid var(--color-border-header);
   font-family: var(--font-main);
 }
 
-/* FIX: header-row → flex між лого та правою частиною (бургер/nav) */
 .header .header-row {
-  position: relative;
   display: flex;
   align-items: center;
-  justify-content: space-between; /* лого зліва, правий блок справа */
-  height: var(--header-height);
-  padding-inline: var(--header-padding-desktop);
+  justify-content: space-between;
+  height: 32px;
+  padding-top: 20px;
+  padding-inline: 20px;
 }
 
 /* logo */
 
-.header .logo-icon {
-  width: 132px;
-  height: 24px;
-  flex-shrink: 0;
-  fill: var(--color-text-header);
-}
-
-/* =======================================================
-   NAV: центрована капсула + соцмережі праворуч (desktop+tablet)
-   ======================================================= */
-
-/* FIX: .nav винесена поверх header-row і центрується по X */
-.header .nav {
-  position: relative;
-  margin-left: auto;
-  top: 50%;
-  transform: translate(-50%, -50%); /* точне центрування по макету */
-
+.logo-link {
   display: flex;
   align-items: center;
-  gap: 40px; /* відступ між капсулою та соцмережами */
-}
-
-/* капсула Home/Favorites */
-
-.header .nav-list {
-  display: flex; ;
-  align-items: center;
-  justify-content: space-between;
-
-  width: var(--menu-width-desktop); /* desktop width з токенів */
-  height: var(--header-height);
-
-  padding: 4px;
-  margin: 0 auto;
-  list-style: none;
-
-  background-color: var(--color-pill-bg);
-  border-radius: 60px;
-}
-
-.header .nav-item {
-  display: flex;
-}
-
-/* кнопки Home / Favorites */
-
-.header .nav-link {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-
-  padding: 8px 22px;
-  border-radius: 30px;
-
-  font-size: 16px;
-  font-weight: 400;
-  line-height: 24px;
   text-decoration: none;
-
-  color: var(--color-pill-text);
-  transition: background-color 0.2s ease, color 0.2s ease;
+  color: var(--color-text-header);
 }
 
-/* FIX: активна кнопка → біла капсула, темний текст (як на Figma) */
-.header .nav-link--active {
-  background-color: var(--color-pill-active-bg);
-  color: var(--color-pill-active-text);
+.logo-text {
+  font-weight: 700;
+  letter-spacing: 0.04em;
 }
 
-/* ========== SOCIALS RIGHT (DESKTOP + TABLET) ========== */
+/* mobile: десктопна навігація схована */
 
-/* FIX: соц.іконки праворуч від капсули, всередині .nav */
+.header .nav,
 .header .social-list {
-  display: flex;
-  gap: 12px;
-  list-style: none;
-  padding: 0;
-  margin-block: 0;
+  display: none;
 }
 
-.header .social-link {
-  box-sizing: border-box;
-  width: 44px;
-  height: 44px;
-  border-radius: 10px;
-  border: 1px solid var(--color-social-border);
-  background: transparent;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  color: var(--color-social-icon);
-  transition: background 0.2s ease, color 0.2s ease;
-}
-
-.header .social-link svg {
-  width: 28px;
-  height: 28px;
-  opacity: 0.8;
-}
-
-.header .social-link:hover,
-.header .social-link:focus-visible {
-  background-color: var(--color-social-hover-bg);
-  color: var(--color-social-hover-icon);
-}
-
-.header .social-link:hover svg,
-.header .social-link:focus-visible svg {
-  opacity: 1;
-}
-
-/* ========== BURGER (HIDDEN ON DESKTOP/TABLET) ========== */
+/* бургер */
 
 .header .burger {
-  display: none; /* FIX: по дефолту бургер прихований (показуємо у mobile) */
+  width: 32px;
+  height: 32px;
+  display: flex;
   flex-direction: column;
-  gap: 4px;
-  padding: 8px;
+  justify-content: center;
+  align-items: center;
+  gap: 2px;
+  padding: 0;
   margin-left: auto;
-
   background: none;
   border: none;
   cursor: pointer;
@@ -183,185 +105,261 @@
 .header .burger span {
   width: 22px;
   height: 2px;
-  background-color: var(--color-text-header);
-  display: block;
+  border-radius: 1px;
+  background-color: #242424;
 }
 
-/* =======================================================
-   MOBILE MENU (overlay + right panel)
-   ======================================================= */
-
-/* overlay */
+/* MOBILE MENU  */
 
 .header .mobile-menu {
   position: fixed;
   inset: 0;
   display: flex;
-  justify-content: flex-end;
-
+  justify-content: flex-start;
   opacity: 0;
   pointer-events: none;
-
-  background: rgba(0, 0, 0, 0); /* початковий стан: прозорий */
-  transition: opacity 0.25s ease-out, background-color 0.25s ease-out;
+  background: rgba(0, 0, 0, 0.25);
+  transition: opacity 0.25s ease-out;
   z-index: 1000;
 }
 
 .header .mobile-menu.open {
   opacity: 1;
   pointer-events: auto;
-  background: var(--color-mobile-overlay); /* затемнення */
 }
 
-/* панель 210px */
-
 .header .mobile-menu__inner {
-  width: 210px;
-  height: 100vh;
-  background: var(--color-mobile-menu-bg);
-  padding: 20px 20px 24px;
-
+  width: 240px;
+  height: 100%;
+  padding: 24px 20px 32px;
+  background-color: #1b1b1b;
   display: flex;
   flex-direction: column;
-
-  transform: translateX(100%); /* схована праворуч */
-  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  transform: translateX(-100%);
+  transition: transform 0.32s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .header .mobile-menu.open .mobile-menu__inner {
-  transform: translateX(0); /* виїзд */
-}
-
-/* header всередині mobile-menu (лого + хрестик) */
-
-.header .mobile-menu__header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  height: 32px;
-}
-
-.header .logo-icon--mobile {
-  width: 132px;
-  height: 24px;
-  fill: #f4f4f4;
+  transform: translateX(0);
 }
 
 .header .mobile-menu__close {
+  position: absolute;
+  top: 20px;
+  right: 18px;
   width: 32px;
   height: 32px;
   padding: 0;
-  background: none;
   border: none;
-  color: #f4f4f4;
+  background: none;
   cursor: pointer;
 }
 
-.header .mobile-menu__close svg {
-  width: 32px;
-  height: 32px;
+.header .mobile-menu__close::before,
+.header .mobile-menu__close::after {
+  content: '';
+  position: absolute;
+  width: 16px;
+  border-top: 2px solid #f4f4f4;
 }
 
-/* Links: Home / Favorites */
+.header .mobile-menu__close::before {
+  transform: rotate(45deg);
+}
+.header .mobile-menu__close::after {
+  transform: rotate(-45deg);
+}
 
 .header .mobile-menu__links {
+  margin-top: 96px;
   list-style: none;
   padding: 0;
-  margin: 0;
-
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: 16px;
-
-  /* Figma: Home ~280px, Favorites ~314px → + невеликий відступ */
-  margin-top: 260px;
+  gap: 26px;
 }
 
 .header .mobile-menu__links a {
-  text-decoration: none;
-  font-family: var(--font-main);
-  font-weight: 400;
   font-size: 14px;
   line-height: 18px;
-  color: var(--color-mobile-text);
-  transition: color 0.2s ease;
+  color: #f4f4f4;
+  text-decoration: none;
+  text-align: center;
 }
-
-.header .mobile-menu__links a:hover {
-  color: #ffffff;
-}
-
-/* активна сторінка в mobile меню */
 
 .header .mobile-menu__links a.mobile-link--active {
   text-decoration: underline;
   text-underline-offset: 3px;
 }
 
-/* Mobile socials at bottom */
-
 .header .mobile-menu__socials {
-  list-style: none;
-  padding: 0;
-  margin-top: auto;
-
+  position: absolute;
+  left: 27px;
+  bottom: 20px;
   display: flex;
   gap: 12px;
+  list-style: none;
+  padding: 0;
 }
 
-.header .mobile-menu__socials a {
+.header .mobile-menu__socials li a {
   box-sizing: border-box;
-  width: 44px;
-  height: 44px;
-  border-radius: 10px;
-  border: 1px solid var(--color-mobile-social-border);
-
   display: flex;
   align-items: center;
   justify-content: center;
-}
-
-.header .mobile-menu__socials svg {
-  width: 28px;
-  height: 28px;
-  opacity: 0.8;
+  width: 44px;
+  height: 44px;
+  padding: 8px;
+  border-radius: 10px;
+  border: 1px solid rgba(244, 244, 244, 0.1);
+  text-decoration: none;
   color: #f4f4f4;
 }
 
-/* ========== RESPONSIVE ========== */
+/* ========== TABLET + DESKTOP (спільна база) ========== */
 
-/* TABLET 768–1024px: інші падінги + вужча капсула */
-
-@media (min-width: 768px) and (max-width: 1024px) {
-  /* FIX: як у Figma – падінги по 32px */
+@media (min-width: 768px) {
   .header .header-row {
-    padding-inline: var(--header-padding-tablet);
+    height: 52px;
+    padding: 0;
+    margin: 0 auto;
+    position: relative;
   }
 
-  /* FIX: вужча капсула для tablet */
-  .header .nav-list {
-    width: var(--menu-width-tablet);
-  }
-}
-
-/* MOBILE до 767px */
-
-@media (max-width: 767px) {
-  /* FIX: лого + бургер по краях, як у Figma mobile */
-  .header .header-row {
-    padding-inline: var(--header-padding-mobile);
-    justify-content: space-between;
-  }
-
-  /* FIX: на mobile desktop-меню не показуємо */
+  /* показуємо nav і соцмережі, ховаємо бургер і mobile-menu */
   .header .nav,
   .header .social-list {
+    display: flex;
+  }
+
+  .header .burger {
     display: none;
   }
 
-  /* FIX: бургер видно тільки на mobile */
-  .header .burger {
+  .header .mobile-menu {
+    display: none;
+  }
+
+  .header .nav {
+    align-items: center;
+  }
+
+  .header .nav-list {
+    height: 52px;
+    padding: 4px;
+    background: #242424;
+    border-radius: 60px;
     display: flex;
+    align-items: center;
+    justify-content: center;
+    list-style: none;
+    gap: 16px;
+  }
+
+  .header .nav-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 6px 12px; 
+  height: 36px;
+  border-radius: 30px;
+
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+
+  text-decoration: none;
+  color: var(--color-pill-text);
+
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+  .header .nav-link--active {
+    background: #f4f4f4;
+    color: #242424;
+
+   
+  }
+
+  .header .right-side {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .header .social-list {
+    gap: 12px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .header .social-link {
+    box-sizing: border-box;
+    width: 44px;
+    height: 44px;
+    border-radius: 10px;
+    border: 1px solid var(--color-social-border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: #242424;
+    font-size: 14px;
+  }
+  .social-link svg {
+  width: 28px;
+  height: 28px;
+  opacity: 0.8;
+  fill: currentColor;
+}
+  .header .social-link:hover {
+    background-color: var(--color-social-hover-bg);
+    color: var(--color-social-hover-icon);
+  }
+}
+
+/* ========== TABLET  ========== */
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  .header .header-row {
+    max-width: 768px;
+  }
+
+  .header .nav-list {
+    width: 233px;          /* ширина капсули з Figma */
+  }
+
+  /* Відстань: logo → capsule = 103px */
+  .header .nav {
+    margin-left: 103px;
+  }
+
+  /* Відстань: capsule → socials = 80px */
+  .header .right-side {
+    margin-left: 80px;
+  }
+}
+
+/* ========== DESKTOP (контейнер 1276, відстані 423 / 400) ========== */
+
+@media (min-width: 1024px) {
+  .header .header-row {
+    max-width: 1276px;
+  }
+
+  .header .nav-list {
+    width: 265px;          /* ширша десктопна капсула */
+  }
+
+  /* Відстань: logo → capsule = 423px */
+  .header .nav {
+    margin-left: 423px;
+  }
+
+  /* Відстань: capsule → socials = 400px */
+  .header .right-side {
+    margin-left: 400px;
   }
 }
