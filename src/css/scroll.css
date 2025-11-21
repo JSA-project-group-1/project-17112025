@@ -25,11 +25,9 @@ html {
   transform: scale(0.8);
   transition: all 0.3s ease;
   
-  /* Защита от перекрытия футером */
   pointer-events: none;
 }
 
-/* ТАБЛЕТ */
 @media (min-width: 768px) {
   .scroll-top {
     width: 68px;
@@ -38,7 +36,6 @@ html {
   }
 }
 
-/* ДЕСКТОП */
 @media (min-width: 1440px) {
   .scroll-top {
     width: 100px;
@@ -79,7 +76,6 @@ html {
   100% { transform: scale(1) translate(0, 0); }
 }
 
-/* Дополнительные стили для защиты от футера */
 footer {
   position: relative;
   z-index: 1;
