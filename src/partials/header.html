@@ -1,6 +1,5 @@
 <header class="header">
   <div class="container header-row">
-
     <!-- LEFT — LOGO -->
     <a href="/" class="logo-link" aria-label="Go to home page">
       <svg class="logo-icon" width="132" height="24">
@@ -22,7 +21,6 @@
 
     <!-- RIGHT — SOCIALS & BURGER -->
     <div class="right-side">
-
       <ul class="social-list">
         <li>
           <a
@@ -60,17 +58,18 @@
       <button class="burger" type="button" aria-label="Open menu">
         <span></span><span></span><span></span><span></span>
       </button>
-
     </div>
-
   </div>
 
   <!-- MOBILE MENU -->
   <div class="mobile-menu">
     <div class="mobile-menu__inner">
-
       <div class="mobile-menu__header">
-        <button class="mobile-menu__close" type="button" aria-label="Close menu"></button>
+        <button
+          class="mobile-menu__close"
+          type="button"
+          aria-label="Close menu"
+        ></button>
       </div>
 
       <ul class="mobile-menu__links">
@@ -95,7 +94,18 @@
           </a>
         </li>
       </ul>
-
     </div>
   </div>
 </header>
+<script>
+  const links = document.querySelectorAll('.nav-link');
+  const currentPath = window.location.pathname;
+
+  links.forEach(link => {
+    const href = link.getAttribute('href');
+
+    if (currentPath.endsWith(href)) {
+      link.classList.add('nav-link--active');
+    }
+  });
+</script>
