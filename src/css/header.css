@@ -103,11 +103,12 @@
   cursor: pointer;
 }
 
-.header .burger span {
-  width: 22px;
-  height: 2px;
-  border-radius: 1px;
-  background-color: #242424;
+/* новий стиль для SVG всередині бургер-кнопки */
+.header .burger svg {
+  width: 32px;
+  height: 32px;
+  display: block;
+  fill: var(--color-text-header); 
 }
 
 /* MOBILE MENU  */
@@ -156,19 +157,12 @@
   cursor: pointer;
 }
 
-.header .mobile-menu__close::before,
-.header .mobile-menu__close::after {
-  content: '';
-  position: absolute;
-  width: 16px;
-  border-top: 2px solid #f4f4f4;
-}
-
-.header .mobile-menu__close::before {
-  transform: rotate(45deg);
-}
-.header .mobile-menu__close::after {
-  transform: rotate(-45deg);
+/* новий стиль для SVG-іконки X */
+.header .mobile-menu__close svg {
+  width: 32px;
+  height: 32px;
+  display: block;
+  fill: #f4f4f4; /* як були лінії хрестика */
 }
 
 .header .mobile-menu__links {
