@@ -34,7 +34,6 @@
 .hero-image {
   margin-top: 20px;
   border-radius: 30px;
-  /* width: 335px;   */
 }
 .hero-image-top {
   width: 168px;
@@ -85,8 +84,7 @@
 @media screen and (min-width: 1440px) {
   .hero-container {
     max-width: 1440px;
-    padding-top: 6px;
-    padding-bottom: 64px;
+    padding: 0 15px;
   }
   .wrapper-top-tags {
     display: flex;
@@ -96,3 +94,7 @@
     display: none;
   }
 }
+
+/* preserveAspectRatio="none" */
+
+
