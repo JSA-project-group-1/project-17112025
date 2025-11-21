@@ -1,3 +1,4 @@
+
 html {
   scroll-behavior: smooth;
 }
@@ -23,6 +24,9 @@ html {
   opacity: 0;
   transform: scale(0.8);
   transition: all 0.3s ease;
+  
+  /* Защита от перекрытия футером */
+  pointer-events: none;
 }
 
 /* ТАБЛЕТ */
@@ -46,6 +50,7 @@ html {
 .scroll-show {
   opacity: 1;
   transform: scale(1);
+  pointer-events: auto;
 }
 
 .scroll-top:hover {
@@ -62,15 +67,6 @@ html {
 }
 
 .scroll-top.scroll-show {
-  animation: vibrate 1.5s infinite ease-in-out;
-}
-
-@keyframes vibrate {
-  0%, 100% { transform: scale(1); }
-  50%      { transform: scale(1.05); }
-}
-
-.scroll-top.scroll-show {
   animation: vibrate-strong 1.2s infinite ease-in-out;
 }
 
@@ -83,3 +79,8 @@ html {
   100% { transform: scale(1) translate(0, 0); }
 }
 
+/* Дополнительные стили для защиты от футера */
+footer {
+  position: relative;
+  z-index: 1;
+}
