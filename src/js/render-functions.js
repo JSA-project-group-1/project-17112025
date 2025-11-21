@@ -1,4 +1,5 @@
 import iconsUrl from '../assets/icons/icons-not-min.svg';
+import { openRatingModal } from './rating-modal.js';
 
 export function renderCategories(categories, list) {
   const markup = categories
@@ -42,9 +43,11 @@ export function renderExercises(exercises, list) {
         </div>
     </div>
     <div class="title">
-     <svg class="icon" width="24" height="24">
-            <use href="${iconsUrl}#icon-run-man-2"></use>
-      </svg>
+      <button type="button" class="exercise-rating-btn js-give-rating-btn" data-exercise-id="${_id}">
+        <svg class="icon" width="24" height="24">
+          <use href="${iconsUrl}#icon-run-man-2"></use>
+        </svg>
+      </button
       <span class="name-text">${name}</span>
     </div>
     <div class="details">
@@ -68,6 +71,15 @@ export function renderExercises(exercises, list) {
     })
     .join('');
   list.innerHTML = markup;
+
+  // attach click listeners to rating buttons to open rating modal with the exercise id
+  const ratingButtons = list.querySelectorAll('.js-give-rating-btn');
+  ratingButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const id = btn.dataset.exerciseId;
+      openRatingModal(id, null);
+    });
+  });
 }
 
 export function renderPagination(totalPages, currentPage, list,) {

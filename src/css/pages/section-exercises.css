@@ -529,3 +529,13 @@ block-exercises
   stroke: #242424;
   fill: none;
 }
+
+.exercise-rating-btn {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  height: 24px;
+  width: 24px;
+  margin-right: 10px;
+}
