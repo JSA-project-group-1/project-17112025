@@ -101,19 +101,29 @@ export function renderPagination(totalPages, currentPage, list,) {
       </li>
   `;
 
-  const pagesMarkup = pagesData
-    .map(page => {
-      return `
-          <li class="pagination-control-item">
-            <button class="${activePage === page
-          ? 'pagination-control-active'
-          : 'pagination-control'
-        }" data-page="${page}">${page}</button>
-          </li>
-      `;
-    })
-    .join('');
-
+  // const pagesMarkup = pagesData
+  //   .map(page => {
+  //     return `
+  //         <li class="pagination-control-item">
+  //           <button class="${activePage === page
+  //         ? 'pagination-control-active'
+  //         : 'pagination-control'
+  //       }" data-page="${page}">${page}</button>
+  //         </li>
+  //     `;
+  //   })
+  //   .join('');
+  const pagesMarkup = `
+  <li class="pagination-control-item">
+    <button class="${isFirstPage ? 'pagination-control-active' : 'pagination-control'}" data-page="${isFirstPage ? 1 : --activePage}">${isFirstPage ? 1 : --activePage}</button>
+  </li>
+  <li class="pagination-control-item">
+    <button class="${!isFirstPage ? 'pagination-control-active' : 'pagination-control'}" data-page="${isFirstPage ? 2 : activePage}">${isFirstPage ? 2 : activePage}</button>
+  </li>
+  <li class="pagination-control-item">
+    <button class="${isLastPage ? 'pagination-control-active' : 'pagination-control'}" data-page="${isFirstPage ? 3 : ++activePage}">${isFirstPage ? 3 : ++activePage}</button>
+  </li>
+          `
 
   const nextButtonsMarkup = `
       <li class="pagination-control-item">
