@@ -1,0 +1,66 @@
+html {
+  scroll-behavior: smooth;
+}
+.scroll-top {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 99;
+  transform: translateY(110%);
+  opacity: 0;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 120px;
+  height: 120px;
+  border: 1px solid #242424;
+  outline: none;
+  background-color: #242424;
+  color: #f4f4f4;
+  border-radius: 50%;
+
+  transform-origin: center;
+  transition: width 0.5s ease, height 0.5s ease, transform 0.5s ease;
+}
+
+@media (min-width: 768px) {
+  .scroll-top {
+    bottom: 40px;
+    right: 40px;
+    width: 80px;
+    height: 80px;
+  }
+}
+
+@media (min-width: 1440px) {
+  .scroll-top {
+    right: 60px;
+    width: 100px;
+    height: 100px;
+  }
+}
+
+.scroll-top:hover {
+  width: 40px;
+  height: 40px;
+  background-color: #242424;
+  color: #f4f4f4;
+}
+
+.scroll-show {
+  transform: translateY(0%);
+  opacity: 1;
+}
+
+.scroll-icon {
+  width: 32px;
+  height: 32px;
+  fill: currentColor;
+  transition: width 0.5s ease, height 0.5s ease;
+}
+
+.scroll-top:hover .scroll-icon {
+  width: 13.2px;
+  height: 13.2px;
+}
+

@@ -4,6 +4,7 @@
   | default @import url()
   |============================
 */
+
 /* Common styles */
 @import url('./modern-normalize.css');
 @import url('./base.css');
@@ -16,3 +17,5 @@
 @import url('./header.css');
 @import url('./footer.css');
 @import url('./pages/section-hero.css');
+@import url('./scroll.css');
+

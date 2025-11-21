@@ -1,33 +1,40 @@
-.loader {
-  margin: 0 auto;
-  width: 48px;
-  height: 48px;
-  border: 3px solid #808080;
-  border-radius: 50%;
-  display: block;
-  position: relative;
-  box-sizing: border-box;
-  animation: rotation 1s linear infinite;
-}
-.loader::after {
-  content: '';
-  box-sizing: border-box;
+.local-loader-wrapper {
   position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  width: 56px;
-  height: 56px;
-  border-radius: 50%;
-  border: 3px solid;
-  border-color: #ff3d00 transparent;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
 }
 
-@keyframes rotation {
-  0% {
-    transform: rotate(0deg);
-  }
+.local-loader-wrapper.hidden {
+  display: none;
+}
+
+.hypnotic {
+  width: 67.2px;
+  height: 28px;  border: 2.2px solid #eea10c;
+  border-radius: 50%;
+  display: grid;  animation: hypnotic-spin 2s infinite linear;
+}
+
+.hypnotic:before,
+.hypnotic:after {
+  content: "";
+  grid-area: 1/1;
+  border: inherit;
+  border-radius: 50%;
+  animation: inherit;
+  animation-duration: 3s;
+}
+
+.hypnotic:after {
+  --s: -1;
+}
+
+@keyframes hypnotic-spin {
   100% {
-    transform: rotate(360deg);
+    transform: rotate(calc(var(--s, 1) * 1turn));
   }
 }
