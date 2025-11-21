@@ -374,18 +374,6 @@ IMAGE AND TEXT STYLES (Universal)
   }
 }
 
-.exercises-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 16px;
-}
-.exercises-item {
-  width: 442px;
-  border-radius: 15px;
-  background: #fff;
-  padding: 16px;
-}
-
 .pagination-controls-list {
   display: flex;
   justify-content: center;
@@ -469,6 +457,17 @@ IMAGE AND TEXT STYLES (Universal)
 block-exercises
    ======================= */
 
+.exercises-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+.exercises-item {
+  width: 335px;
+  border-radius: 15px;
+  background: #fff;
+  padding: 16px;
+}
 .header-card {
   display: flex;
   justify-content: space-between;
@@ -479,7 +478,6 @@ block-exercises
 
 /* Стиль для "WORKOUT" */
 .type {
-  /* Робимо вигляд "таблетки" з рамкою */
   border-radius: 15px;
   border: 1px solid #242424;
   padding: 5px 8px;
@@ -515,10 +513,10 @@ block-exercises
 
 .title {
   color: #242424;
-  font-size: 24px;
+  font-size: 20px;
   font-style: normal;
   font-weight: 400;
-  line-height: 32px;
+  line-height: 1.2;
   margin-bottom: 8px;
   display: flex;
   align-items: center;
@@ -556,7 +554,7 @@ block-exercises
   font-weight: 400;
   line-height: 18px;
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   gap: 16px;
 }
 
@@ -577,6 +575,7 @@ block-exercises
   text-transform: capitalize;
   overflow: hidden;
   text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .calories-name,
@@ -585,6 +584,7 @@ block-exercises
   color: rgba(36, 36, 36, 0.4);
   margin-right: 4px;
   line-height: 18px;
+  white-space: nowrap;
 }
 
 .icon-star {
@@ -607,4 +607,76 @@ block-exercises
 .icon-arrow-right {
   stroke: #242424;
   fill: none;
+}
+
+@media (max-width: 375px) {
+  .calories-value{
+    max-width: 40px;
+}
+
+  .body-part-value{
+    max-width: 30px;
+  }
+
+  .target-value{
+    max-width: 20px;
+  }
+
+  .title .name-text{
+    max-width: 250px;
+  }
+
+
+  
+}
+
+@media only screen and (min-width: 768px) {
+  .exercises-item {
+    width: 344px;
+    
+  }
+
+  .calories-value{
+    max-width: 43px;
+}
+
+  .body-part-value{
+    max-width: 30px;
+  }
+
+  .target-value{
+    max-width: 22px;
+  }
+
+
+
+
+  .title .name-text {
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 32px;
+    max-width: 272px;
+    }
+
+
+  @media only screen and (min-width: 1440px) {
+    .exercises-item {
+    width: 442px;
+  }
+
+    .calories-value{
+    max-width: 63px;
+}
+
+.target-value{
+    max-width: 50px;
+  }
+
+    .title .name-text{
+      max-width: 400px;
+    }
+
+
+
+  }
 }
