@@ -31,19 +31,19 @@ export function renderExercises(exercises, list) {
         <span class="type">WORKOUT</span>
         <span class="rating">${rating}</span>
         <svg class="icon-star" width="18" height="18">
-            <use href="../assets/icons/icons-not-min.svg#icon-star"></use>
+            <use href="${iconsUrl}#icon-star"></use>
         </svg>
        </div>
        <div class="header-right">
         <button class="start-btn" type="button" data-modal-exercise="open" data-exercise-id="${_id}"> Start </button>
         <svg class="icon-arrow-right" width="18" height="18">
-          <use href="../assets/icons/icons-not-min.svg#icon-arrow-1"></use>
+          <use href="${iconsUrl}#icon-arrow-1"></use>
         </svg>
         </div>
     </div>
     <div class="title">
      <svg class="icon" width="24" height="24">
-            <use href="../assets/icons/icons-not-min.svg#icon-run-man-2"></use>
+            <use href="${iconsUrl}#icon-run-man-2"></use>
       </svg>
       <span class="name-text">${name}</span>
     </div>
@@ -83,7 +83,7 @@ export function renderPagination(totalPages, currentPage, list,) {
                   data-page="beg"
                   ${isFirstPage ? 'disabled' : ''}>
                   <svg class="left-vector" width="6" height="12">
-                    <use href="${iconsUrl}#icon-vector"></use>
+                    <use href="${isUrlcon}#icon-vector"></use>
                   </svg>
                   <svg class="left-vector" width="6" height="24">
                     <use href="${iconsUrl}#icon-vector"></use>
