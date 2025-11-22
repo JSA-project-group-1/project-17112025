@@ -44,11 +44,21 @@ export async function fetchExerciseModalById(id = '64f389465ae26083f39b17a2') {
 }
 
 export async function sendRating(id, ratingData) {
-   
-    const response = await axios.patch(`/exercises/${id}/rating`, ratingData);
-    return response.data;
+  const response = await axios.patch(`/exercises/${id}/rating`, ratingData);
+  return response.data;
 }
 
+// АРІ for get data for the quote
+export const getQuoteOfTheDay = async () => {
+  try {
+    const { data } = await axios.get('/quote');
+    console.log('Quote from API:', data);
+    return data;
+  } catch (error) {
+    console.error('Error fetching quote:', error);
+    throw error;
+  }
+};
 
 // https://your-energy.b.goit.study/api/filters?filter=Muscles&page=1&limit=12
 // https://your-energy.b.goit.study/api/exercises?bodypart=back&muscles=lats&equipment=barbell&keyword=pull&page=1&limit=10

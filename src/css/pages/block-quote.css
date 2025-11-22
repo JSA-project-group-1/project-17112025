@@ -59,7 +59,7 @@
 }
 
 .daily-norm {
-  width: 335px;
+  max-width: 335px;
   height: 201px;
   padding: 20px;
   display: flex;
@@ -142,7 +142,7 @@
   }
 
   .daily-norm {
-    width: 400px;
+    max-width: 400px;
     height: 249px;
     padding: 40px;
   }

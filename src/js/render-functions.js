@@ -1,5 +1,6 @@
 import iconsUrl from '../assets/icons/icons-not-min.svg';
 import { openRatingModal } from './rating-modal.js';
+import { handleGetQuoteOfTheDay } from './quote-api-localStorage';
 
 export function renderCategories(categories, list) {
   const markup = categories
@@ -72,7 +73,10 @@ export function renderExercises(exercises, list) {
       })
       .join('');
     list.innerHTML = markup;
-  } else { list.innerHTML = '<p>Unfortunately, there is no content of interest to you at this time, but it will appear soon.</p>'; }
+  } else {
+    list.innerHTML =
+      '<p>Unfortunately, there is no content of interest to you at this time, but it will appear soon.</p>';
+  }
 
   // attach click listeners to rating buttons to open rating modal with the exercise id
   const ratingButtons = list.querySelectorAll('.js-give-rating-btn');
@@ -84,7 +88,7 @@ export function renderExercises(exercises, list) {
   });
 }
 
-export function renderPagination(totalPages, currentPage, list,) {
+export function renderPagination(totalPages, currentPage, list) {
   const activePage = Number(currentPage);
   const pages = Number(totalPages);
   const isFirstPage = activePage === 1;
@@ -92,7 +96,9 @@ export function renderPagination(totalPages, currentPage, list,) {
 
   const prevButtonsMarkup = `
       <li class="pagination-control-item">
-          <button class=" ${isFirstPage ? 'pagination-arrow-btn' : 'pagination-arrow-btn-active'}"
+          <button class=" ${
+            isFirstPage ? 'pagination-arrow-btn' : 'pagination-arrow-btn-active'
+          }"
                   data-page="beg"
                   ${isFirstPage ? 'disabled' : ''}>
                   <svg class="left-vector" width="6" height="12">
@@ -104,7 +110,9 @@ export function renderPagination(totalPages, currentPage, list,) {
           </button>
       </li>
       <li class="pagination-control-item">
-          <button class=" ${isFirstPage ? 'pagination-arrow-btn' : 'pagination-arrow-btn-active'}"
+          <button class=" ${
+            isFirstPage ? 'pagination-arrow-btn' : 'pagination-arrow-btn-active'
+          }"
                   data-page="prev"
                   ${isFirstPage ? 'disabled' : ''}>
                   <svg class="left-vector" width="6" height="12">
@@ -114,80 +122,133 @@ export function renderPagination(totalPages, currentPage, list,) {
       </li>
   `;
 
-  const pagesMarkup =
-    `
-  ${isFirstPage ? `
+  const pagesMarkup = `
+  ${
+    isFirstPage
+      ? `
     <li class="pagination-control-item">
       <button class="pagination-control-active" data-page="1">1</button>
     </li>
-    ${pages > 1 ? `
+    ${
+      pages > 1
+        ? `
       <li class="pagination-control-item">
         <button class="pagination-control" data-page="2">2</button>
       </li>
-      `: ''}
-    ${pages > 2 ? `
+      `
+        : ''
+    }
+    ${
+      pages > 2
+        ? `
       <li class="pagination-control-item">
         <button class="pagination-control" data-page="3">3</button>
       </li>
-      `: ''}
-    ${pages > 3 ? `
+      `
+        : ''
+    }
+    ${
+      pages > 3
+        ? `
       <li class="pagination-control-item">
         <p class="pagination-control">...</p>
       </li>
-    `: ''}
-  `: ''}
-
-  ${!isFirstPage && isLastPage ? `
-    ${pages > 3 ? `
-      <li class="pagination-control-item">
-        <p class="pagination-control">...</p>
-      </li>
-    `: ''}
-    ${pages > 2 ? `
-      <li class="pagination-control-item">
-        <button class="pagination-control" data-page="${activePage - 2}">${activePage - 2}</button>
-      </li>
-    `: ''}
-    ${pages > 1 ? `
-      <li class="pagination-control-item">
-        <button class="pagination-control" data-page="${activePage - 1}">${activePage - 1}</button>
-      </li>
-    `: ''}
-    <li class="pagination-control-item">
-      <button class="pagination-control-active" data-page="${activePage}">${activePage}</button>
-    </li>
-  `: ''}
-
-  ${!isFirstPage && !isLastPage ? `
-    ${activePage > 2 ? `
-      <li class="pagination-control-item">
-        <p class="pagination-control">...</p>
-      </li>
-    `: ''}
-
-    <li class="pagination-control-item">
-        <button class="pagination-control" data-page="${activePage - 1}">${activePage - 1}</button>
-    </li>
-
-    <li class="pagination-control-item">
-      <button class="pagination-control-active" data-page="${activePage}">${activePage}</button>
-    </li>
-
-    <li class="pagination-control-item">
-        <button class="pagination-control" data-page="${activePage + 1}">${activePage + 1}</button>
-    </li>
-
-    ${(pages - activePage) >= 2 ? `
-      <li class="pagination-control-item">
-        <p class="pagination-control">...</p>
-      </li>
-    `: ''}
-  `: ''}
+    `
+        : ''
+    }
   `
+      : ''
+  }
+
+  ${
+    !isFirstPage && isLastPage
+      ? `
+    ${
+      pages > 3
+        ? `
+      <li class="pagination-control-item">
+        <p class="pagination-control">...</p>
+      </li>
+    `
+        : ''
+    }
+    ${
+      pages > 2
+        ? `
+      <li class="pagination-control-item">
+        <button class="pagination-control" data-page="${activePage - 2}">${
+            activePage - 2
+          }</button>
+      </li>
+    `
+        : ''
+    }
+    ${
+      pages > 1
+        ? `
+      <li class="pagination-control-item">
+        <button class="pagination-control" data-page="${activePage - 1}">${
+            activePage - 1
+          }</button>
+      </li>
+    `
+        : ''
+    }
+    <li class="pagination-control-item">
+      <button class="pagination-control-active" data-page="${activePage}">${activePage}</button>
+    </li>
+  `
+      : ''
+  }
+
+  ${
+    !isFirstPage && !isLastPage
+      ? `
+    ${
+      activePage > 2
+        ? `
+      <li class="pagination-control-item">
+        <p class="pagination-control">...</p>
+      </li>
+    `
+        : ''
+    }
+
+    <li class="pagination-control-item">
+        <button class="pagination-control" data-page="${activePage - 1}">${
+          activePage - 1
+        }</button>
+    </li>
+
+    <li class="pagination-control-item">
+      <button class="pagination-control-active" data-page="${activePage}">${activePage}</button>
+    </li>
+
+    <li class="pagination-control-item">
+        <button class="pagination-control" data-page="${activePage + 1}">${
+          activePage + 1
+        }</button>
+    </li>
+
+    ${
+      pages - activePage >= 2
+        ? `
+      <li class="pagination-control-item">
+        <p class="pagination-control">...</p>
+      </li>
+    `
+        : ''
+    }
+  `
+      : ''
+  }
+  `;
 
   const nextButtonsMarkup = `
       <li class="pagination-control-item">
-          <button class="pagination-arrow-btn ${isLastPage ? 'pagination-arrow-btn' : 'pagination-arrow-btn-active'}"
+          <button class="pagination-arrow-btn ${
+            isLastPage ? 'pagination-arrow-btn' : 'pagination-arrow-btn-active'
+          }"
                   data-page="next"
                   ${isLastPage ? 'disabled' : ''}>
                   <svg class="right-vector" width="6" height="12">
@@ -196,7 +257,9 @@ export function renderPagination(totalPages, currentPage, list,) {
            </button>
       </li>
       <li class="pagination-control-item">
-          <button class="pagination-arrow-btn ${isLastPage ? 'pagination-arrow-btn' : 'pagination-arrow-btn-active'}"
+          <button class="pagination-arrow-btn ${
+            isLastPage ? 'pagination-arrow-btn' : 'pagination-arrow-btn-active'
+          }"
                   data-page="end"
                   ${isLastPage ? 'disabled' : ''}>
                   <svg class="right-vector" width="6" height="12">
@@ -217,10 +280,31 @@ export function renderFilter(options, activeOption, list) {
   const markup = options
     .map(option => {
       return `
-          <li class="filters-list-item ${activeOption === option ? 'filters-list-item-active' : ''
-        }" data-option="${option}"><p>${option}</p></li>
+          <li class="filters-list-item ${
+            activeOption === option ? 'filters-list-item-active' : ''
+          }" data-option="${option}"><p>${option}</p></li>
       `;
     })
     .join('');
   list.innerHTML = markup;
+}
+
+// Render the quote of the day
+export async function renderQuoteOfTheDay() {
+  try {
+    const quoteData = await handleGetQuoteOfTheDay();
+
+    const quoteTextEl = document.querySelector('.quote-api-text');
+    const quoteAuthorEl = document.querySelector('.quote-api-author');
+
+    if (quoteTextEl) {
+      quoteTextEl.textContent = quoteData.quote || 'No quote available';
+    }
+
+    if (quoteAuthorEl) {
+      quoteAuthorEl.textContent = quoteData.author || 'Unknown author';
+    }
+  } catch (error) {
+    console.error('Error rendering quote:', error);
+  }
 }
