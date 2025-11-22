@@ -140,9 +140,7 @@ function onFiltersListClick(event) {
     const filterOption = clickedItem.dataset.option;
     currentFilter = filterOption;
     loadAndRenderCategoriesList();
-    if (results.length > 0) {
-      renderFilter(filterOptions, currentFilter, filtersList);
-    }
+    renderFilter(filterOptions, currentFilter, filtersList);
     searchForm.classList.add('visually-hidden');
     searchQuery = '';
     currentCategory = '';
