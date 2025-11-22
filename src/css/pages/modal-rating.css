@@ -44,7 +44,7 @@
 
 @media screen and (min-width: 768px) {
     .modal-rating {
-        max-width: 450px;
+        max-width: 430px;
         padding: 40px;
     }
 }
@@ -75,11 +75,17 @@
 .rating-stars-box {
     display: flex;
     align-items: center;
-    margin-bottom: 35px;
+    margin-bottom: 20px;
     color: #f4f4f4;
     font-size: 12px;
     line-height: 150%;
     font-weight: 400;
+}
+
+@media screen and (min-width: 768px) {
+    .rating-stars-box {
+        margin-bottom: 33px;
+    }
 }
 
 .rating-value {
@@ -114,6 +120,28 @@
 .rating-star-label:hover ~ .rating-star-label .star-icon {
    
     fill: #eea10c; 
+}
+
+.rating-form .form-input {
+    margin-bottom: 10px;
+    height: 42px;
+}
+
+.rating-form .form-textarea {
+    margin-bottom: 20px;
+    height: 93px;
+}
+
+@media screen and (min-width: 768px) {
+    .rating-form .form-input {
+        margin-bottom: 16px;
+        height: 48px;
+    }
+
+    .rating-form .form-textarea {
+        margin-bottom: 32px;
+        height: 106px;
+    }
 }
 
 
