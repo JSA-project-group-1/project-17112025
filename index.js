@@ -136,7 +136,7 @@ import{o as W,f as B,a as F,r as Y}from"./assets/quote-api-localStorage-ClLQ3NEF
         <button class="pagination-control" data-page="${e+1}">${e+1}</button>
     </li>
 
-    ${a-e>2?`
+    ${a-e>=2?`
       <li class="pagination-control-item">
         <p class="pagination-control">...</p>
       </li>
