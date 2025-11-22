@@ -21,6 +21,7 @@
   fill: var(--second-color);
   border-radius: 50%;
   background: var(--stars-color);
+  flex-shrink: 0;
 }
 
 .quote-content {
@@ -37,6 +38,7 @@
 
 .quote-icon-comma {
   fill: var(--second-color);
+  flex-shrink: 0;
 }
 
 .quote-text {
@@ -186,7 +188,7 @@
   }
 
   .daily-norm {
-    width: 444px;
+    max-width: 444px;
     height: 315px;
   }
 }
