@@ -4,15 +4,13 @@
 }
 
 .search-form {
-  display: flex;
-  align-items: center;
-  position: absolute;
   width: 100%;
-  max-width: 273px;
   height: 48px;
+  margin: 20px 0;
+  position: relative;
 
   &.visually-hidden {
-    display: flex;
+    display: none;
   }
 }
 .search-label {
@@ -88,9 +86,6 @@ PLACEHOLDER STYLES WHEN FOCUSING
    Block-filters (Base styles)
    ======================= */
 .block-filters {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
   margin-bottom: 32px;
 }
 .block-filters h2 {
@@ -102,8 +97,23 @@ PLACEHOLDER STYLES WHEN FOCUSING
   color: #242424;
   margin-bottom: 0;
 }
+.block-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding-bottom: 20px;
+  width: 100%;
+}
+
 .current-category {
   text-transform: capitalize;
+  font-family: var(--font-family);
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 133%;
+  letter-spacing: -0.02em;
+  color: rgba(36, 36, 36, 0.5);
+  margin: 0;
 }
 .clear-btn,
 .search-btn {
@@ -118,8 +128,8 @@ PLACEHOLDER STYLES WHEN FOCUSING
   font-family: var(--font-family);
   font-weight: 400;
   font-size: 16px;
-  line-height: 150%;
-  color: #242424;
+  line-height: 1.5;
+  color: rgba(36, 36, 36, 0.6);
   position: relative;
   transition: color 0.3s ease;
 }
@@ -137,7 +147,7 @@ PLACEHOLDER STYLES WHEN FOCUSING
 }
 .filters-list-item:hover,
 .filters-list-item-active {
-  color: rgba(36, 36, 36, 0.6);
+  color: rgba(36, 36, 36, 1);
   cursor: pointer;
 }
 
@@ -146,36 +156,33 @@ PLACEHOLDER STYLES WHEN FOCUSING
   transform: scaleX(1);
 }
 
+.filters-list-item p {
+  white-space: nowrap;
+}
+
 /* =======================
    TABLET STYLES (min-width: 768px)
    ======================= */
 @media only screen and (min-width: 768px) {
   .block-filters {
-    flex-direction: row;
-    justify-content: flex-start;
-    align-items: flex-end;
+    display: flex;
     flex-wrap: wrap;
-    gap: 16px 32px;
+    align-items: center;
+    justify-content: space-between;
   }
   .block-filters h2 {
     font-size: 44px;
     line-height: 109%;
     letter-spacing: -0.02em;
     color: #242424;
-    margin-bottom: 32px;
+  }
+  .block-title {
+    align-items: baseline;
   }
 
   .search-form {
-    max-width: 335px;
-    order: 2;
-    margin-left: auto;
+    max-width: 273px;
     margin-bottom: 16px;
-  }
-  .filters-list {
-    order: 3;
-    margin-left: auto;
-    width: 100%;
-    justify-content: flex-end;
   }
 
   .filters-list {
@@ -194,20 +201,13 @@ PLACEHOLDER STYLES WHEN FOCUSING
    ======================= */
 @media only screen and (min-width: 1440px) {
   .block-filters {
-    display: block;
+    flex-wrap: nowrap;
   }
   .block-filters h3 {
     margin-bottom: 0;
   }
-  .filters-list {
-    display: none;
-  }
   .search-form {
-    max-width: 450px;
-    margin-bottom: 16px;
-  }
-  .filters-list {
-    display: flex;
+    margin-right: 30px;
   }
 }
 
