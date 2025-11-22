@@ -185,7 +185,6 @@ export function renderPagination(totalPages, currentPage, list,) {
   `: ''}
   `
 
-
   const nextButtonsMarkup = `
       <li class="pagination-control-item">
           <button class="pagination-arrow-btn ${isLastPage ? 'pagination-arrow-btn' : 'pagination-arrow-btn-active'}"
