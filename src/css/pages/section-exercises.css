@@ -207,7 +207,9 @@ PLACEHOLDER STYLES WHEN FOCUSING
     margin-bottom: 0;
   }
   .search-form {
+    margin-top: 0;
     margin-right: 30px;
+    margin-bottom: 0;
   }
   .block-title {
     padding-bottom: 0;
