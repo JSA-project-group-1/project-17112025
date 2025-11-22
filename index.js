@@ -1,4 +1,4 @@
-import{o as Y,f as B,a as F,r as Z}from"./assets/modal-exercise-B1vNkw20.js";import{a as K,i as y}from"./assets/vendor-D2ogNlHo.js";const g="/project-17112025/assets/icons-not-min-CqnbliU1.svg";function j(s,t){const i=s.map(({filter:e,imgURL:a,name:n})=>`
+import{o as Y,f as B,a as F,r as Z}from"./assets/modal-exercise-DW4_Sp5Z.js";import{a as K,i as y}from"./assets/vendor-D2ogNlHo.js";const g="/project-17112025/assets/icons-not-min-CqnbliU1.svg";function j(s,t){const i=s.map(({filter:e,imgURL:a,name:n})=>`
           <li class="categories-item" data-name="${n}">
             <img
             class="category-image"
