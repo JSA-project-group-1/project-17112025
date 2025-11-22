@@ -467,7 +467,7 @@ block-exercises
   padding-top: 1px;
 }
 
-.title .name-text {
+.title .name-text-exercise {
   flex-grow: 1;
   white-space: nowrap;
   overflow: hidden;
@@ -535,7 +535,7 @@ block-exercises
   fill: none;
 }
 
-@media (max-width: 375px) {
+
   .calories-value {
     max-width: 40px;
   }
@@ -548,10 +548,10 @@ block-exercises
     max-width: 20px;
   }
 
-  .title .name-text {
+  .title .name-text-exercise {
     max-width: 250px;
   }
-}
+
 
 @media only screen and (min-width: 768px) {
   .exercises-item {
@@ -570,7 +570,7 @@ block-exercises
     max-width: 22px;
   }
 
-  .title .name-text {
+  .title .name-text-exercise {
     font-size: 24px;
     font-weight: 400;
     line-height: 32px;
@@ -590,7 +590,7 @@ block-exercises
       max-width: 50px;
     }
 
-    .title .name-text {
+    .title .name-text-exercise {
       max-width: 400px;
     }
   }
@@ -609,7 +609,7 @@ block-exercises
     max-width: 20px;
   }
 
-  .title .name-text {
+  .title .name-text-exercise {
     max-width: 250px;
   }
 }
@@ -631,7 +631,7 @@ block-exercises
     max-width: 22px;
   }
 
-  .title .name-text {
+  .title .name-text-exercise {
     font-size: 24px;
     font-weight: 400;
     line-height: 32px;
@@ -651,7 +651,7 @@ block-exercises
       max-width: 50px;
     }
 
-    .title .name-text {
+    .title .name-text-exercise {
       max-width: 400px;
     }
   }

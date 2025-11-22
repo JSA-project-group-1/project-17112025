@@ -49,8 +49,8 @@ export function renderExercises(exercises, list) {
       <svg class="icon" width="24" height="24">
       <use href="${iconsUrl}#icon-run-man-2"></use>
       </svg>
-      </button
-      <span class="name-text">${name}</span>
+      </button>
+      <span class="name-text-exercise">${name}</span>
     </div>
     <div class="details">
         <ul class="exercise-details-list">
