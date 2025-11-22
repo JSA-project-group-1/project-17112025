@@ -135,6 +135,8 @@
   padding: 12px 22px;
   border-radius: 30px;
   line-height: 1.29;
+  min-height: 48px;
+  box-sizing: border-box;
 }
 
 .add-to-favorites-btn {
@@ -147,6 +149,8 @@
   justify-content: center;
   transition: color var(--trans-norm), background-color var(--trans-norm),
     border-color var(--trans-norm);
+  white-space: nowrap;
+  font-size: 14px;
 }
 
 .add-to-favorites-btn span {
@@ -176,6 +180,8 @@
   background-color: transparent;
   transition: color var(--trans-norm), background-color var(--trans-norm),
     border-color var(--trans-norm);
+  white-space: nowrap;
+  font-size: 14px;
 }
 
 .give-rating-btn:focus {
@@ -298,6 +304,7 @@
   .modal-exercise-btn {
     font-size: 16px;
     line-height: 1.5;
+    min-height: 52px;
   }
 
   .modal-exercise-btn-list {
