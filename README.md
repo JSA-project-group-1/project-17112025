@@ -19,6 +19,8 @@ Modern responsive 2-page site for people who are keen on physical activity.
 | **Developer**    | Oleksii Shcherbak     | [@oleksii-shcherbak](https://github.com/oleksii-shcherbak) |                                                |
 | **Developer**    | Yevhen Vanchenko      | [@Vanchenko](https://github.com/Vanchenko)                 |                                                |
 | **Developer**    | Yulia Kostenko        | [@yulianakosenko](https://github.com/yulianakosenko)       |                                                |
+| **Developer**    | Olha Kyryllova        | [@kirolla](https://github.com/kirolla)                     |                                                |
+| **Developer**    | Konstantin Pak        | [@badboyinahood](https://github.com/badboyinahood)         |                                                |
 
 ## Features
 
