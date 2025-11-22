@@ -1,64 +1,46 @@
-import{e as m}from"./assets/render-functions-YT1qdQw6.js";import{i as v}from"./assets/vendor-D2ogNlHo.js";const p="favorite_workouts",d=12;let a=[],s=1;function g(){const t=localStorage.getItem(p);if(!t)return[];try{const e=JSON.parse(t);return Array.isArray(e)?e:[]}catch(e){return console.error("Failed to parse favorites from LS:",e),v.error({message:"Favorites data is corrupted. Clearing storage.",position:"topRight",maxWidth:600}),localStorage.removeItem(p),[]}}function b(t){localStorage.setItem(p,JSON.stringify(t))}function h(){let t=document.querySelector("[data-favorites-list]");if(t||(t=document.getElementById("favorites-list")),t)t.classList.add("favorites-list","exercises-list");else{const e=document.querySelector("section .container");if(!e)return null;t=document.createElement("div"),t.id="favorites-list",t.classList.add("favorites-list","exercises-list"),e.appendChild(t)}return t}function y(t){const{_id:e,name:o,burnedCalories:n,time:c,bodyPart:r,target:l}=t;return`
-    <li class="exercises-item favorite-card favorites-item" data-id="${e}">
-      <div class="header">
-        <div class="workout-rating">
-          <span class="type">WORKOUT</span>
-          <button
-            type="button"
-            class="favorite-remove-btn"
-          >
-            Remove
+import{e as x,a as u,i as p}from"./assets/render-functions-BM6j13nq.js";import{i as v}from"./assets/vendor-D2ogNlHo.js";const h="favorite_workouts",k=375,M=document.documentElement.clientWidth<=k,L=1440,S=document.documentElement.clientWidth>=L;let e=[],n=1,i=1,d=M?8:S?1e3:10;const o=document.querySelector("ul.pagination-controls-list"),c=document.querySelector("ul.favorites-list");document.getElementById("favorites-blok");function m(){const t=localStorage.getItem(h);if(!t)return[];try{const a=JSON.parse(t);return Array.isArray(a)?a:[]}catch(a){return console.error("Failed to parse favorites from LS:",a),v.error({message:"Favorites data is corrupted. Clearing storage.",position:"topRight",maxWidth:600}),localStorage.removeItem(h),[]}}function T(t){localStorage.setItem(h,JSON.stringify(t))}function F(){c.innerHTML="",o.innerHTML="";try{e=m(),i=Math.max(1,Math.ceil(e.length/d));const t=(n-1)*d,a=n*d,s=e.slice(t,a);g(s,c),e.length>0&&u(i,n,o)}catch(t){v.error({icon:"",position:"topRight",message:t.message})}}function g(t,a){if(t.length>0){const s=t.map(({_id:r,name:l,target:f,bodyPart:y,burnedCalories:b})=>`
+    <li class="exercises-item">
+    <div class="header-card">
+    <div class="header-left">
+        <span class="type">WORKOUT</span>
+          <button type="button" class="favorite-remove-btn" data-id="${r}">
+            <svg class="modal-exercise-trash-icon favorite-exercise-trash-icon" width="18" height="18">
+              <use href="${p}#icon-trash"></use></svg>
+            </span>
           </button>
-        </div>
-
-        <button
-          class="start-btn"
-          type="button"
-          data-modal-exercise="open"
-          data-exercise-id="${e}"
-        >
-          Start
+       </div>
+       <div class="header-right">
+        <button class="start-btn" type="button" data-modal-exercise="open" data-exercise-id="${r}"> Start
+        <svg class="icon-arrow-right" width="18" height="18">
+        <use href="${p}#icon-arrow-1"></use>
+        </svg>
         </button>
-      </div>
-
-      <div class="title">
-        <span class="icon"></span>${o}
-      </div>
-
-      <div class="details">
-        <ul class="exercise-details-list">
-          <li class="calories">
-            <span class="calories-name">Burned calories</span>
-            <span class="calories-value">${n} / ${c} min</span>
-          </li>
-          <li class="body-part">
-            <span class="body-part-name">Body part:</span>
-            <span class="body-part-value">${r}</span>
-          </li>
-          <li class="target">
-            <span class="target-name">Target:</span>
-            <span class="target-value">${l}</span>
-          </li>
-        </ul>
-      </div>
-    </li>
-  `}function x(t,e){return t<=1?"":`
-    <div class="favorites-pagination">
-      <button
-        type="button"
-        class="favorites-page-btn"
-        data-page="prev"
-        ${e===1?"disabled":""}
-      >&lt;</button>
-
-      <span class="favorites-page-info">${e} / ${t}</span>
-
-      <button
-        type="button"
-        class="favorites-page-btn"
-        data-page="next"
-        ${e===t?"disabled":""}
-      >&gt;</button>
+        </div>
+        </div>
+    <div class="title">
+      <button type="button" class="exercise-rating-btn js-give-rating-btn" data-exercise-id="${r}">
+      <svg class="icon" width="24" height="24">
+      <use href="${p}#icon-run-man-2"></use>
+      </svg>
+      </button>
+      <span class="name-text-exercise">${l}</span>
     </div>
-  `}function f(){const t=h();if(!t)return;if(!a.length){t.innerHTML="<p>No favorite workouts yet.</p>";const i=document.querySelector(".favorites-pagination");i&&i.remove();return}const e=Math.max(1,Math.ceil(a.length/d));s>e&&(s=e);const o=(s-1)*d,n=o+d,r=a.slice(o,n).map(y).join(""),l=x(e,s);t.innerHTML=r;const u=document.querySelector(".favorites-pagination");u&&u.remove(),t.insertAdjacentHTML("afterend",l)}function S(){const t=g(),e=JSON.stringify(a),o=JSON.stringify(t);if(e!==o){if(a=t,!a.length)s=1;else{const n=Math.max(1,Math.ceil(a.length/d));s>n&&(s=n)}f()}}function M(t){if(t.target.closest('[data-modal-exercise="close"]')){S();return}const o=t.target.closest(".favorite-remove-btn");if(o){const c=o.closest(".favorite-card");if(!c)return;const r=c.dataset.id;if(!r)return;const l=a.find(i=>i._id===r),u=a.filter(i=>i._id!==r);if(u.length===a.length)return;if(a=u,b(a),!a.length)s=1;else{const i=Math.max(1,Math.ceil(a.length/d));s>i&&(s=i)}f(),v.success({title:l?l.name:"Workout",message:"Workout removed from favorites.",position:"topRight",maxWidth:600});return}const n=t.target.closest(".favorites-page-btn");if(n){const c=n.dataset.page,r=Math.max(1,Math.ceil(a.length/d));c==="prev"&&s>1?s-=1:c==="next"&&s<r&&(s+=1),f()}}function F(){document.addEventListener("click",M),a=g(),s=1,m(),f()}F();
+    <div class="details">
+        <ul class="exercise-details-list">
+        <li class="calories">
+        <span class="calories-name">Burned calories</span>
+        <span class="calories-value">${b} / 3 min</span>
+        </li>
+        <li class="body-part">
+        <span class="body-part-name">Body part:</span>
+        <span class="body-part-value">${y}</span>
+        </li>
+        <li class="target">
+        <span class="target-name">Target:</span>
+        <span class="target-value">${f}</span>
+          </li>
+          </ul>
+          </div>
+          </li>
+          `).join("");a.innerHTML=s}else a.innerHTML="<div class='no-content-warning'><p>It appears that you haven't added any exercises to your favorites yet.To get started, you can add exercises that you like to your favorites for easier access in the future.</p></div>"}function w(t){if(t.target.closest('[data-modal-exercise="close"]')){const s=m(),r=JSON.stringify(e),l=JSON.stringify(s);if(r===l)return;e=s,c.innerHTML="",o.innerHTML="",i=Math.max(1,Math.ceil(e.length/d)),g(e,c),e.length>0&&u(i,n,o)}}function I(t){const a=t.target.closest("button[data-id]");if(a){const s=a.dataset.id;if(!s)return;const r=e.filter(l=>l._id!==s);if(r.length===e.length)return;e=r,T(e),c.innerHTML="",o.innerHTML="",i=Math.max(1,Math.ceil(e.length/d)),g(e,c),e.length>0&&u(i,n,o)}}function $(t){const a=t.target.closest("button[data-page]");if(a)try{switch(a.dataset.page){case"beg":n=1;break;case"prev":n--;break;case"next":n++;break;case"end":n=i;break;default:n=parseInt(a.dataset.page,10)}const s=(n-1)*d,r=n*d,l=e.slice(s,r);g(l,c),e.length>0&&u(i,n,o)}catch(s){v.error({icon:"",position:"topRight",message:s.message})}}function E(){x(),F(),c.addEventListener("click",I),o.addEventListener("click",$),document.addEventListener("click",w)}E();
 //# sourceMappingURL=favorites.js.map
