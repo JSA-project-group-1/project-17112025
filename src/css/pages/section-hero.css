@@ -49,6 +49,7 @@
 .hero-tag-list-top {
   display: flex;
   flex-wrap: wrap;
+  justify-content: end;
   width: 197px;
   gap: 8px;
   margin-top: 20px;
@@ -88,11 +89,11 @@
 @media screen and (min-width: 1440px) {
   .hero-container {
     max-width: 1440px;
-    padding: 0 15px;
   }
   .wrapper-top-tags {
     display: flex;
     flex-direction: column;
+    align-items: end;
   }
   .hero-tag-list {
     display: none;
