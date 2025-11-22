@@ -30,7 +30,7 @@ export function renderExercises(exercises, list) {
     <div class="header-card">
        <div class="header-left">
         <span class="type">WORKOUT</span>
-        <span class="rating">${rating}</span>
+        <span class="rating">${Number(rating).toFixed(1)}</span>
         <svg class="icon-star" width="18" height="18">
             <use href="${iconsUrl}#icon-star"></use>
         </svg>
