@@ -76,7 +76,9 @@ searchForm.addEventListener('submit', async evt => {
     exercisesPage = page;
     paginationList.innerHTML = '';
     renderExercises(results, exercisesList);
-    renderPagination(exercisesPages, exercisesPage, paginationList);
+    if (results.length > 0) {
+      renderPagination(exercisesPages, exercisesPage, paginationList);
+    }
   } catch (error) {
     iziToast.error({
       icon: '',
@@ -116,7 +118,9 @@ async function loadAndRenderCategoriesList() {
     categoriesPage = page;
 
     renderCategories(results, categoriesList);
-    renderPagination(categoriesPages, categoriesPage, paginationList);
+    if (results.length > 0) {
+      renderPagination(categoriesPages, categoriesPage, paginationList);
+    }
   } catch (error) {
     warningP.classList.remove('visually-hidden');
     iziToast.error({
