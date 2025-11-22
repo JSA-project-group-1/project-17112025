@@ -177,7 +177,7 @@ export function renderPagination(totalPages, currentPage, list,) {
         <button class="pagination-control" data-page="${activePage + 1}">${activePage + 1}</button>
     </li>
 
-    ${(pages - activePage) > 2 ? `
+    ${(pages - activePage) >= 2 ? `
       <li class="pagination-control-item">
         <p class="pagination-control">...</p>
       </li>
