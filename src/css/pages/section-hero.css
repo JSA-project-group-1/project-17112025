@@ -7,14 +7,17 @@
   font-size: 38px;
   line-height: 1.16;
   letter-spacing: -0.02em;
+  align-items: center;
 }
 .hero-title-wrapper {
   /* display: flex; */
 }
 .hero-svg {
+  vertical-align: middle;
+  position: relative;
+  top: -3px; /* тонкая подгонка */
   width: 38px;
   height: 38px;
-  margin-top: 5px;
   margin-right: 15px;
 }
 
@@ -31,7 +34,6 @@
 .hero-image {
   margin-top: 20px;
   border-radius: 30px;
-  /* width: 335px;   */
 }
 .hero-image-top {
   width: 168px;
@@ -71,9 +73,10 @@
   }
   .hero-tag-list {
     justify-content: end;
+  }
+  .hero-svg {
     width: 59px;
     height: 59px;
-    margin-top: 5px;
     margin-right: 15px;
   }
 }
@@ -81,8 +84,7 @@
 @media screen and (min-width: 1440px) {
   .hero-container {
     max-width: 1440px;
-    padding-top: 6px;
-    padding-bottom: 64px;
+    padding: 0 15px;
   }
   .wrapper-top-tags {
     display: flex;
@@ -92,3 +94,9 @@
     display: none;
   }
 }
+
+
+/* новий коммент */
+/* preserveAspectRatio="none" */
+
+
