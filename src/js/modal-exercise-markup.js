@@ -1,3 +1,5 @@
+import iconsUrl from '../assets/icons/icons-not-min.svg';
+
 export function createModalExerciseMarkup({
   gifUrl,
   name,
@@ -25,7 +27,7 @@ export function createModalExerciseMarkup({
         data-modal-exercise="close"
       >
         <svg class="modal-exercise-close-icon">
-          <use href="./assets/icons/icons.svg#icon-x-white"></use>
+          <use href="${iconsUrl}#icon-x-white"></use>
         </svg>
       </button>
       <h3 class="modal-exercise-title">${makeUpperCaseFirstLetter(name)}</h3>
@@ -71,8 +73,8 @@ export function createModalExerciseMarkup({
         Add to favorites
         <span>
           <svg class="modal-exercise-heart-icon js-modal-exercise-heart-icon">
-            <use href="./assets/icons/icons.svg#icon-heart"></use></svg
-        ></span>
+            <use href="${iconsUrl}#icon-heart"></use></svg>
+        </span>
       </button>
     </li>
     <li>
@@ -90,8 +92,8 @@ export function createAddToFavoritesMarkup() {
   Add to favorites
         <span>
           <svg class="modal-exercise-heart-icon js-modal-exercise-heart-icon">
-            <use href="./assets/icons/icons.svg#icon-heart"></use></svg
-        ></span>`;
+            <use href="${iconsUrl}#icon-heart"></use></svg>
+        </span>`;
 }
 
 export function createRemoveFromFavoritesMarkup() {
@@ -99,8 +101,8 @@ export function createRemoveFromFavoritesMarkup() {
   Remove from favorites
         <span>
           <svg class="modal-exercise-trash-icon js-modal-exercise-trash-icon">
-            <use href="./assets/icons/icons.svg#icon-trash"></use></svg
-        ></span>
+            <use href="${iconsUrl}#icon-trash"></use></svg>
+        </span>
   `;
 }
 
