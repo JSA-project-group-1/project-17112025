@@ -209,6 +209,9 @@ PLACEHOLDER STYLES WHEN FOCUSING
   .search-form {
     margin-right: 30px;
   }
+  .block-title {
+    padding-bottom: 0;
+  }
 }
 
 .quote-categories-box {
