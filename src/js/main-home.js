@@ -1,6 +1,8 @@
 import iziToast from 'izitoast';
-import 'izitoast/dist/css/iziToast.min.css';
-
+import './footer-subscription.js';
+import './header.js';
+import './modal-exercise.js';
+import './scroll';
 import { fetchCategories, fetchExercises } from './api-functions';
 import {
   renderCategories,
@@ -9,14 +11,11 @@ import {
   renderFilter,
 } from './render-functions';
 import { renderQuoteOfTheDay } from './quote-api-localStorage.js';
-import './footer-subscription.js';
-import './scroll';
-import '/css/pages/home.css';
-import './header.js';
-import './modal-exercise.js';
-
-import '../css/loader.css';
 import { showLoader, hideLoader } from './loader.js';
+
+import 'izitoast/dist/css/iziToast.min.css';
+import '/css/pages/home.css';
+import '../css/loader.css';
 
 const filterOptions = ['Muscles', 'Body parts', 'Equipment'];
 const mobileBreakpoint = 375;
@@ -141,13 +140,15 @@ function onFiltersListClick(event) {
     const filterOption = clickedItem.dataset.option;
     currentFilter = filterOption;
     loadAndRenderCategoriesList();
-    renderFilter(filterOptions, currentFilter, filtersList);
+    if (results.length > 0) {
+      renderFilter(filterOptions, currentFilter, filtersList);
+    }
     searchForm.classList.add('visually-hidden');
     searchQuery = '';
     currentCategory = '';
     searchInput.value = '';
-    slash.classList.add('visually-hidden');
     currentCategoryP.textContent = currentCategory;
+    slash.classList.add('visually-hidden');
   }
 }
 
