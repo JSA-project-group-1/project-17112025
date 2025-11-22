@@ -58,9 +58,13 @@
   }
 
   .favorites-list {
+    display: flex;
     overflow-y: auto;
     overflow-x: hidden;
-    height: 470px;
+    max-height: 470px;
+    row-gap: 16px;
+    column-gap: 16px;
+    margin-bottom: auto;
   }
 
   .no-content-warning {
@@ -69,6 +73,7 @@
 
   .favorites-list .exercises-item {
     width: 405px;
+    max-height: 141px;
   }
 
   .quote-favorites-box .pagination-controls-list {
