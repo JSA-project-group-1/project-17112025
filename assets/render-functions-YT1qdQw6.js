@@ -110,8 +110,8 @@ import{a as u,b as B,i as m}from"./vendor-D2ogNlHo.js";(function(){const t=docum
       <svg class="icon" width="24" height="24">
       <use href="${c}#icon-run-man-2"></use>
       </svg>
-      </button
-      <span class="name-text">${n}</span>
+      </button>
+      <span class="name-text-exercise">${n}</span>
     </div>
     <div class="details">
         <ul class="exercise-details-list">
@@ -245,4 +245,4 @@ import{a as u,b as B,i as m}from"./vendor-D2ogNlHo.js";(function(){const t=docum
   `,T=g+p+y;s.innerHTML=T}function re(e,t,s){const a=e.map(o=>`
           <li class="filters-list-item ${t===o?"filters-list-item-active":""}" data-option="${o}"><p>${o}</p></li>
       `).join("");s.innerHTML=a}async function ce(){try{const e=await ee(),t=document.querySelector(".quote-api-text"),s=document.querySelector(".quote-api-author");t&&(t.textContent=e.quote||"No quote available"),s&&(s.textContent=e.author||"Unknown author")}catch(e){console.error("Error rendering quote:",e)}}export{ie as a,ae as b,se as c,re as d,ce as e,oe as f,ne as r};
-//# sourceMappingURL=render-functions-D7MfP7ZS.js.map
+//# sourceMappingURL=render-functions-YT1qdQw6.js.map
