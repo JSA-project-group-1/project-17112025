@@ -10,7 +10,7 @@ import {
 } from './render-functions';
 import { renderQuoteOfTheDay } from './quote-api-localStorage.js';
 import './footer-subscription.js';
-
+import './scroll';
 import '/css/pages/home.css';
 import './header.js';
 import './modal-exercise.js';
