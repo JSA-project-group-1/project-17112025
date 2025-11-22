@@ -7,12 +7,26 @@ import '/css/pages/section-exercises.css';
 import './header.js';
 import './modal-exercise.js';
 import { renderQuoteOfTheDay } from './render-functions.js';
+import iconsUrl from '../assets/icons/icons.svg';
 
 const FAVORITES_KEY = 'favorite_workouts';
-const ITEMS_PER_PAGE = 12;
+
+const mobileBreakpoint = 375;
+const isMobile = document.documentElement.clientWidth <= mobileBreakpoint;
+const desktopBreakpoint = 1440;
+const isDesktop = document.documentElement.clientWidth >= desktopBreakpoint;
+
+import { renderPagination } from './render-functions';
+
 
 let favoritesState = [];
 let currentPage = 1;
+let pages = 1;
+let perPage = isMobile ? 8 : (isDesktop ? 1000 : 10);
+
+const paginationList = document.querySelector('ul.pagination-controls-list');
+const favoritesList = document.querySelector('ul.favorites-list');
+const favoritesBlok = document.getElementById('favorites-blok');
 
 // ====== СЕРВІС ДЛЯ localStorage ======
 
@@ -41,185 +55,126 @@ function saveFavoritesToStorage(favorites) {
 
 // ====== РЕНДЕР ======
 
-function getFavoritesContainer() {
-  let container = document.querySelector('[data-favorites-list]');
 
-  if (!container) {
-    container = document.getElementById('favorites-list');
+function loadAndRenderFavoriesList() {
+  favoritesList.innerHTML = '';
+  paginationList.innerHTML = '';
+
+  try {
+    favoritesState = readFavoritesFromStorage();
+    pages = Math.max(
+      1,
+      Math.ceil(favoritesState.length / perPage)
+    );
+    const startIndex = (currentPage - 1) * perPage;
+    const endIndex = currentPage * perPage;
+    const itemsForCurrentPage = favoritesState.slice(startIndex, endIndex);
+    renderFavorites(itemsForCurrentPage, favoritesList);
+    if (favoritesState.length > 0) {
+      renderPagination(pages, currentPage, paginationList);
+    }
+  } catch (error) {
+    // warningP.classList.remove('visually-hidden');
+    iziToast.error({
+      icon: '',
+      position: 'topRight',
+      message: error.message,
+    });
   }
-
-  if (!container) {
-    const parent = document.querySelector('section .container');
-    if (!parent) return null;
-
-    container = document.createElement('div');
-    container.id = 'favorites-list';
-    container.classList.add('favorites-list', 'exercises-list');
-    parent.appendChild(container);
-  } else {
-    container.classList.add('favorites-list', 'exercises-list');
-  }
-
-  return container;
 }
 
-function createWorkoutCardMarkup(workout) {
-  const { _id, name, burnedCalories, time, bodyPart, target } = workout;
-
-  return `
-    <li class="exercises-item favorite-card favorites-item" data-id="${_id}">
-      <div class="header">
-        <div class="workout-rating">
-          <span class="type">WORKOUT</span>
-          <button
-            type="button"
-            class="favorite-remove-btn"
-          >
-            Remove
+function renderFavorites(exercises, list) {
+  if (exercises.length > 0) {
+    const markup = exercises
+      .map(({ _id, name, target, bodyPart, burnedCalories }) => {
+        return `
+    <li class="exercises-item">
+    <div class="header-card">
+    <div class="header-left">
+        <span class="type">WORKOUT</span>
+          <button type="button" class="favorite-remove-btn" data-id="${_id}">
+            <svg class="modal-exercise-trash-icon favorite-exercise-trash-icon" width="18" height="18">
+              <use href="${iconsUrl}#icon-trash"></use></svg>
+            </span>
           </button>
-        </div>
-
-        <button
-          class="start-btn"
-          type="button"
-          data-modal-exercise="open"
-          data-exercise-id="${_id}"
-        >
-          Start
+       </div>
+       <div class="header-right">
+        <button class="start-btn" type="button" data-modal-exercise="open" data-exercise-id="${_id}"> Start
+        <svg class="icon-arrow-right" width="18" height="18">
+        <use href="${iconsUrl}#icon-arrow-1"></use>
+        </svg>
         </button>
-      </div>
-
-      <div class="title">
-        <span class="icon"></span>${name}
-      </div>
-
-      <div class="details">
-        <ul class="exercise-details-list">
-          <li class="calories">
-            <span class="calories-name">Burned calories</span>
-            <span class="calories-value">${burnedCalories} / ${time} min</span>
-          </li>
-          <li class="body-part">
-            <span class="body-part-name">Body part:</span>
-            <span class="body-part-value">${bodyPart}</span>
-          </li>
-          <li class="target">
-            <span class="target-name">Target:</span>
-            <span class="target-value">${target}</span>
-          </li>
-        </ul>
-      </div>
-    </li>
-  `;
-}
-
-function createPaginationMarkup(totalPages, page) {
-  if (totalPages <= 1) return '';
-
-  const prevDisabled = page === 1 ? 'disabled' : '';
-  const nextDisabled = page === totalPages ? 'disabled' : '';
-
-  return `
-    <div class="favorites-pagination">
-      <button
-        type="button"
-        class="favorites-page-btn"
-        data-page="prev"
-        ${prevDisabled}
-      >&lt;</button>
-
-      <span class="favorites-page-info">${page} / ${totalPages}</span>
-
-      <button
-        type="button"
-        class="favorites-page-btn"
-        data-page="next"
-        ${nextDisabled}
-      >&gt;</button>
+        </div>
+        </div>
+    <div class="title">
+      <button type="button" class="exercise-rating-btn js-give-rating-btn" data-exercise-id="${_id}">
+      <svg class="icon" width="24" height="24">
+      <use href="${iconsUrl}#icon-run-man-2"></use>
+      </svg>
+      </button>
+      <span class="name-text-exercise">${name}</span>
     </div>
-  `;
-}
-
-function renderFavoritesList() {
-  const container = getFavoritesContainer();
-  if (!container) return;
-
-  if (!favoritesState.length) {
-    container.innerHTML = '<p>No favorite workouts yet.</p>';
-
-    const oldPagination = document.querySelector('.favorites-pagination');
-    if (oldPagination) oldPagination.remove();
-
-    return;
+    <div class="details">
+        <ul class="exercise-details-list">
+        <li class="calories">
+        <span class="calories-name">Burned calories</span>
+        <span class="calories-value">${burnedCalories} / 3 min</span>
+        </li>
+        <li class="body-part">
+        <span class="body-part-name">Body part:</span>
+        <span class="body-part-value">${bodyPart}</span>
+        </li>
+        <li class="target">
+        <span class="target-name">Target:</span>
+        <span class="target-value">${target}</span>
+          </li>
+          </ul>
+          </div>
+          </li>
+          `;
+      })
+      .join('');
+    list.innerHTML = markup;
+  } else {
+    list.innerHTML =
+      "<div class='no-content-warning'><p>It appears that you haven't added any exercises to your favorites yet.To get started, you can add exercises that you like to your favorites for easier access in the future.</p></div>";
   }
-
-  const totalPages = Math.max(
-    1,
-    Math.ceil(favoritesState.length / ITEMS_PER_PAGE)
-  );
-
-  if (currentPage > totalPages) {
-    currentPage = totalPages;
-  }
-
-  const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
-  const endIndex = startIndex + ITEMS_PER_PAGE;
-  const itemsForPage = favoritesState.slice(startIndex, endIndex);
-
-  const cardsMarkup = itemsForPage.map(createWorkoutCardMarkup).join('');
-  const paginationMarkup = createPaginationMarkup(totalPages, currentPage);
-
-  container.innerHTML = cardsMarkup;
-
-  const oldPagination = document.querySelector('.favorites-pagination');
-  if (oldPagination) oldPagination.remove();
-
-  container.insertAdjacentHTML('afterend', paginationMarkup);
 }
 
 // ====== СИНХРОНІЗАЦІЯ ПІСЛЯ ЗАКРИТТЯ МОДАЛКИ ======
 
-function syncFavoritesFromStorageIfChanged() {
-  const newState = readFavoritesFromStorage();
+function onModalCloseClick(event) {
+  const closeModal = event.target.closest('[data-modal-exercise="close"]');
+  if (closeModal) {
+    const newState = readFavoritesFromStorage();
 
-  const prev = JSON.stringify(favoritesState);
-  const next = JSON.stringify(newState);
+    const prev = JSON.stringify(favoritesState);
+    const next = JSON.stringify(newState);
 
-  if (prev === next) return;
+    if (prev === next) return;
 
-  favoritesState = newState;
+    favoritesState = newState;
 
-  if (!favoritesState.length) {
-    currentPage = 1;
-  } else {
-    const totalPages = Math.max(
+    favoritesList.innerHTML = '';
+    paginationList.innerHTML = '';
+    pages = Math.max(
       1,
-      Math.ceil(favoritesState.length / ITEMS_PER_PAGE)
+      Math.ceil(favoritesState.length / perPage)
     );
-    if (currentPage > totalPages) currentPage = totalPages;
+    renderFavorites(favoritesState, favoritesList);
+    if (favoritesState.length > 0) {
+      renderPagination(pages, currentPage, paginationList);
+    }
   }
-
-  renderFavoritesList();
 }
 
-// ====== ВИДАЛЕННЯ + ПАГІНАЦІЯ + ЗАКРИТТЯ МОДАЛКИ ======
 
 function onFavoritesListClick(event) {
-  const closeModalBtn = event.target.closest('[data-modal-exercise="close"]');
-  if (closeModalBtn) {
-    syncFavoritesFromStorageIfChanged();
-    return;
-  }
-
-  const removeBtn = event.target.closest('.favorite-remove-btn');
+  const removeBtn = event.target.closest('button[data-id]');
   if (removeBtn) {
-    const card = removeBtn.closest('.favorite-card');
-    if (!card) return;
-
-    const workoutId = card.dataset.id;
+    const workoutId = removeBtn.dataset.id;
     if (!workoutId) return;
 
-    const removed = favoritesState.find(item => item._id === workoutId);
     const newFavorites = favoritesState.filter(item => item._id !== workoutId);
 
     if (newFavorites.length === favoritesState.length) {
@@ -229,57 +184,70 @@ function onFavoritesListClick(event) {
     favoritesState = newFavorites;
     saveFavoritesToStorage(favoritesState);
 
-    if (!favoritesState.length) {
-      currentPage = 1;
-    } else {
-      const totalPages = Math.max(
-        1,
-        Math.ceil(favoritesState.length / ITEMS_PER_PAGE)
-      );
-      if (currentPage > totalPages) currentPage = totalPages;
-    }
-
-    renderFavoritesList();
-
-    iziToast.success({
-      title: removed ? removed.name : 'Workout',
-      message: 'Workout removed from favorites.',
-      position: 'topRight',
-      maxWidth: 600,
-    });
-
-    return;
-  }
-
-  const pageBtn = event.target.closest('.favorites-page-btn');
-  if (pageBtn) {
-    const action = pageBtn.dataset.page;
-    const totalPages = Math.max(
+    favoritesList.innerHTML = '';
+    paginationList.innerHTML = '';
+    pages = Math.max(
       1,
-      Math.ceil(favoritesState.length / ITEMS_PER_PAGE)
+      Math.ceil(favoritesState.length / perPage)
     );
-
-    if (action === 'prev' && currentPage > 1) {
-      currentPage -= 1;
-    } else if (action === 'next' && currentPage < totalPages) {
-      currentPage += 1;
+    renderFavorites(favoritesState, favoritesList);
+    if (favoritesState.length > 0) {
+      renderPagination(pages, currentPage, paginationList);
     }
-
-    renderFavoritesList();
   }
 }
 
+function onPaginationClick(event) {
+  const clickedButton = event.target.closest('button[data-page]');
+  if (clickedButton) {
+    try {
+      switch (clickedButton.dataset.page) {
+        case 'beg':
+          currentPage = 1;
+          break;
+
+        case 'prev':
+          currentPage--;
+          break;
+
+        case 'next':
+          currentPage++;
+          break;
+
+        case 'end':
+          currentPage = pages;
+          break;
+
+        default:
+          currentPage = parseInt(clickedButton.dataset.page, 10);
+      }
+
+      const startIndex = (currentPage - 1) * perPage;
+      const endIndex = currentPage * perPage;
+      const itemsForCurrentPage = favoritesState.slice(startIndex, endIndex);
+      renderFavorites(itemsForCurrentPage, favoritesList);
+      if (favoritesState.length > 0) {
+        renderPagination(pages, currentPage, paginationList);
+      }
+
+    } catch (error) {
+      iziToast.error({
+        icon: '',
+        position: 'topRight',
+        message: error.message,
+      });
+    }
+  }
+}
 // ====== INIT ======
 
 function initFavoritesPage() {
-  document.addEventListener('click', onFavoritesListClick);
-
-  favoritesState = readFavoritesFromStorage();
-  currentPage = 1;
-
   renderQuoteOfTheDay();
+  loadAndRenderFavoriesList()
 
-  renderFavoritesList();
+  favoritesList.addEventListener('click', onFavoritesListClick);
+  paginationList.addEventListener('click', onPaginationClick);
+  document.addEventListener('click', onModalCloseClick);
 }
 
 initFavoritesPage();

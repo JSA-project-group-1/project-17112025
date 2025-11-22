@@ -38,10 +38,11 @@ export function renderExercises(exercises, list) {
         </svg>
        </div>
        <div class="header-right">
-        <button class="start-btn" type="button" data-modal-exercise="open" data-exercise-id="${_id}"> Start </button>
+        <button class="start-btn" type="button" data-modal-exercise="open" data-exercise-id="${_id}"> Start 
         <svg class="icon-arrow-right" width="18" height="18">
-          <use href="${iconsUrl}#icon-arrow-1"></use>
+        <use href="${iconsUrl}#icon-arrow-1"></use>
         </svg>
+        </button>
         </div>
         </div>
     <div class="title">

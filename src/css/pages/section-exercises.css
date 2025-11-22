@@ -440,7 +440,15 @@ block-exercises
 .start-btn:hover {
   color: grey;
 }
+.icon-arrow-right {
+  stroke: #242424;
+  fill: none;
+  margin-left: 8px;
+}
 
+.start-btn:hover > .icon-arrow-right {
+  stroke: grey;
+}
 .title {
   color: #242424;
   font-size: 20px;
@@ -534,28 +542,21 @@ block-exercises
   margin-left: 4px;
 }
 
-.icon-arrow-right {
-  stroke: #242424;
-  fill: none;
+.calories-value {
+  max-width: 40px;
 }
 
+.body-part-value {
+  max-width: 30px;
+}
 
-  .calories-value {
-    max-width: 40px;
-  }
+.target-value {
+  max-width: 20px;
+}
 
-  .body-part-value {
-    max-width: 30px;
-  }
-
-  .target-value {
-    max-width: 20px;
-  }
-
-  .title .name-text-exercise {
-    max-width: 250px;
-  }
-
+.title .name-text-exercise {
+  max-width: 250px;
+}
 
 @media only screen and (min-width: 768px) {
   .exercises-item {
