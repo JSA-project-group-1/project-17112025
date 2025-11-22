@@ -1,8 +1,3 @@
-@import url('./section-favorites.css');
 @import url('./block-quote-fav.css');
-.quote-favorites-box {
-  display: flex;
-}
-.quote-favorites-box > :first-child {
-  width: 494px;
-}
+@import url('./section-favorites.css');
+@import url('./pagination.css');

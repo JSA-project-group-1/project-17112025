@@ -1,121 +1,77 @@
-
+.quote-favorites-box {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  row-gap: 20px;
+}
+.no-content-warning {
+  padding: 0px 9px 46px 9px;
+}
+.no-content-warning p {
+  font-family: var(--font-family);
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.29;
+  text-align: center;
+  color: #242424;
+}
 .favorites-list {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
-    gap: 24px;
-    margin-top: 24px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
 }
-
-.favorite-card {
-    border: 1px solid #d0d0d0;
-    border-radius: 16px;
-    padding: 20px;
-    background: #ffffff;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
-
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    gap: 12px;
-
-    transition: box-shadow 0.2s ease, transform 0.2s ease;
-}
-
-.favorite-card:hover {
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-    transform: translateY(-2px);
-}
-
-.favorite-card-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.favorite-card-label {
-    font-size: 14px;
-    font-weight: 600;
-    color: #6e6e6e;
-    letter-spacing: 0.5px;
-}
-
 .favorite-remove-btn {
-    border: 1px solid #ccc;
-    background: #fafafa;
-    padding: 6px 10px;
-    font-size: 12px;
-    cursor: pointer;
-    border-radius: 8px;
-    transition: background 0.2s ease, border 0.2s ease;
+  background: transparent;
+  border: transparent;
+}
+.favorite-exercise-trash-icon {
+  fill: var(--main-color);
 }
 
-.favorite-remove-btn:hover {
-    background: #f2f2f2;
-    border-color: #aaa;
+.favorite-remove-btn:hover > .favorite-exercise-trash-icon {
+  fill: var(--second-color);
+}
+.pagination-controls-list {
+  margin: 0 auto;
+}
+@media only screen and (min-width: 768px) {
+  .quote-favorites-box {
+    row-gap: 32px;
+  }
+  .no-content-warning {
+    padding: 68px 75px 187px 75px;
+  }
+  .no-content-warning p {
+    font-family: var(--font-family);
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 1.33;
+    text-align: center;
+    color: #242424;
+  }
 }
 
-.favorite-card-title {
-    font-size: 20px;
-    font-weight: 700;
-    color: #222;
-}
+@media only screen and (min-width: 1440px) {
+  .quote-favorites-box {
+    gap: 0;
+    flex-wrap: nowrap;
+  }
 
-.favorite-card-text {
-    font-size: 14px;
-    color: #555;
-    line-height: 1.4;
-}
+  .favorites-list {
+    overflow-y: auto;
+    overflow-x: hidden;
+    height: 470px;
+  }
 
-.favorite-card-text span {
-    color: #111;
-    font-weight: 600;
-}
+  .no-content-warning {
+    padding: 114px 148px 364px 148px;
+  }
 
-@media (max-width: 480px) {
-    .favorites-list {
-        grid-template-columns: 1fr;
-    }
+  .favorites-list .exercises-item {
+    width: 405px;
+  }
 
-    .favorite-card {
-        padding: 16px;
-    }
-
-    .favorite-card-title {
-        font-size: 18px;
-    }
-}
-
-.favorites-pagination {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 12px;
-    margin-top: 24px;
-    margin-bottom: 24px;
-}
-
-.favorites-page-btn {
-    border: 1px solid #ccc;
-    background: #fafafa;
-    padding: 6px 12px;
-    font-size: 14px;
-    cursor: pointer;
-    border-radius: 8px;
-    transition: background 0.2s ease, border 0.2s ease, transform 0.1s ease;
-}
-
-.favorites-page-btn:hover:not(:disabled) {
-    background: #f2f2f2;
-    border-color: #aaa;
-    transform: translateY(-1px);
-}
-
-.favorites-page-btn:disabled {
-    opacity: 0.5;
-    cursor: default;
-}
-
-.favorites-page-info {
-    font-size: 14px;
-    color: #555;
+  .quote-favorites-box .pagination-controls-list {
+    display: none;
+  }
 }
