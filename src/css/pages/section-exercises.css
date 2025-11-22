@@ -96,6 +96,7 @@ PLACEHOLDER STYLES WHEN FOCUSING
   letter-spacing: -0.02em;
   color: #242424;
   margin-bottom: 0;
+  white-space: nowrap;
 }
 .block-title {
   display: flex;
@@ -114,6 +115,9 @@ PLACEHOLDER STYLES WHEN FOCUSING
   letter-spacing: -0.02em;
   color: rgba(36, 36, 36, 0.5);
   margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .clear-btn,
 .search-btn {
