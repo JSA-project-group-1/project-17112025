@@ -1,18 +1,5 @@
 import axios from 'axios';
-
-axios.defaults.baseURL = 'https://your-energy.b.goit.study/api/';
-
-// АРІ for get data for the quote
-export const getQuoteOfTheDay = async () => {
-  try {
-    const { data } = await axios.get('/quote');
-    console.log('Quote from API:', data);
-    return data;
-  } catch (error) {
-    console.error('Error fetching quote:', error);
-    throw error;
-  }
-};
+import { getQuoteOfTheDay } from './api-functions';
 
 // Get today day
 export const getTodayDate = () => {
@@ -39,23 +26,3 @@ export const handleGetQuoteOfTheDay = async () => {
 
   return quoteWithDate;
 };
-
-// Render the quote of the day
-export async function renderQuoteOfTheDay() {
-  try {
-    const quoteData = await handleGetQuoteOfTheDay();
-
-    const quoteTextEl = document.querySelector('.quote-api-text');
-    const quoteAuthorEl = document.querySelector('.quote-api-author');
-
-    if (quoteTextEl) {
-      quoteTextEl.textContent = quoteData.quote || 'No quote available';
-    }
-
-    if (quoteAuthorEl) {
-      quoteAuthorEl.textContent = quoteData.author || 'Unknown author';
-    }
-  } catch (error) {
-    console.error('Error rendering quote:', error);
-  }
-}

@@ -1,14 +1,14 @@
-import iziToast from "izitoast";
-import "izitoast/dist/css/iziToast.min.css";
+import iziToast from 'izitoast';
+import 'izitoast/dist/css/iziToast.min.css';
 
-import "/css/pages/favorites.css";
-import "/css/pages/modal-exercise.css";
-import "/css/pages/section-exercises.css";
-import "./header.js";
-import "./modal-exercise.js";
-import { renderQuoteOfTheDay } from "./quote-api-localStorage.js";
+import '/css/pages/favorites.css';
+import '/css/pages/modal-exercise.css';
+import '/css/pages/section-exercises.css';
+import './header.js';
+import './modal-exercise.js';
+import { renderQuoteOfTheDay } from './render-functions.js';
 
-const FAVORITES_KEY = "favorite_workouts";
+const FAVORITES_KEY = 'favorite_workouts';
 const ITEMS_PER_PAGE = 12;
 
 let favoritesState = [];
@@ -24,10 +24,10 @@ function readFavoritesFromStorage() {
     const parsed = JSON.parse(raw);
     return Array.isArray(parsed) ? parsed : [];
   } catch (err) {
-    console.error("Failed to parse favorites from LS:", err);
+    console.error('Failed to parse favorites from LS:', err);
     iziToast.error({
-      message: "Favorites data is corrupted. Clearing storage.",
-      position: "topRight",
+      message: 'Favorites data is corrupted. Clearing storage.',
+      position: 'topRight',
       maxWidth: 600,
     });
     localStorage.removeItem(FAVORITES_KEY);
@@ -42,22 +42,22 @@ function saveFavoritesToStorage(favorites) {
 // ====== РЕНДЕР ======
 
 function getFavoritesContainer() {
-  let container = document.querySelector("[data-favorites-list]");
+  let container = document.querySelector('[data-favorites-list]');
 
   if (!container) {
-    container = document.getElementById("favorites-list");
+    container = document.getElementById('favorites-list');
   }
 
   if (!container) {
-    const parent = document.querySelector("section .container");
+    const parent = document.querySelector('section .container');
     if (!parent) return null;
 
-    container = document.createElement("div");
-    container.id = "favorites-list";
-    container.classList.add("favorites-list", "exercises-list");
+    container = document.createElement('div');
+    container.id = 'favorites-list';
+    container.classList.add('favorites-list', 'exercises-list');
     parent.appendChild(container);
   } else {
-    container.classList.add("favorites-list", "exercises-list");
+    container.classList.add('favorites-list', 'exercises-list');
   }
 
   return container;
@@ -114,10 +114,10 @@ function createWorkoutCardMarkup(workout) {
 }
 
 function createPaginationMarkup(totalPages, page) {
-  if (totalPages <= 1) return "";
+  if (totalPages <= 1) return '';
 
-  const prevDisabled = page === 1 ? "disabled" : "";
-  const nextDisabled = page === totalPages ? "disabled" : "";
+  const prevDisabled = page === 1 ? 'disabled' : '';
+  const nextDisabled = page === totalPages ? 'disabled' : '';
 
   return `
     <div class="favorites-pagination">
@@ -145,9 +145,9 @@ function renderFavoritesList() {
   if (!container) return;
 
   if (!favoritesState.length) {
-    container.innerHTML = "<p>No favorite workouts yet.</p>";
+    container.innerHTML = '<p>No favorite workouts yet.</p>';
 
-    const oldPagination = document.querySelector(".favorites-pagination");
+    const oldPagination = document.querySelector('.favorites-pagination');
     if (oldPagination) oldPagination.remove();
 
     return;
@@ -166,15 +166,15 @@ function renderFavoritesList() {
   const endIndex = startIndex + ITEMS_PER_PAGE;
   const itemsForPage = favoritesState.slice(startIndex, endIndex);
 
-  const cardsMarkup = itemsForPage.map(createWorkoutCardMarkup).join("");
+  const cardsMarkup = itemsForPage.map(createWorkoutCardMarkup).join('');
   const paginationMarkup = createPaginationMarkup(totalPages, currentPage);
 
   container.innerHTML = cardsMarkup;
 
-  const oldPagination = document.querySelector(".favorites-pagination");
+  const oldPagination = document.querySelector('.favorites-pagination');
   if (oldPagination) oldPagination.remove();
 
-  container.insertAdjacentHTML("afterend", paginationMarkup);
+  container.insertAdjacentHTML('afterend', paginationMarkup);
 }
 
 // ====== СИНХРОНІЗАЦІЯ ПІСЛЯ ЗАКРИТТЯ МОДАЛКИ ======
@@ -211,18 +211,16 @@ function onFavoritesListClick(event) {
     return;
   }
 
-  const removeBtn = event.target.closest(".favorite-remove-btn");
+  const removeBtn = event.target.closest('.favorite-remove-btn');
   if (removeBtn) {
-    const card = removeBtn.closest(".favorite-card");
+    const card = removeBtn.closest('.favorite-card');
     if (!card) return;
 
     const workoutId = card.dataset.id;
     if (!workoutId) return;
 
     const removed = favoritesState.find(item => item._id === workoutId);
-    const newFavorites = favoritesState.filter(
-      item => item._id !== workoutId
-    );
+    const newFavorites = favoritesState.filter(item => item._id !== workoutId);
 
     if (newFavorites.length === favoritesState.length) {
       return;
@@ -244,16 +242,16 @@ function onFavoritesListClick(event) {
     renderFavoritesList();
 
     iziToast.success({
-      title: removed ? removed.name : "Workout",
-      message: "Workout removed from favorites.",
-      position: "topRight",
+      title: removed ? removed.name : 'Workout',
+      message: 'Workout removed from favorites.',
+      position: 'topRight',
       maxWidth: 600,
     });
 
     return;
   }
 
-  const pageBtn = event.target.closest(".favorites-page-btn");
+  const pageBtn = event.target.closest('.favorites-page-btn');
   if (pageBtn) {
     const action = pageBtn.dataset.page;
     const totalPages = Math.max(
@@ -261,9 +259,9 @@ function onFavoritesListClick(event) {
       Math.ceil(favoritesState.length / ITEMS_PER_PAGE)
     );
 
-    if (action === "prev" && currentPage > 1) {
+    if (action === 'prev' && currentPage > 1) {
       currentPage -= 1;
-    } else if (action === "next" && currentPage < totalPages) {
+    } else if (action === 'next' && currentPage < totalPages) {
       currentPage += 1;
     }
 
@@ -274,7 +272,7 @@ function onFavoritesListClick(event) {
 // ====== INIT ======
 
 function initFavoritesPage() {
-  document.addEventListener("click", onFavoritesListClick);
+  document.addEventListener('click', onFavoritesListClick);
 
   favoritesState = readFavoritesFromStorage();
   currentPage = 1;

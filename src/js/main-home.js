@@ -9,8 +9,8 @@ import {
   renderExercises,
   renderPagination,
   renderFilter,
+  renderQuoteOfTheDay,
 } from './render-functions';
-import { renderQuoteOfTheDay } from './quote-api-localStorage.js';
 import { showLoader, hideLoader } from './loader.js';
 
 import 'izitoast/dist/css/iziToast.min.css';
@@ -77,7 +77,6 @@ searchForm.addEventListener('submit', async evt => {
     paginationList.innerHTML = '';
     renderExercises(results, exercisesList);
     renderPagination(exercisesPages, exercisesPage, paginationList);
-
   } catch (error) {
     iziToast.error({
       icon: '',
@@ -97,7 +96,6 @@ clearBtn.addEventListener('click', async () => {
   renderPagination(exercisesPages, exercisesPage, paginationList);
   loadAndRenderCategoriesList();
 });
-
 
 async function loadAndRenderCategoriesList() {
   categoriesList.innerHTML = '';
@@ -119,7 +117,6 @@ async function loadAndRenderCategoriesList() {
 
     renderCategories(results, categoriesList);
     renderPagination(categoriesPages, categoriesPage, paginationList);
-
   } catch (error) {
     warningP.classList.remove('visually-hidden');
     iziToast.error({
@@ -149,7 +146,6 @@ function onFiltersListClick(event) {
     slash.classList.add('visually-hidden');
   }
 }
-
 
 async function onCategoryClick(event) {
   const clickedItem = event.target.closest('.categories-item');
@@ -188,12 +184,11 @@ async function onCategoryClick(event) {
   }
 }
 
-
 async function onPaginationClick(event) {
   const clickedButton = event.target.closest('button[data-page]');
   if (clickedButton) {
     showLoader(categoriesSection);
-    console.log(clickedButton.dataset.page)
+    console.log(clickedButton.dataset.page);
     try {
       if (currentCategory) {
         switch (clickedButton.dataset.page) {
@@ -230,7 +225,6 @@ async function onPaginationClick(event) {
         renderExercises(results, exercisesList);
         renderPagination(exercisesPages, exercisesPage, paginationList);
       } else {
-
         switch (clickedButton.dataset.page) {
           case 'beg':
             categoriesPage = 1;
@@ -276,11 +270,9 @@ async function onPaginationClick(event) {
   }
 }
 
-
 renderFilter(filterOptions, currentFilter, filtersList);
 loadAndRenderCategoriesList();
 categoriesList.addEventListener('click', onCategoryClick);
 paginationList.addEventListener('click', onPaginationClick);
 
 document.addEventListener('DOMContentLoaded', renderQuoteOfTheDay);
-
