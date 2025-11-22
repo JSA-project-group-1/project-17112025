@@ -34,6 +34,7 @@
   font-size: 14px;
   line-height: 1.29;
   letter-spacing: -0.02em;
+  max-width: 335px;
 }
 .hero-image {
   margin-top: 20px;
@@ -75,6 +76,10 @@
   .hero-subtitle {
     font-size: 18px;
     line-height: 1.33;
+    max-width: 500px;
+  }
+  .hero-subtitle br {
+    display: none; /* скрываем переносы на tablet+desktop */
   }
   .hero-tag-list {
     justify-content: end;
