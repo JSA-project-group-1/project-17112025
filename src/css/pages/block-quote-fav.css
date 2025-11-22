@@ -21,6 +21,7 @@
   fill: var(--second-color);
   border-radius: 50%;
   background: var(--stars-color);
+  flex-shrink: 0;
 }
 
 .quote-content {
@@ -37,6 +38,7 @@
 
 .quote-icon-comma {
   fill: var(--second-color);
+  flex-shrink: 0;
 }
 
 .quote-text {
@@ -84,6 +86,8 @@
 }
 
 .quote-img {
+  width: 335px;
+  height: 119px;
   margin-bottom: 20px;
   border-radius: 20px;
   flex-shrink: 0;
@@ -147,8 +151,8 @@
   /* Styles for Desktop devices */
   @media only screen and (min-width: 1440px) {
     .quote-card {
-      max-width: 444px;
-      height: 242px;
+      max-width: 494px;
+      height: 230px;
     }
 
     .quote-content {
@@ -160,7 +164,7 @@
     }
 
     .daily-norm {
-      width: 239px;
+      max-width: 239px;
     }
 
     .quote-img {
