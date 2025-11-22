@@ -23,12 +23,13 @@ export function renderCategories(categories, list) {
 }
 
 export function renderExercises(exercises, list) {
-  const markup = exercises
-    .map(({ _id, name, target, bodyPart, burnedCalories, rating }) => {
-      return `
+  if (exercises.length > 0) {
+    const markup = exercises
+      .map(({ _id, name, target, bodyPart, burnedCalories, rating }) => {
+        return `
     <li class="exercises-item">
     <div class="header-card">
-       <div class="header-left">
+    <div class="header-left">
         <span class="type">WORKOUT</span>
         <span class="rating">${Number(rating).toFixed(1)}</span>
         <svg class="icon-star" width="18" height="18">
@@ -41,36 +42,37 @@ export function renderExercises(exercises, list) {
           <use href="${iconsUrl}#icon-arrow-1"></use>
         </svg>
         </div>
-    </div>
+        </div>
     <div class="title">
       <button type="button" class="exercise-rating-btn js-give-rating-btn" data-exercise-id="${_id}">
-        <svg class="icon" width="24" height="24">
-          <use href="${iconsUrl}#icon-run-man-2"></use>
-        </svg>
+      <svg class="icon" width="24" height="24">
+      <use href="${iconsUrl}#icon-run-man-2"></use>
+      </svg>
       </button
       <span class="name-text">${name}</span>
     </div>
     <div class="details">
         <ul class="exercise-details-list">
-          <li class="calories">
-            <span class="calories-name">Burned calories</span>
-            <span class="calories-value">${burnedCalories} / 3 min</span>
+        <li class="calories">
+        <span class="calories-name">Burned calories</span>
+        <span class="calories-value">${burnedCalories} / 3 min</span>
+        </li>
+        <li class="body-part">
+        <span class="body-part-name">Body part:</span>
+        <span class="body-part-value">${bodyPart}</span>
+        </li>
+        <li class="target">
+        <span class="target-name">Target:</span>
+        <span class="target-value">${target}</span>
           </li>
-          <li class="body-part">
-            <span class="body-part-name">Body part:</span>
-            <span class="body-part-value">${bodyPart}</span>
+          </ul>
+          </div>
           </li>
-          <li class="target">
-          <span class="target-name">Target:</span>
-          <span class="target-value">${target}</span>
-          </li>
-        </ul>
-    </div>
-    </li>
-      `;
-    })
-    .join('');
-  list.innerHTML = markup;
+          `;
+      })
+      .join('');
+    list.innerHTML = markup;
+  } else { list.innerHTML = '<p>Unfortunately, there is no content of interest to you at this time, but it will appear soon.</p>'; }
 
   // attach click listeners to rating buttons to open rating modal with the exercise id
   const ratingButtons = list.querySelectorAll('.js-give-rating-btn');
@@ -85,7 +87,6 @@ export function renderExercises(exercises, list) {
 export function renderPagination(totalPages, currentPage, list,) {
   const activePage = Number(currentPage);
   const pages = Number(totalPages);
-  const pagesData = Array.from({ length: pages }, (_, i) => i + 1);
   const isFirstPage = activePage === 1;
   const isLastPage = activePage === pages;
 
