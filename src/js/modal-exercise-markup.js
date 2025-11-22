@@ -1,4 +1,4 @@
-import iconsUrl from '../assets/icons/icons-not-min.svg';
+import iconsUrl from '../assets/icons/icons.svg';
 
 export function createModalExerciseMarkup({
   gifUrl,
@@ -39,20 +39,20 @@ export function createModalExerciseMarkup({
           <li>
             <p class="modal-exercise-tag-key">Target</p>
             <p class="modal-exercise-tag-value">${makeUpperCaseFirstLetter(
-              target
-            )}</p>
+    target
+  )}</p>
           </li>
           <li>
             <p class="modal-exercise-tag-key">Body Part</p>
             <p class="modal-exercise-tag-value">${makeUpperCaseFirstLetter(
-              bodyPart
-            )}</p>
+    bodyPart
+  )}</p>
           </li>
           <li>
             <p class="modal-exercise-tag-key">Equipment</p>
             <p class="modal-exercise-tag-value">${makeUpperCaseFirstLetter(
-              equipment
-            )}</p>
+    equipment
+  )}</p>
           </li>
           <li>
             <p class="modal-exercise-tag-key">Popular</p>
