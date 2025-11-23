@@ -108,7 +108,7 @@
   width: 32px;
   height: 32px;
   display: block;
-  fill: var(--color-text-header); 
+  fill: var(--color-text-header);
 }
 
 /* MOBILE MENU  */
@@ -320,6 +320,7 @@
   .header .header-row {
     max-width: 768px;
     padding-top: 24px;
+    height: 76px;
   }
 
   .header .nav-list {
@@ -345,6 +346,7 @@
   }
   .header .header-row {
     padding-top: 28px;
+    height: 80px;
   }
   .header .nav-list {
     width: 265px; /* ширша десктопна капсула */
