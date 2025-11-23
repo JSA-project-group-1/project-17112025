@@ -38,7 +38,7 @@ export function renderExercises(exercises, list) {
         </svg>
        </div>
        <div class="header-right">
-        <button class="start-btn" type="button" data-modal-exercise="open" data-exercise-id="${_id}"> Start 
+        <button class="start-btn" type="button" data-modal-exercise="open" data-exercise-id="${_id}"> Start
         <svg class="icon-arrow-right" width="18" height="18">
         <use href="${iconsUrl}#icon-arrow-1"></use>
         </svg>
@@ -75,8 +75,7 @@ export function renderExercises(exercises, list) {
       .join('');
     list.innerHTML = markup;
   } else {
-    list.innerHTML =
-      '<p>Unfortunately, there is no content of interest to you at this time, but it will appear soon.</p>';
+    list.innerHTML = "<div class='no-content-warning'><p>It appears that we haven't added any exercises to to this section yet.</p></div>";
   }
 
   // attach click listeners to rating buttons to open rating modal with the exercise id

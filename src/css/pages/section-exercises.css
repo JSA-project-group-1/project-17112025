@@ -684,3 +684,31 @@ block-exercises
   width: 24px;
   margin-right: 10px;
 }
+
+.no-content-warning {
+  width: 100%;
+  padding: 0px 9px 46px 9px;
+}
+.no-content-warning p {
+  font-family: var(--font-family);
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.29;
+  text-align: center;
+  color: var(--main-color);
+}
+
+@media only screen and (min-width: 768px) {
+  .no-content-warning {
+    padding: 68px 75px 187px 75px;
+  }
+  .no-content-warning p {
+    font-size: 18px;
+    line-height: 1.33;
+  }
+}
+@media only screen and (min-width: 1440px) {
+  .no-content-warning {
+    padding: 114px 148px 364px 148px;
+  }
+}

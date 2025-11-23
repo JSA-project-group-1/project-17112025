@@ -13,7 +13,7 @@
   font-size: 14px;
   line-height: 1.29;
   text-align: center;
-  color: #242424;
+  color: var(--main-color);
 }
 .favorites-list {
   display: flex;
@@ -42,12 +42,8 @@
     padding: 68px 75px 187px 75px;
   }
   .no-content-warning p {
-    font-family: var(--font-family);
-    font-weight: 400;
     font-size: 18px;
     line-height: 1.33;
-    text-align: center;
-    color: #242424;
   }
 }
 
