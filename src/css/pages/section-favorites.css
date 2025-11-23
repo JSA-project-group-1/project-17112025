@@ -24,12 +24,9 @@
   background: transparent;
   border: transparent;
 }
-.favorite-exercise-trash-icon {
-  fill: var(--main-color);
-}
 
 .favorite-remove-btn:hover > .favorite-exercise-trash-icon {
-  fill: var(--second-color);
+  stroke: rgba(36, 36, 36, 0.6);
 }
 .pagination-controls-list {
   margin: 0 auto;
