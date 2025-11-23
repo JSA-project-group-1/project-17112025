@@ -3,7 +3,7 @@
 }
 
 .modal-exercise {
-  position: relative;
+  position: absolute;
   background-color: var(--main-color);
   color: var(--second-color);
   padding: 40px 20px;
@@ -238,7 +238,7 @@
 
 @media screen and (min-width: 768px) {
   .modal-exercise {
-    max-width: 704px;
+    width: 704px;
     padding: 32px;
   }
 
