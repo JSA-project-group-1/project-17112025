@@ -10,18 +10,18 @@ const topFunction = () => {
 const scrollBtnDisplay = () => {
   const scrollY = window.scrollY;
   const footer = document.querySelector('footer');
-  
-  
+
+
   if (scrollY > window.innerHeight) {
     scrollBtn.classList.add('scroll-show');
-    
-    
+
+
     if (footer) {
       const footerRect = footer.getBoundingClientRect();
-      
+
       if (footerRect.top < window.innerHeight) {
         const distanceFromBottomToFooterTop = window.innerHeight - footerRect.top;
-        scrollBtn.style.bottom = (distanceFromBottomToFooterTop + 200) + 'px';
+        scrollBtn.style.bottom = (distanceFromBottomToFooterTop + 50) + 'px';
       } else {
         scrollBtn.style.bottom = '30px';
       }

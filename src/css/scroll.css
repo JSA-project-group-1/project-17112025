@@ -6,7 +6,7 @@ html {
   position: fixed;
   bottom: 30px;
   right: 20px;
-  z-index: 10000;
+  z-index: 100;
 
   display: flex;
   align-items: center;
