@@ -61,8 +61,8 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 32px;
-  padding-top: 20px;
+  /* height: 32px;
+  padding-top: 20px; */
 }
 
 /* logo */
@@ -72,6 +72,7 @@
   align-items: center;
   text-decoration: none;
   color: var(--color-text-header);
+  padding-top: 24px;
 }
 
 .logo-text {
@@ -89,14 +90,14 @@
 /* бургер */
 
 .header .burger {
-  width: 32px;
-  height: 32px;
+  /* width: 32px;
+  height: 32px; */
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   gap: 2px;
-  padding: 0;
+  padding-top: 20px;
   margin-left: auto;
   background: none;
   border: none;
@@ -107,7 +108,7 @@
 .header .burger svg {
   width: 32px;
   height: 32px;
-  display: block;
+  display: flex;
   fill: var(--color-text-header);
 }
 
@@ -218,7 +219,7 @@
     margin-bottom: 100px;
   }
   .header .header-row {
-    height: 52px;
+    /* height: 52px; */
     position: relative;
   }
 
@@ -241,8 +242,8 @@
   }
 
   .header .nav-list {
-    height: 52px;
-    padding: 4px;
+    /* height: 52px; */
+    padding: 8px;
     background: #242424;
     border-radius: 60px;
     display: flex;
@@ -320,7 +321,7 @@
   .header .header-row {
     max-width: 768px;
     padding-top: 24px;
-    height: 76px;
+    /* height: 76px; */
   }
 
   .header .nav-list {

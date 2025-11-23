@@ -93,6 +93,9 @@
     height: 59px;
     margin-right: 20px;
   }
+  .hero-image {
+  margin-top: 32px;
+}
 }
 
 @media screen and (min-width: 1440px) {
