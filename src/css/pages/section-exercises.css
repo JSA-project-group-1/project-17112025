@@ -18,12 +18,26 @@
   width: 100%;
 }
 .search-input {
-  border: 1px solid #242424;
+  border: 1px solid var(--main-color);
   border-radius: 30px;
   padding: 12px 70px 12px 14px;
   width: 100%;
   height: 48px;
   box-sizing: border-box;
+}
+
+.search-input::placeholder {
+  font-family: var(--font-family);
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.43;
+  color: var(--main-color);
+}
+@media only screen and (min-width: 768px) {
+  .search-input::placeholder {
+    font-size: 16px;
+    line-height: 1.5;
+  }
 }
 .search-btn {
   position: absolute;
@@ -33,7 +47,7 @@
   background: none;
   border: none;
   cursor: pointer;
-  fill: #242424;
+  fill: var(--main-color);
 }
 .clear-btn {
   position: absolute;
@@ -43,7 +57,7 @@
   background: none;
   border: none;
   cursor: pointer;
-  fill: #242424;
+  fill: var(--main-color);
   z-index: 2;
 }
 .search-btn {
@@ -54,7 +68,7 @@
   background: none;
   border: none;
   cursor: pointer;
-  fill: #242424;
+  fill: var(--main-color);
   z-index: 2;
 }
 /* =======================================================
@@ -92,15 +106,15 @@ PLACEHOLDER STYLES WHEN FOCUSING
   font-family: var(--font-family);
   font-weight: 400;
   font-size: 28px;
-  line-height: 136%;
+  line-height: 1.36;
   letter-spacing: -0.02em;
-  color: #242424;
+  color: var(--main-color);
   margin-bottom: 0;
   white-space: nowrap;
 }
 .block-title {
   display: flex;
-  align-items: center;
+  align-items: baseline;
   gap: 8px;
   padding-bottom: 20px;
   width: 100%;
@@ -110,8 +124,8 @@ PLACEHOLDER STYLES WHEN FOCUSING
   text-transform: capitalize;
   font-family: var(--font-family);
   font-weight: 400;
-  font-size: 24px;
-  line-height: 133%;
+  font-size: 20px;
+  line-height: 1;
   letter-spacing: -0.02em;
   color: rgba(36, 36, 36, 0.5);
   margin: 0;
@@ -128,11 +142,11 @@ PLACEHOLDER STYLES WHEN FOCUSING
   display: flex;
   gap: 20px;
 }
-.filters-list-item {
+.filters-list-item p {
   font-family: var(--font-family);
   font-weight: 400;
-  font-size: 16px;
-  line-height: 1.5;
+  font-size: 14px;
+  line-height: 1.43;
   color: rgba(36, 36, 36, 0.6);
   position: relative;
   transition: color 0.3s ease;
@@ -149,8 +163,8 @@ PLACEHOLDER STYLES WHEN FOCUSING
   transition: transform 0.3s ease;
   margin-top: 5px;
 }
-.filters-list-item:hover,
-.filters-list-item-active {
+.filters-list-item p:hover,
+.filters-list-item-active p {
   color: var(--main-color);
   cursor: pointer;
 }
@@ -176,14 +190,16 @@ PLACEHOLDER STYLES WHEN FOCUSING
   }
   .block-filters h2 {
     font-size: 44px;
-    line-height: 109%;
-    letter-spacing: -0.02em;
-    color: #242424;
+    line-height: 1.09;
   }
   .block-title {
     align-items: baseline;
   }
 
+  .current-category {
+    font-size: 24px;
+    line-height: 1.33;
+  }
   .search-form {
     max-width: 273px;
     margin-bottom: 16px;
@@ -192,12 +208,9 @@ PLACEHOLDER STYLES WHEN FOCUSING
   .filters-list {
     display: flex;
   }
-  .filters-list-item {
-    font-family: var(--font-family);
-    font-weight: 400;
+  .filters-list-item p {
     font-size: 16px;
-    line-height: 150%;
-    color: #242424;
+    line-height: 1.5;
   }
 }
 /* =======================
