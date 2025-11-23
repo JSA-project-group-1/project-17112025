@@ -89,6 +89,7 @@
   margin-bottom: 20px;
   border-radius: 20px;
   flex-shrink: 0;
+  object-fit: cover;
 }
 
 /* Styles for Tablet devices */
