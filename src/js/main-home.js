@@ -23,7 +23,7 @@ const isMobile = document.documentElement.clientWidth <= mobileBreakpoint;
 
 const slash = document.querySelector('span.slash');
 const currentCategoryP = document.querySelector('p.current-category');
-const warningP = document.querySelector('p.warning');
+const warning = document.querySelector('div.no-content-warning');
 const filtersList = document.querySelector('ul.filters-list');
 const categoriesList = document.querySelector('ul.block-categories-list');
 const exercisesList = document.querySelector('ul.exercises-list');
@@ -121,8 +121,12 @@ async function loadAndRenderCategoriesList() {
     if (results.length > 0) {
       renderPagination(categoriesPages, categoriesPage, paginationList);
     }
+
+    if (!warning.classList.contains('visually-hidden')) {
+      warning.classList.add('visually-hidden');
+    }
   } catch (error) {
-    warningP.classList.remove('visually-hidden');
+    warning.classList.remove('visually-hidden');
     iziToast.error({
       icon: '',
       position: 'topRight',
