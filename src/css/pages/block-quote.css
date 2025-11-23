@@ -141,6 +141,7 @@
   .quote-img {
     width: 288px;
     margin-bottom: 0;
+    object-fit: cover;
   }
 
   .daily-norm {
@@ -185,6 +186,7 @@
   .quote-img {
     width: 444px;
     margin-bottom: 32px;
+    object-fit: fill;
   }
 
   .daily-norm {
