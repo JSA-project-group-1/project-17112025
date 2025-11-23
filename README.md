@@ -7,20 +7,20 @@ Modern responsive 2-page site for people who are keen on physical activity.
 
 ## Created with ❤️ by **The Team**:
 
-| Role             | Name                  | GitHub                                                     | Responsibilities                               |
-| ---------------- | --------------------- | ---------------------------------------------------------- | ---------------------------------------------- |
-| **Team Lead**    | Vitalii Vasylets      | [@Mohara88s](https://github.com/Mohara88s)                 | project architecture, code review, deployment, |
-| **Scrum Master** | Anna Kotenko          | [@AnnaKotenkoInIT](https://github.com/AnnaKotenkoInIT)     | sprint planning, block-quote-info              |
-| **Developer**    | Andrii Tsylyuryk      | [@AndriiTsylyuryk](https://github.com/AndriiTsylyuryk)     |                                                |
-| **Developer**    | Dmytro Beketov        | [@dmytro4308](https://github.com/dmytro4308)               |                                                |
-| **Developer**    | Inna Khomovska        | [@IHomov](https://github.com/IHomov)                       |                                                |
-| **Developer**    | Kostiantyn Talamaniuk | [@antifloodbot](https://github.com/antifloodbot)           |                                                |
-| **Developer**    | Nataliia Dubikova     | [@Natalka-01](https://github.com/Natalka-01)               |                                                |
-| **Developer**    | Oleksii Shcherbak     | [@oleksii-shcherbak](https://github.com/oleksii-shcherbak) |                                                |
-| **Developer**    | Yevhen Vanchenko      | [@Vanchenko](https://github.com/Vanchenko)                 |                                                |
-| **Developer**    | Yulia Kostenko        | [@yulianakosenko](https://github.com/yulianakosenko)       |                                                |
-| **Developer**    | Olha Kyryllova        | [@kirolla](https://github.com/kirolla)                     |                                                |
-| **Developer**    | Konstantin Pak        | [@badboyinahood](https://github.com/badboyinahood)         |                                                |
+| Role             | Name                  | GitHub                                                     | Responsibilities                                                                        |
+| ---------------- | --------------------- | ---------------------------------------------------------- | --------------------------------------------------------------------------------------- |
+| **Team Lead**    | Vitalii Vasylets      | [@Mohara88s](https://github.com/Mohara88s)                 | project architecture, code review, deployment, Filters,Categories, Exercises, Favorites |
+| **Scrum Master** | Anna Kotenko          | [@AnnaKotenkoInIT](https://github.com/AnnaKotenkoInIT)     | sprint planning, Quote                                                                  |
+| **Developer**    | Andrii Tsylyuryk      | [@AndriiTsylyuryk](https://github.com/AndriiTsylyuryk)     | Modal Window                                                                            |
+| **Developer**    | Dmytro Beketov        | [@dmytro4308](https://github.com/dmytro4308)               | Rating, Filters,Exercises                                                               |
+| **Developer**    | Inna Khomovska        | [@IHomov](https://github.com/IHomov)                       | Rating, Filters,Categories , Categories Card,                                           |
+| **Developer**    | Kostiantyn Talamaniuk | [@antifloodbot](https://github.com/antifloodbot)           | Favorites                                                                               |
+| **Developer**    | Nataliia Dubikova     | [@Natalka-01](https://github.com/Natalka-01)               | Exercise Card                                                                           |
+| **Developer**    | Oleksii Shcherbak     | [@oleksii-shcherbak](https://github.com/oleksii-shcherbak) | Footer                                                                                  |
+| **Developer**    | Yevhen Vanchenko      | [@Vanchenko](https://github.com/Vanchenko)                 | Hero                                                                                    |
+| **Developer**    | Yulia Kostenko        | [@yulianakosenko](https://github.com/yulianakosenko)       | Header                                                                                  |
+| **Developer**    | Olha Kyryllova        | [@kirolla](https://github.com/kirolla)                     | Scroll Up                                                                               |
+| **Developer**    | Konstantin Pak        | [@badboyinahood](https://github.com/badboyinahood)         | Loader                                                                                  |
 
 ## Features
 
@@ -36,9 +36,19 @@ Modern responsive 2-page site for people who are keen on physical activity.
 
 - HTML5
 - CSS3 (Flexbox, CSS Variables)
-- Vite (build tool)
-- PostCSS
 - modern-normalize
+- Responsive layout
+- Adaptive layout
+- Image optimization
+- JavaScript
+- Axios
+- API
+- VSCode
+- Vite (build tool)
+- Figma
+- Git/GitHub
+- Prettier
+- Swagger
 
 ## Installation
 
