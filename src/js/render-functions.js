@@ -98,7 +98,7 @@ export function renderPagination(totalPages, currentPage, list) {
       <li class="pagination-control-item">
           <button class=" ${isFirstPage ? 'pagination-arrow-btn' : 'pagination-arrow-btn-active'
     }"
-                  data-page="beg"
+                  data-page="beg"  aria-label="go to the beginning"
                   ${isFirstPage ? 'disabled' : ''}>
                   <svg class="left-vector" width="6" height="12">
                     <use href="${iconsUrl}#icon-vector"></use>
@@ -111,7 +111,7 @@ export function renderPagination(totalPages, currentPage, list) {
       <li class="pagination-control-item">
           <button class=" ${isFirstPage ? 'pagination-arrow-btn' : 'pagination-arrow-btn-active'
     }"
-                  data-page="prev"
+                  data-page="prev" aria-label="go to the previous"
                   ${isFirstPage ? 'disabled' : ''}>
                   <svg class="left-vector" width="6" height="12">
                     <use href="${iconsUrl}#icon-vector"></use>
@@ -231,7 +231,7 @@ export function renderPagination(totalPages, currentPage, list) {
       <li class="pagination-control-item">
           <button class="pagination-arrow-btn ${isLastPage ? 'pagination-arrow-btn' : 'pagination-arrow-btn-active'
     }"
-                  data-page="next"
+                  data-page="next"  aria-label="go to the next"
                   ${isLastPage ? 'disabled' : ''}>
                   <svg class="right-vector" width="6" height="12">
                     <use href="${iconsUrl}#icon-vector"></use>
@@ -241,7 +241,7 @@ export function renderPagination(totalPages, currentPage, list) {
       <li class="pagination-control-item">
           <button class="pagination-arrow-btn ${isLastPage ? 'pagination-arrow-btn' : 'pagination-arrow-btn-active'
     }"
-                  data-page="end"
+                  data-page="end" aria-label="go to the end"
                   ${isLastPage ? 'disabled' : ''}>
                   <svg class="right-vector" width="6" height="12">
                     <use href="${iconsUrl}#icon-vector"></use>
