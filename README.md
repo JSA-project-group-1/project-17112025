@@ -13,7 +13,7 @@ Modern responsive 2-page site for people who are keen on physical activity.
 | **Scrum Master** | Anna Kotenko          | [@AnnaKotenkoInIT](https://github.com/AnnaKotenkoInIT)     | sprint planning, Quote                                                                   |
 | **Developer**    | Andrii Tsylyuryk      | [@AndriiTsylyuryk](https://github.com/AndriiTsylyuryk)     | Modal Window                                                                             |
 | **Developer**    | Dmytro Beketov        | [@dmytro4308](https://github.com/dmytro4308)               | Rating, Filters, Exercises                                                               |
-| **Developer**    | Inna Khomovska        | [@IHomov](https://github.com/IHomov)                       | Rating, Filters, Categories, Categories Card,                                            |
+| **Developer**    | Inna Khomovska        | [@IHomov](https://github.com/IHomov)                       | Rating, Filters, Categories, Categories Card                                             |
 | **Developer**    | Kostiantyn Talamaniuk | [@antifloodbot](https://github.com/antifloodbot)           | Favorites                                                                                |
 | **Developer**    | Nataliia Dubikova     | [@Natalka-01](https://github.com/Natalka-01)               | Exercise Card                                                                            |
 | **Developer**    | Oleksii Shcherbak     | [@oleksii-shcherbak](https://github.com/oleksii-shcherbak) | Footer                                                                                   |
