@@ -5,7 +5,7 @@ Modern responsive 2-page site for people who are keen on physical activity.
 **Live Demo:**
 [https://jsa-project-group-1.github.io/project-17112025/](https://jsa-project-group-1.github.io/project-17112025/)
 
-## Created with ❤️ by **The Team**:
+## Created with ❤️ by **Dozen Coders**:
 
 | Role             | Name                  | GitHub                                                     | Responsibilities                                                                        |
 | ---------------- | --------------------- | ---------------------------------------------------------- | --------------------------------------------------------------------------------------- |
