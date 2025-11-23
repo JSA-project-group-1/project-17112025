@@ -8,7 +8,6 @@
   color: var(--second-color);
   padding: 40px 20px;
   border-radius: 20px;
-  max-width: 90%;
   max-height: 95dvh;
   margin: 0 auto;
   flex-shrink: 0;
@@ -196,7 +195,6 @@
 @media screen and (max-width: 374px) {
   .modal-exercise {
     padding: 20px 16px;
-    max-width: calc(100% - 20px);
   }
 
   .modal-exercise-img {
@@ -239,6 +237,7 @@
 @media screen and (min-width: 768px) {
   .modal-exercise {
     width: 704px;
+    max-width: 704px;
     padding: 32px;
   }
 
