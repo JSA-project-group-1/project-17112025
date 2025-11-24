@@ -163,6 +163,7 @@ async function onCategoryClick(event) {
     categoriesList.classList.add('visually-hidden');
     showLoader(categoriesSection);
     currentCategory = clickedItem.dataset.name;
+    exercisesPage = 1;
     try {
       const exercises = await fetchExercises(
         currentFilter,
