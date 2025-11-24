@@ -1,7 +1,7 @@
 .local-loader-wrapper {
   position: absolute;
   inset: 0;
-  background: rgba(255, 255, 255, 0.6);
+  background-color: var(--second-color);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -14,14 +14,16 @@
 
 .hypnotic {
   width: 67.2px;
-  height: 28px;  border: 2.2px solid #eea10c;
+  height: 28px;
+  border: 2.2px solid #eea10c;
   border-radius: 50%;
-  display: grid;  animation: hypnotic-spin 2s infinite linear;
+  display: grid;
+  animation: hypnotic-spin 2s infinite linear;
 }
 
 .hypnotic:before,
 .hypnotic:after {
-  content: "";
+  content: '';
   grid-area: 1/1;
   border: inherit;
   border-radius: 50%;

@@ -142,6 +142,7 @@ filtersList.addEventListener('click', onFiltersListClick);
 function onFiltersListClick(event) {
   const clickedItem = event.target.closest('.filters-list-item');
   if (clickedItem) {
+    categoriesList.classList.remove('visually-hidden');
     const filterOption = clickedItem.dataset.option;
     currentFilter = filterOption;
     loadAndRenderCategoriesList();
@@ -158,6 +159,7 @@ function onFiltersListClick(event) {
 async function onCategoryClick(event) {
   const clickedItem = event.target.closest('.categories-item');
   if (clickedItem) {
+    categoriesList.classList.add('visually-hidden');
     showLoader(categoriesSection);
     currentCategory = clickedItem.dataset.name;
     try {
