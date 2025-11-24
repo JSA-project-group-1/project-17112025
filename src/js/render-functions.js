@@ -1,4 +1,4 @@
-import iconsUrl from '../assets/icons/icons.svg';
+import iconsUrl from '../assets/icons.svg';
 import { openRatingModal } from './rating-modal.js';
 import { handleGetQuoteOfTheDay } from './quote-api-localStorage';
 

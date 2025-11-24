@@ -1,4 +1,4 @@
-import iconsUrl from '../assets/icons/icons.svg';
+import iconsUrl from '../assets/icons.svg';
 
 export function createModalExerciseMarkup({
   gifUrl,

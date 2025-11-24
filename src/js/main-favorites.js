@@ -8,7 +8,7 @@ import './header.js';
 import './modal-exercise.js';
 import { renderQuoteOfTheDay } from './render-functions.js';
 import { openRatingModal } from './rating-modal.js';
-import iconsUrl from '../assets/icons/icons.svg';
+import iconsUrl from '../assets/icons.svg';
 
 const FAVORITES_KEY = 'favorite_workouts';
 
