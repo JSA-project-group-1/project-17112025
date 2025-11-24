@@ -7,6 +7,7 @@ import '/css/pages/section-exercises.css';
 import './header.js';
 import './modal-exercise.js';
 import { renderQuoteOfTheDay } from './render-functions.js';
+import { openRatingModal } from './rating-modal.js';
 import iconsUrl from '../assets/icons/icons.svg';
 
 const FAVORITES_KEY = 'favorite_workouts';
@@ -139,6 +140,15 @@ function renderFavorites(exercises, list) {
     list.innerHTML =
       "<div class='no-content-warning'><p>It appears that you haven't added any exercises to your favorites yet.To get started, you can add exercises that you like to your favorites for easier access in the future.</p></div>";
   }
+
+  // attach click listeners to rating buttons to open rating modal with the exercise id
+  const ratingButtons = list.querySelectorAll('.js-give-rating-btn');
+  ratingButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const id = btn.dataset.exerciseId;
+      openRatingModal(id, null);
+    });
+  });
 }
 
 // ====== СИНХРОНІЗАЦІЯ ПІСЛЯ ЗАКРИТТЯ МОДАЛКИ ======
