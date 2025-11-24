@@ -305,15 +305,16 @@ IMAGE AND TEXT STYLES (Universal)
   font-family: var(--font-family);
   font-weight: 400;
   font-size: 20px;
-  line-height: 100%;
+  line-height: 1;
   text-align: center;
   color: #f4f4f4;
+  margin-bottom: 2px;
 }
 .categories-item-info p {
   font-family: var(--font-family);
   font-weight: 400;
   font-size: 12px;
-  line-height: 150%;
+  line-height: 1.5;
   color: rgba(244, 244, 244, 0.4);
 }
 
@@ -377,12 +378,11 @@ IMAGE AND TEXT STYLES (Universal)
     order: 1;
   }
   .categories-item-info h3 {
-    line-height: 100%;
+    line-height: 1;
   }
 
   .block-categories {
     display: block;
-    width: 900px;
     order: 2;
   }
 
@@ -392,7 +392,7 @@ IMAGE AND TEXT STYLES (Universal)
   }
   .categories-item {
     flex-basis: calc((100% - 2 * 15px) / 3);
-    height: 242px;
+    min-height: 242px;
     box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
   }
 }
@@ -711,5 +711,17 @@ block-exercises
 @media only screen and (min-width: 1440px) {
   .no-content-warning {
     padding: 114px 148px 364px 148px;
+  }
+  .no-content-warning.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    border: 0;
+    padding: 0;
+    white-space: nowrap;
+    clip-path: inset(100%);
+    clip: rect(0, 0, 0, 0);
+    overflow: hidden;
   }
 }
