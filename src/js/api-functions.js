@@ -28,8 +28,7 @@ export async function fetchExercises(
       [currentFilter === 'Body parts'
         ? 'bodypart'
         : currentFilter.toLowerCase()]: currentCategory
-          .toLowerCase()
-          .replace(' ', '%20'),
+          .toLowerCase(),
       keyword,
       page,
       limit,
