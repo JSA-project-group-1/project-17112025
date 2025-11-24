@@ -17,7 +17,7 @@ import{a as u,b as T,i as m}from"./vendor-D2ogNlHo.js";(function(){const t=docum
           <use href="${c}#icon-x-white"></use>
         </svg>
       </button>
-      <h3 class="modal-exercise-title">${f(t)}</h3>
+      <h3 class="modal-exercise-title">${h(t)}</h3>
       <div class="modal-exercise-rating-container">
         <p class="modal-exercise-rating-number">${s}</p>
       </div>
@@ -25,15 +25,15 @@ import{a as u,b as T,i as m}from"./vendor-D2ogNlHo.js";(function(){const t=docum
         <ul class="modal-exercise-tag-list">
           <li>
             <p class="modal-exercise-tag-key">Target</p>
-            <p class="modal-exercise-tag-value">${f(a)}</p>
+            <p class="modal-exercise-tag-value">${h(a)}</p>
           </li>
           <li>
             <p class="modal-exercise-tag-key">Body Part</p>
-            <p class="modal-exercise-tag-value">${f(o)}</p>
+            <p class="modal-exercise-tag-value">${h(o)}</p>
           </li>
           <li>
             <p class="modal-exercise-tag-key">Equipment</p>
-            <p class="modal-exercise-tag-value">${f(n)}</p>
+            <p class="modal-exercise-tag-value">${h(n)}</p>
           </li>
           <li>
             <p class="modal-exercise-tag-key">Popular</p>
@@ -76,7 +76,7 @@ import{a as u,b as T,i as m}from"./vendor-D2ogNlHo.js";(function(){const t=docum
           <svg class="modal-exercise-trash-icon js-modal-exercise-trash-icon">
             <use href="${c}#icon-trash"></use></svg>
         </span>
-  `}function f(e){return e.charAt(0).toUpperCase()+e.slice(1)}class P{#e="Escape";options={onShow:t=>{t.element().querySelector(this.closeSelector).onclick=t.close,document.addEventListener("keydown",this.handleCloseModalKeyDownBound),document.body.style.overflow="hidden"},onClose:()=>{document.removeEventListener("keydown",this.handleCloseModalKeyDownBound),document.body.style.overflow="auto"}};constructor(t,s,a){this.markup=t,this.closeSelector=s,this.responceData=a,this.handleCloseModalKeyDownBound=this.handleCloseModalKeyDown.bind(this),this.build()}build(){this.instance=T.create(this.markup(this.responceData),this.options)}open(){this.instance.show()}handleCloseModalKeyDown(t){t.code===this.#e&&this.instance.close()}get closeKey(){return this.#e}set closeKey(t){this.#e=t}}const N="[data-modal-rating]",j="[data-rating-form]",i={ratingModalBackdrop:document.querySelector(N),closeRatingModalBtn:document.querySelector("[data-modal-rating-close]"),ratingForm:document.querySelector(j),ratingStars:document.querySelector(".rating-stars"),ratingValueSpan:document.querySelector(".rating-value"),ratingRadios:document.querySelectorAll(".rating-radio")};let w=null,d=null,h=0;function S(e,t){i.ratingModalBackdrop&&(w=e,d=t,d&&t.instance&&t.instance.close(),i.ratingModalBackdrop.classList.remove("is-hidden"),document.body.style.overflow="hidden",K())}function b(){i.ratingModalBackdrop&&(i.ratingModalBackdrop.classList.add("is-hidden"),document.body.style.overflow="",d&&d.instance&&d.instance.show(),w=null,d=null,h=0,i.ratingForm.reset())}function E(e){i.ratingValueSpan.textContent=e.toFixed(1),h=e}function D(e){if(e.target.name==="rating"){const t=parseFloat(e.target.value);E(t)}}function K(){i.ratingRadios.length>0&&i.ratingRadios.forEach(e=>e.checked=!1),E(0)}async function H(e){e.preventDefault();const t=new FormData(e.currentTarget),s=t.get("email").trim(),a=t.get("review").trim();if(h===0){m.error({message:"Please give a rating before submitting.",position:"topRight"});return}if(!s){m.error({message:"Email field cannot be empty.",position:"topRight"});return}if(!/^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/.test(s)){m.error({message:"Please enter a valid email address.",position:"topRight"});return}const o={rate:h,email:s,review:a||""};try{await _(w,o),m.success({message:"Rating successfully sent! Thank you for your feedback.",position:"topRight"}),b()}catch(n){console.error("Rating submission failed:",n);let r="Failed to submit rating. Please try again.";n.response&&n.response.status===409&&(r="You have already rated this exercise."),m.error({message:r,position:"topRight"})}}i.ratingStars&&i.ratingStars.addEventListener("change",D);i.ratingForm&&i.ratingForm.addEventListener("submit",H);i.closeRatingModalBtn&&i.closeRatingModalBtn.addEventListener("click",b);i.ratingModalBackdrop&&i.ratingModalBackdrop.addEventListener("click",e=>{e.target===i.ratingModalBackdrop&&b()});document.addEventListener("keydown",e=>{e.key==="Escape"&&i.ratingModalBackdrop&&!i.ratingModalBackdrop.classList.contains("is-hidden")&&b()});const U='button[data-modal-exercise="open"]',G='[data-modal-exercise="close"]',v="favorite_workouts";function q(){const e=localStorage.getItem(v);if(!e)return[];try{const t=JSON.parse(e);return Array.isArray(t)?t:[]}catch(t){return console.error("Failed to parse favorites from LS in modal:",t),localStorage.removeItem(v),[]}}function R(e){localStorage.setItem(v,JSON.stringify(e))}function J(e){return q().some(s=>s._id===e)}document.addEventListener("click",e=>{if(e.target.closest(U)){const s=e.target.dataset.exerciseId;Q(s)}});async function Q(e){let t={};const s=e||"64f389465ae26083f39b17a2";try{const a=await O(s);t=new P(I,G,a),t.open(),V(t,a)}catch(a){console.error("Error loading exercise data:",a)}}function V(e,t){const s=e.instance.element(),a=s.querySelector(".js-give-rating-btn"),o=s.querySelector(".js-add-to-favorites-btn");a&&a.addEventListener("click",()=>z(t._id,e)),o&&(o.addEventListener("click",n=>W(n,t,o)),J(t._id)?o.innerHTML=M():o.innerHTML=k())}function z(e,t){S(e,t)}function W(e,t,s){const a=q();if(a.some(n=>n._id===t._id)){Z(t._id,s,a);return}Y(t,s,a)}function Y(e,t,s){t.innerHTML=M();const a={_id:e._id,time:e.time,target:e.target,name:e.name,burnedCalories:e.burnedCalories,bodyPart:e.bodyPart};s.push(a),R(s)}function Z(e,t,s){const a=s.filter(o=>o._id!==e);a.length===0?localStorage.removeItem(v):R(a),t.innerHTML=k()}const X=()=>new Date().toISOString().split("T")[0],ee=async()=>{const e=JSON.parse(localStorage.getItem("quoteOfTheDay")),t=X();if(e&&e.date===t)return e;const a={...await A(),date:t};return localStorage.setItem("quoteOfTheDay",JSON.stringify(a)),a};function se(e,t){const s=e.map(({filter:a,imgURL:o,name:n})=>`
+  `}function h(e){return e.charAt(0).toUpperCase()+e.slice(1)}class P{#e="Escape";options={onShow:t=>{t.element().querySelector(this.closeSelector).onclick=t.close,document.addEventListener("keydown",this.handleCloseModalKeyDownBound),document.body.style.overflow="hidden"},onClose:()=>{document.removeEventListener("keydown",this.handleCloseModalKeyDownBound),document.body.style.overflow="auto"}};constructor(t,s,a){this.markup=t,this.closeSelector=s,this.responceData=a,this.handleCloseModalKeyDownBound=this.handleCloseModalKeyDown.bind(this),this.build()}build(){this.instance=T.create(this.markup(this.responceData),this.options)}open(){this.instance.show()}handleCloseModalKeyDown(t){t.code===this.#e&&this.instance.close()}get closeKey(){return this.#e}set closeKey(t){this.#e=t}}const N="[data-modal-rating]",j="[data-rating-form]",i={ratingModalBackdrop:document.querySelector(N),closeRatingModalBtn:document.querySelector("[data-modal-rating-close]"),ratingForm:document.querySelector(j),ratingStars:document.querySelector(".rating-stars"),ratingValueSpan:document.querySelector(".rating-value"),ratingRadios:document.querySelectorAll(".rating-radio")};let w=null,d=null,v=0;function S(e,t){i.ratingModalBackdrop&&(w=e,d=t,d&&t.instance&&t.instance.close(),i.ratingModalBackdrop.classList.remove("is-hidden"),document.body.style.overflow="hidden",K())}function b(){i.ratingModalBackdrop&&(i.ratingModalBackdrop.classList.add("is-hidden"),document.body.style.overflow="",d&&d.instance&&d.instance.show(),w=null,d=null,v=0,i.ratingForm.reset())}function E(e){i.ratingValueSpan.textContent=e.toFixed(1),v=e}function D(e){if(e.target.name==="rating"){const t=parseFloat(e.target.value);E(t)}}function K(){i.ratingRadios.length>0&&i.ratingRadios.forEach(e=>e.checked=!1),E(0)}async function H(e){e.preventDefault();const t=new FormData(e.currentTarget),s=t.get("email").trim(),a=t.get("review").trim();if(v===0){m.error({message:"Please give a rating before submitting.",position:"topRight"});return}if(!s){m.error({message:"Email field cannot be empty.",position:"topRight"});return}if(!/^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/.test(s)){m.error({message:"Please enter a valid email address.",position:"topRight"});return}const o={rate:v,email:s,review:a||""};try{await _(w,o),m.success({message:"Rating successfully sent! Thank you for your feedback.",position:"topRight"}),b()}catch(n){console.error("Rating submission failed:",n);let r="Failed to submit rating. Please try again.";n.response&&n.response.status===409&&(r="You have already rated this exercise."),m.error({message:r,position:"topRight"})}}i.ratingStars&&i.ratingStars.addEventListener("change",D);i.ratingForm&&i.ratingForm.addEventListener("submit",H);i.closeRatingModalBtn&&i.closeRatingModalBtn.addEventListener("click",b);i.ratingModalBackdrop&&i.ratingModalBackdrop.addEventListener("click",e=>{e.target===i.ratingModalBackdrop&&b()});document.addEventListener("keydown",e=>{e.key==="Escape"&&i.ratingModalBackdrop&&!i.ratingModalBackdrop.classList.contains("is-hidden")&&b()});const U='button[data-modal-exercise="open"]',G='[data-modal-exercise="close"]',f="favorite_workouts";function q(){const e=localStorage.getItem(f);if(!e)return[];try{const t=JSON.parse(e);return Array.isArray(t)?t:[]}catch(t){return console.error("Failed to parse favorites from LS in modal:",t),localStorage.removeItem(f),[]}}function R(e){localStorage.setItem(f,JSON.stringify(e))}function J(e){return q().some(s=>s._id===e)}document.addEventListener("click",e=>{if(e.target.closest(U)){const s=e.target.dataset.exerciseId;Q(s)}});async function Q(e){let t={};const s=e||"64f389465ae26083f39b17a2";try{const a=await O(s);t=new P(I,G,a),t.open(),V(t,a)}catch(a){console.error("Error loading exercise data:",a)}}function V(e,t){const s=e.instance.element(),a=s.querySelector(".js-give-rating-btn"),o=s.querySelector(".js-add-to-favorites-btn");a&&a.addEventListener("click",()=>z(t._id,e)),o&&(o.addEventListener("click",n=>W(n,t,o)),J(t._id)?o.innerHTML=M():o.innerHTML=k())}function z(e,t){S(e,t)}function W(e,t,s){const a=q();if(a.some(n=>n._id===t._id)){Z(t._id,s,a);return}Y(t,s,a)}function Y(e,t,s){t.innerHTML=M();const a={_id:e._id,time:e.time,target:e.target,name:e.name,burnedCalories:e.burnedCalories,bodyPart:e.bodyPart};s.push(a),R(s)}function Z(e,t,s){const a=s.filter(o=>o._id!==e);a.length===0?localStorage.removeItem(f):R(a),t.innerHTML=k()}const X=()=>new Date().toISOString().split("T")[0],ee=async()=>{const e=JSON.parse(localStorage.getItem("quoteOfTheDay")),t=X();if(e&&e.date===t)return e;const a={...await A(),date:t};return localStorage.setItem("quoteOfTheDay",JSON.stringify(a)),a};function se(e,t){const s=e.map(({filter:a,imgURL:o,name:n})=>`
           <li class="categories-item" data-name="${n}">
             <img
             class="category-image"
@@ -156,7 +156,7 @@ import{a as u,b as T,i as m}from"./vendor-D2ogNlHo.js";(function(){const t=docum
   `,p=`
   ${n?`
     <li class="pagination-control-item">
-      <button class="pagination-control-active" data-page="1">1</button>
+      <button class="pagination-control-active" data-page="1" disabled>1</button>
     </li>
     ${o>1?`
       <li class="pagination-control-item">
@@ -170,7 +170,7 @@ import{a as u,b as T,i as m}from"./vendor-D2ogNlHo.js";(function(){const t=docum
       `:""}
     ${o>3?`
       <li class="pagination-control-item">
-        <p class="pagination-control">...</p>
+        <p class="pagination-control pagination-control-no-hover">...</p>
       </li>
     `:""}
   `:""}
@@ -178,7 +178,7 @@ import{a as u,b as T,i as m}from"./vendor-D2ogNlHo.js";(function(){const t=docum
   ${!n&&r?`
     ${o>3?`
       <li class="pagination-control-item">
-        <p class="pagination-control">...</p>
+        <p class="pagination-control pagination-control-no-hover">...</p>
       </li>
     `:""}
     ${o>2?`
@@ -192,14 +192,14 @@ import{a as u,b as T,i as m}from"./vendor-D2ogNlHo.js";(function(){const t=docum
       </li>
     `:""}
     <li class="pagination-control-item">
-      <button class="pagination-control-active" data-page="${a}">${a}</button>
+      <button class="pagination-control-active" data-page="${a}" disabled>${a}</button>
     </li>
   `:""}
 
   ${!n&&!r?`
     ${a>2?`
       <li class="pagination-control-item">
-        <p class="pagination-control">...</p>
+        <p class="pagination-control pagination-control-no-hover">...</p>
       </li>
     `:""}
 
@@ -208,7 +208,7 @@ import{a as u,b as T,i as m}from"./vendor-D2ogNlHo.js";(function(){const t=docum
     </li>
 
     <li class="pagination-control-item">
-      <button class="pagination-control-active" data-page="${a}">${a}</button>
+      <button class="pagination-control-active" data-page="${a}" disabled>${a}</button>
     </li>
 
     <li class="pagination-control-item">
@@ -217,7 +217,7 @@ import{a as u,b as T,i as m}from"./vendor-D2ogNlHo.js";(function(){const t=docum
 
     ${o-a>=2?`
       <li class="pagination-control-item">
-        <p class="pagination-control">...</p>
+        <p class="pagination-control pagination-control-no-hover">...</p>
       </li>
     `:""}
   `:""}
@@ -246,4 +246,4 @@ import{a as u,b as T,i as m}from"./vendor-D2ogNlHo.js";(function(){const t=docum
   `,B=g+p+y;s.innerHTML=B}function re(e,t,s){const a=e.map(o=>`
           <li class="filters-list-item ${t===o?"filters-list-item-active":""}" data-option="${o}"><p>${o}</p></li>
       `).join("");s.innerHTML=a}async function ce(){try{const e=await ee(),t=document.querySelector(".quote-api-text"),s=document.querySelector(".quote-api-author");t&&(t.textContent=e.quote||"No quote available"),s&&(s.textContent=e.author||"Unknown author")}catch(e){console.error("Error rendering quote:",e)}}export{ie as a,ae as b,se as c,re as d,ce as e,oe as f,c as i,S as o,ne as r};
-//# sourceMappingURL=render-functions-DGD0LyZy.js.map
+//# sourceMappingURL=render-functions-BKRj7BZb.js.map
