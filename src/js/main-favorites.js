@@ -154,8 +154,10 @@ function renderFavorites(exercises, list) {
 // ====== СИНХРОНІЗАЦІЯ ПІСЛЯ ЗАКРИТТЯ МОДАЛКИ ======
 
 function onModalCloseClick(event) {
-  const closeModal = event.target.closest('[data-modal-exercise="close"]');
-  if (closeModal) {
+  const closeModalBtnClick = event.target.closest('[data-modal-exercise="close"]');
+  const modalBackdropClick = event.target.className === "basicLightbox";
+
+  if (closeModalBtnClick || modalBackdropClick) {
     const newState = readFavoritesFromStorage();
 
     const prev = JSON.stringify(favoritesState);
