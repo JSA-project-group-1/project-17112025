@@ -269,6 +269,7 @@ PLACEHOLDER STYLES WHEN FOCUSING
   height: 225px;
   box-shadow: none;
   flex-basis: 100%;
+  cursor: pointer;
 }
 
 /* =======================
