@@ -145,6 +145,7 @@ function onFiltersListClick(event) {
     categoriesList.classList.remove('visually-hidden');
     const filterOption = clickedItem.dataset.option;
     currentFilter = filterOption;
+    categoriesPage = 1;
     loadAndRenderCategoriesList();
     renderFilter(filterOptions, currentFilter, filtersList);
     searchForm.classList.add('visually-hidden');
