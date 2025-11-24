@@ -8,7 +8,7 @@ import { ModalBox } from './modal-class-box.js';
 
 import { openRatingModal } from './rating-modal.js';
 
-const openModalSelector = '[data-modal-exercise="open"]';
+const openModalSelector = 'button[data-modal-exercise="open"]';
 const closeModalSelector = '[data-modal-exercise="close"]';
 const FAVORITES_KEY = 'favorite_workouts';
 
@@ -36,7 +36,8 @@ function isExerciseInFavorites(exerciseId) {
 }
 
 document.addEventListener('click', event => {
-  if (event.target.matches(openModalSelector)) {
+  const targetButton = event.target.closest(openModalSelector);
+  if (targetButton) {
     const exerciseId = event.target.dataset.exerciseId;
     handleOpenModalClick(exerciseId);
   }
