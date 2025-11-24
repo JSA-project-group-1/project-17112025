@@ -124,7 +124,7 @@ export function renderPagination(totalPages, currentPage, list) {
   ${isFirstPage
       ? `
     <li class="pagination-control-item">
-      <button class="pagination-control-active" data-page="1">1</button>
+      <button class="pagination-control-active" data-page="1" disabled>1</button>
     </li>
     ${pages > 1
         ? `
@@ -145,7 +145,7 @@ export function renderPagination(totalPages, currentPage, list) {
     ${pages > 3
         ? `
       <li class="pagination-control-item">
-        <p class="pagination-control">...</p>
+        <p class="pagination-control pagination-control-no-hover">...</p>
       </li>
     `
         : ''
@@ -159,7 +159,7 @@ export function renderPagination(totalPages, currentPage, list) {
     ${pages > 3
         ? `
       <li class="pagination-control-item">
-        <p class="pagination-control">...</p>
+        <p class="pagination-control pagination-control-no-hover">...</p>
       </li>
     `
         : ''
@@ -183,7 +183,7 @@ export function renderPagination(totalPages, currentPage, list) {
         : ''
       }
     <li class="pagination-control-item">
-      <button class="pagination-control-active" data-page="${activePage}">${activePage}</button>
+      <button class="pagination-control-active" data-page="${activePage}" disabled>${activePage}</button>
     </li>
   `
       : ''
@@ -194,7 +194,7 @@ export function renderPagination(totalPages, currentPage, list) {
     ${activePage > 2
         ? `
       <li class="pagination-control-item">
-        <p class="pagination-control">...</p>
+        <p class="pagination-control pagination-control-no-hover">...</p>
       </li>
     `
         : ''
@@ -206,7 +206,7 @@ export function renderPagination(totalPages, currentPage, list) {
     </li>
 
     <li class="pagination-control-item">
-      <button class="pagination-control-active" data-page="${activePage}">${activePage}</button>
+      <button class="pagination-control-active" data-page="${activePage}" disabled>${activePage}</button>
     </li>
 
     <li class="pagination-control-item">
@@ -217,7 +217,7 @@ export function renderPagination(totalPages, currentPage, list) {
     ${pages - activePage >= 2
         ? `
       <li class="pagination-control-item">
-        <p class="pagination-control">...</p>
+        <p class="pagination-control pagination-control-no-hover">...</p>
       </li>
     `
         : ''

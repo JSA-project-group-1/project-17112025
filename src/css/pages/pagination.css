@@ -35,7 +35,9 @@
   fill: var(--main-color);
   border: 1px solid var(--main-color);
 }
-
+.pagination-arrow-btn:disabled {
+  pointer-events: none;
+}
 .right-vector {
   transform: rotate(180deg);
 }
@@ -63,9 +65,14 @@
   margin: 0 2px;
   color: var(--main-color);
   border: 1px solid var(--main-color);
+  pointer-events: none;
 }
 .pagination-control:hover {
   color: var(--main-color);
+}
+
+.pagination-control-no-hover:hover {
+  color: var(--pagination-color);
 }
 @media only screen and (min-width: 768px) {
   .pagination-controls-list {
