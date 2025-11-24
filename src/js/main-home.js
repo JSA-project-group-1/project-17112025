@@ -196,7 +196,7 @@ async function onPaginationClick(event) {
   const clickedButton = event.target.closest('button[data-page]');
   if (clickedButton) {
     showLoader(categoriesSection);
-    console.log(clickedButton.dataset.page);
+    // console.log(clickedButton.dataset.page);
     try {
       if (currentCategory) {
         switch (clickedButton.dataset.page) {

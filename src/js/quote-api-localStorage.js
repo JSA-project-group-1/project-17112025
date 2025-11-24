@@ -12,7 +12,7 @@ export const handleGetQuoteOfTheDay = async () => {
   const today = getTodayDate();
 
   if (storedQuote && storedQuote.date === today) {
-    console.log("Already have today's quote:", storedQuote);
+    // console.log("Already have today's quote:", storedQuote);
     return storedQuote;
   }
   const quote = await getQuoteOfTheDay();

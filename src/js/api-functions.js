@@ -28,8 +28,8 @@ export async function fetchExercises(
       [currentFilter === 'Body parts'
         ? 'bodypart'
         : currentFilter.toLowerCase()]: currentCategory
-        .toLowerCase()
-        .replace(' ', '%20'),
+          .toLowerCase()
+          .replace(' ', '%20'),
       keyword,
       page,
       limit,
@@ -52,7 +52,7 @@ export async function sendRating(id, ratingData) {
 export const getQuoteOfTheDay = async () => {
   try {
     const { data } = await axios.get('/quote');
-    console.log('Quote from API:', data);
+    // console.log('Quote from API:', data);
     return data;
   } catch (error) {
     console.error('Error fetching quote:', error);
